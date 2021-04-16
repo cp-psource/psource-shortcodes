@@ -5,7 +5,7 @@
  * Version: 1.0.2
  * Author: WMS N@W
  * Author URI: https://n3rds.work
- * Description: A comprehensive collection of visual components for WordPress
+ * Description: Eine umfassende Sammlung visueller Komponenten für das UpFront-Theme
  * Text Domain: upfront-shortcodes
  * License: GPLv3
  * Requires PHP: 5.3

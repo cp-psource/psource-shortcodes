@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The Available shortcodes menu component.
+ * Die Menükomponente Verfügbare Shortcodes.
  *
  * @since        1.0.0
  *
@@ -18,7 +18,7 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	public function add_menu_pages() {
 
 		/**
-		 * Submenu: Available shortcodes
+		 * Untermenü: Verfügbare Shortcodes
 		 * admin.php?page=upfront-shortcodes
 		 */
 		$this->add_submenu_page(
@@ -33,10 +33,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Display menu page.
+	 * Menüseite anzeigen.
 	 *
-	 * @since    5.0.8
-	 * @return   string   Menu page markup.
+	 * @since    1.0.0
+	 * @return   string   Markup der Menüseite.
 	 */
 	public function the_menu_page() {
 
@@ -71,7 +71,7 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Add help tabs and set help sidebar at Add-ons page.
+	 * Fügt Hilfe-Registerkarten hinzu und legt die Hilfeseitenleiste auf der Seite Add-Ons fest.
 	 *
 	 * @since  1.0.0
 	 * @param WP_Screen $screen WP_Screen instance.
@@ -95,7 +95,7 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Enqueue JavaScript(s) and Stylesheet(s) for the component.
+	 * Stellt JavaScript(s) und Stylesheet(s) für die Komponente in die Warteschlange.
 	 *
 	 * @since   1.0.0
 	 */
@@ -115,13 +115,13 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Helper function to create shortcode code with default settings.
+	 * Hilfsfunktion zum Erstellen von Shortcode-Code mit Standardeinstellungen.
 	 *
-	 * Example output: "[su_button color="#ff0000" ... ] Click me [/su_button]".
+	 * Beispielausgabe: "[su_button color="#ff0000" ... ] Klick mich [/su_button]".
 	 *
-	 * @param mixed   $args Array with settings
+	 * @param mixed   $args Array mit Einstellungen
 	 * @since  1.0.0
-	 * @return string      Shortcode code
+	 * @return string      Shortcode Code
 	 */
 	public function get_shortcode_code( $args ) {
 
@@ -131,56 +131,56 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 			'nested' => false,
 		);
 
-		// Accept shortcode ID as a string
+		// Akzeptiert die Shortcode-ID als Zeichenfolge
 		if ( is_string( $args ) ) {
 			$args = array( 'id' => $args );
 		}
 
 		$args = wp_parse_args( $args, $defaults );
 
-		// Check shortcode ID
+		// Überprüft die Shortcode-ID
 		if ( empty( $args['id'] ) ) {
 			return '';
 		}
 
-		// Get shortcode data
+		// Holt sich Shortcode-Daten
 		$shortcode = su_get_shortcode( $args['id'] );
 
-		// Prepare shortcode prefix
+		// Bereitet das Shortcode-Präfix vor
 		$prefix = get_option( 'su_option_prefix' );
 
-		// Prepare attributes container
+		// Bereitet den Attributcontainer vor
 		$attributes = '';
 
-		// Loop through attributes
+		// Attribute durchlaufen
 		foreach ( $shortcode['atts'] as $attr_id => $attribute ) {
 
-			// Skip hidden attributes
+			// Versteckte Attribute überspringen
 			if ( isset( $attribute['hidden'] ) && $attribute['hidden'] ) {
 				continue;
 			}
 
-			// Add attribute
+			// Attribute hinzufügen
 			$attributes .= sprintf( ' %s="%s"', esc_html( $attr_id ), esc_attr( $attribute['default'] ) );
 
 		}
 
-		// Create opening tag with attributes
+		// Erstellt ein Eröffnungs-Tag mit Attributen
 		$output = "[{$prefix}{$args['id']}{$attributes}]";
 
-		// Indent nested shortcodes
+		// Verschachtelte Shortcodes einrücken
 		if ( $args['nested'] ) {
 			$output = "\t" . $output;
 		}
 
-		// Insert shortcode content
+		// Fügt den Shortcode-Inhalt ein
 		if ( isset( $shortcode['content'] ) ) {
 
 			if ( is_string( $shortcode['content'] ) ) {
 				$output .= $shortcode['content'];
 			}
 
-			// Create complex content
+			// Erstellt komplexe Inhalte
 			elseif ( is_array( $shortcode['content'] ) && $args['id'] !== $shortcode['content']['id'] ) {
 
 					$shortcode['content']['nested'] = true;
@@ -190,17 +190,17 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 
 		}
 
-		// Add closing tag
+		// Schließt das schließende Tag hinzu
 		if ( isset( $shortcode['type'] ) && $shortcode['type'] === 'wrap' ) {
 			$output .= "[/{$prefix}{$args['id']}]";
 		}
 
-		// Repeat shortcode
+		// Shortcode wiederholen
 		if ( $args['number'] > 1 ) {
 			$output = implode( "\n", array_fill( 0, $args['number'], $output ) );
 		}
 
-		// Add line breaks around nested shortcodes
+		// Fügt Zeilenumbrüche um verschachtelte Shortcodes hinzu
 		if ( $args['nested'] ) {
 			$output = "\n{$output}\n";
 		}
@@ -210,10 +210,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Retrieve shortcodes data for shortcodes-list page.
+	 * Ruft Shortcodes-Daten für die Shortcodes-Listenseite ab.
 	 *
 	 * @since  1.0.0
-	 * @return array  Shortcodes data.
+	 * @return array  Shortcode Daten.
 	 */
 	public function get_available_shortcodes() {
 
@@ -258,10 +258,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Template tag to retrieve the shortcode data (depending on $_GET).
+	 * Vorlagen-Tag zum Abrufen der Shortcode-Daten (abhängig von $_GET).
 	 *
 	 * @since  1.0.0
-	 * @return mixed  Array with shortcode data, or FALSE if shortcode was not found.
+	 * @return mixed  Array mit Shortcode-Daten oder FALSE, wenn kein Shortcode gefunden wurde.
 	 */
 	public function get_current_shortcode() {
 
@@ -272,10 +272,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Template tag to retrieve the current group.
+	 * Vorlagen-Tag zum Abrufen der aktuellen Gruppe.
 	 *
 	 * @since 1.0.0
-	 * @return string Selected group ID.
+	 * @return string Ausgewählte Gruppen-ID.
 	 */
 	protected function get_current_group() {
 
@@ -294,10 +294,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Retrieve the groups data.
+	 * Rufe die Gruppendaten ab.
 	 *
 	 * @since  1.0.0
-	 * @return array  Array with groups data.
+	 * @return array  Array mit Gruppendaten.
 	 */
 	public function get_groups() {
 
@@ -328,10 +328,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * Template tag to retrieve the shortcode options.
+	 * Vorlagen-Tag zum Abrufen der Shortcode-Optionen.
 	 *
 	 * @since  1.0.0
-	 * @return mixed  Array with shortcode data, or FALSE if shortcode was not found.
+	 * @return mixed  Array mit Shortcode-Daten oder FALSE, wenn kein Shortcode gefunden wurde.
 	 */
 	public function get_single_shortcode_options() {
 
@@ -359,10 +359,10 @@ final class UpFront_Shortcodes_Admin_Shortcodes extends UpFront_Shortcodes_Admin
 	}
 
 	/**
-	 * This conditional tag checks if a singular shortcode is being displayed.
+	 * Dieses bedingte Tag prüft, ob ein einzelner Shortcode angezeigt wird.
 	 *
 	 * @since  1.0.0
-	 * @return boolean True on success, false on failure.
+	 * @return boolean Richtig beim Erfolg, falsch beim Scheitern.
 	 */
 	public function is_single_shortcode_page() {
 		return isset( $_GET['shortcode'] );

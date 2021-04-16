@@ -15,25 +15,25 @@ final class UpFront_Shortcodes_Admin_Settings extends UpFront_Shortcodes_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      array     $plugin_settings   The plugin settings data.
+	 * @var      array     $plugin_settings   Die Plugin-Einstellungsdaten.
 	 */
 	private $plugin_settings;
 
 	/**
-	 * Default values for a single setting.
+	 * Standardwerte für eine einzelne Einstellung.
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      array     $setting_defaults   Default values for a single setting.
+	 * @var      array     $setting_defaults   Standardwerte für eine einzelne Einstellung.
 	 */
 	private $setting_defaults;
 
 	/**
-	 * Initialize the class and set its properties.
+	 * Initialisiere die Klasse und lege Deine Eigenschaften fest.
 	 *
 	 * @since  1.0.0
-	 * @param string  $plugin_file    The path of the main plugin file
-	 * @param string  $plugin_version The current version of the plugin
+	 * @param string  $plugin_file    Der Pfad der Haupt-Plugin-Datei
+	 * @param string  $plugin_version Die aktuelle Version des Pluginsn
 	 */
 	public function __construct( $plugin_file, $plugin_version, $plugin_prefix ) {
 
