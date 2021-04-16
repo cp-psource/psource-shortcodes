@@ -11,8 +11,8 @@ su_add_shortcode( array(
 			'url' => array(
 				'type' => 'upload',
 				'default' => '',
-				'name' => __( 'File', 'upfront-shortcodes' ),
-				'desc' => __( 'Url to mp4/flv video-file', 'upfront-shortcodes' )
+				'name' => __( 'Datei', 'upfront-shortcodes' ),
+				'desc' => __( 'Url zur mp4/flv Videodatei', 'upfront-shortcodes' )
 			),
 			'poster' => array(
 				'type' => 'upload',
@@ -23,7 +23,7 @@ su_add_shortcode( array(
 			'title' => array(
 				'values' => array( ),
 				'default' => '',
-				'name' => __( 'Title', 'upfront-shortcodes' ),
+				'name' => __( 'Titel', 'upfront-shortcodes' ),
 				'desc' => __( 'Player title', 'upfront-shortcodes' )
 			),
 			'width' => array(
