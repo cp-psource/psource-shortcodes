@@ -11,35 +11,35 @@ su_add_shortcode( array(
 			'url' => array(
 				'type' => 'upload',
 				'default' => '',
-				'name' => __( 'File', 'upfront-shortcodes' ),
-				'desc' => __( 'Audio file url. Supported formats: mp3, ogg', 'upfront-shortcodes' )
+				'name' => __( 'Datei', 'upfront-shortcodes' ),
+				'desc' => __( 'URL der Audiodatei. Unterstützte Formate: mp3, ogg', 'upfront-shortcodes' )
 			),
 			'width' => array(
 				'values' => array(),
 				'default' => '100%',
-				'name' => __( 'Width', 'upfront-shortcodes' ),
-				'desc' => __( 'Player width. You can specify width in percents and player will be responsive. Example values: <b%value>200px</b>, <b%value>100&#37;</b>', 'upfront-shortcodes' )
+				'name' => __( 'Breite', 'upfront-shortcodes' ),
+				'desc' => __( 'Playerbreite. Du kannst die Breite in Prozent angeben und der Player reagiert. Beispielwerte: <b%value>200px</b>, <b%value>100&#37;</b>', 'upfront-shortcodes' )
 			),
 			'autoplay' => array(
 				'type' => 'bool',
 				'default' => 'no',
 				'name' => __( 'Autoplay', 'upfront-shortcodes' ),
-				'desc' => __( 'Play file automatically when page is loaded', 'upfront-shortcodes' )
+				'desc' => __( 'Datei automatisch abspielen, wenn die Seite geladen wird', 'upfront-shortcodes' )
 			),
 			'loop' => array(
 				'type' => 'bool',
 				'default' => 'no',
-				'name' => __( 'Loop', 'upfront-shortcodes' ),
-				'desc' => __( 'Repeat when playback is ended', 'upfront-shortcodes' )
+				'name' => __( 'Schleife', 'upfront-shortcodes' ),
+				'desc' => __( 'Wiederhole diesen Vorgang, wenn die Wiedergabe beendet ist', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, die durch Leerzeichen getrennt sind', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Custom audio player', 'upfront-shortcodes' ),
+		'desc' => __( 'Benutzerdefinierter Audio-Player', 'upfront-shortcodes' ),
 		'example' => 'media',
 		'icon' => 'play-circle',
 	) );
@@ -56,7 +56,7 @@ function su_shortcode_audio( $atts = null, $content = null ) {
 		), $atts, 'audio' );
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Audio', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Audio', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$atts['url'] = su_do_attribute( $atts['url'] );
@@ -68,7 +68,7 @@ function su_shortcode_audio( $atts = null, $content = null ) {
 		: '';
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Audio', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Audio', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	su_query_asset( 'css', 'su-shortcodes' );

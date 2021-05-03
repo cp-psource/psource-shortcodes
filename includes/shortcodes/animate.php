@@ -13,7 +13,7 @@ su_add_shortcode( array(
 				'values' => array_combine( su_get_config( 'animations' ), su_get_config( 'animations' ) ),
 				'default' => 'bounceIn',
 				'name' => __( 'Animation', 'upfront-shortcodes' ),
-				'desc' => __( 'Select animation type', 'upfront-shortcodes' )
+				'desc' => __( 'Wähle den Animationstyp', 'upfront-shortcodes' )
 			),
 			'duration' => array(
 				'type' => 'slider',
@@ -21,8 +21,8 @@ su_add_shortcode( array(
 				'max' => 20,
 				'step' => 0.5,
 				'default' => 1,
-				'name' => __( 'Duration', 'upfront-shortcodes' ),
-				'desc' => __( 'Animation duration (seconds)', 'upfront-shortcodes' )
+				'name' => __( 'Dauer', 'upfront-shortcodes' ),
+				'desc' => __( 'Animationsdauer (Sekunden)', 'upfront-shortcodes' )
 			),
 			'delay' => array(
 				'type' => 'slider',
@@ -30,24 +30,24 @@ su_add_shortcode( array(
 				'max' => 20,
 				'step' => 0.5,
 				'default' => 0,
-				'name' => __( 'Delay', 'upfront-shortcodes' ),
-				'desc' => __( 'Animation delay (seconds)', 'upfront-shortcodes' )
+				'name' => __( 'Verzögerung', 'upfront-shortcodes' ),
+				'desc' => __( 'Animationsverzögerung (Sekunden)', 'upfront-shortcodes' )
 			),
 			'inline' => array(
 				'type' => 'bool',
 				'default' => 'no',
 				'name' => __( 'Inline', 'upfront-shortcodes' ),
-				'desc' => __( 'This parameter determines what HTML tag will be used for animation wrapper. Turn this option to YES and animated element will be wrapped in SPAN instead of DIV. Useful for inline animations, like buttons', 'upfront-shortcodes' )
+				'desc' => __( 'Dieser Parameter bestimmt, welches HTML-Tag für den Animations-Wrapper verwendet wird. Wenn Du diese Option auf JA setzt, wird das animierte Element in SPAN anstelle von DIV eingeschlossen. Nützlich für Inline-Animationen wie Schaltflächen', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, die durch Leerzeichen getrennt sind', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content' => __( 'Animated content', 'upfront-shortcodes' ),
-		'desc' => __( 'Wrapper for animation. Any nested element will be animated', 'upfront-shortcodes' ),
+		'content' => __( 'Animierter Inhalt', 'upfront-shortcodes' ),
+		'desc' => __( 'Wrapper für Animation. Jedes verschachtelte Element wird animiert', 'upfront-shortcodes' ),
 		'example' => 'animations',
 		'icon' => 'bolt',
 	) );
