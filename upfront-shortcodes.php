@@ -2,7 +2,7 @@
 /**
  * Plugin Name: UpFront Shortcodes Plugin
  * Plugin URI: https://nerds.work/
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: WMS N@W
  * Author URI: https://n3rds.work
  * Description: Eine umfassende Sammlung visueller Komponenten für das UpFront-Theme
@@ -22,7 +22,7 @@ $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
  * Define plugin constants.
  */
 define( 'SU_PLUGIN_FILE', __FILE__ );
-define( 'SU_PLUGIN_VERSION', '1.0.2' );
+define( 'SU_PLUGIN_VERSION', '1.0.3' );
 
 /**
  * Load dependencies.
