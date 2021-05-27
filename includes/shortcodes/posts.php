@@ -5,24 +5,24 @@ su_add_shortcode(
 		'id'       => 'posts',
 		'callback' => 'su_shortcode_posts',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/posts.svg',
-		'name'     => __( 'Posts', 'upfront-shortcodes' ),
+		'name'     => __( 'Beiträge', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'other',
 		'article'  => 'https://nerds.work/docs/posts/',
 		'atts'     => array(
 			'template'            => array(
 				'default' => 'templates/default-loop.php',
-				'name'    => __( 'Template', 'upfront-shortcodes' ),
+				'name'    => __( 'Vorlage', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Relative path to the template file. Default templates placed in the plugin directory (templates folder). You can copy them under your theme directory and modify as you want. You can use following default templates that already available in the plugin directory:<br/><b%value>templates/default-loop.php</b> - posts loop<br/><b%value>templates/teaser-loop.php</b> - posts loop with thumbnail and title<br/><b%value>templates/single-post.php</b> - single post template<br/><b%value>templates/list-loop.php</b> - unordered list with posts titles',
+					'Relativer Pfad zur Vorlagendatei. Standardvorlagen im Plugin-Verzeichnis (Vorlagenordner). Du kannst sie in Dein Themenverzeichnis kopieren und nach Deinen Wünschen ändern. Du kannst die folgenden Standardvorlagen verwenden, die bereits im Plugin-Verzeichnis verfügbar sind:<br/><b%value>templates/default-loop.php</b> - Beiträge Schleife<br/><b%value>templates/teaser-loop.php</b> - Beitragsschleife mit Miniaturansicht und Titel<br/><b%value>templates/single-post.php</b> - Vorlage für einen einzelnen Beitrag<br/><b%value>templates/list-loop.php</b> - ungeordnete Liste mit Beitragstiteln',
 					'upfront-shortcodes'
 				),
 			),
 			'id'                  => array(
 				'default' => '',
-				'name'    => __( 'Post ID\'s', 'upfront-shortcodes' ),
+				'name'    => __( 'Beitrag ID\'s', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Enter comma separated ID\'s of the posts that you want to show',
+					'Gib durch Kommas getrennte IDs der Beiträge ein, die Du anzeigen möchtest',
 					'upfront-shortcodes'
 				),
 			),
@@ -32,9 +32,9 @@ su_add_shortcode(
 				'max'     => 10000,
 				'step'    => 1,
 				'default' => get_option( 'posts_per_page' ),
-				'name'    => __( 'Posts per page', 'upfront-shortcodes' ),
+				'name'    => __( 'Beiträge pro Seite', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Specify number of posts that you want to show. Enter -1 to get all posts',
+					'Gib die Anzahl der Beiträge an, die Du anzeigen möchtest. Gib -1 ein, um alle Beiträge zu erhalten',
 					'upfront-shortcodes'
 				),
 			),
@@ -43,9 +43,9 @@ su_add_shortcode(
 				'multiple' => true,
 				'values'   => array(),
 				'default'  => 'post',
-				'name'     => __( 'Post types', 'upfront-shortcodes' ),
+				'name'     => __( 'Beitragstypen', 'upfront-shortcodes' ),
 				'desc'     => __(
-					'Select post types. Hold Ctrl key to select multiple post types',
+					'Wähle Beitragstypen aus. Halte die Strg-Taste gedrückt, um mehrere Beitragstypen auszuwählen',
 					'upfront-shortcodes'
 				),
 			),
@@ -53,9 +53,9 @@ su_add_shortcode(
 				'type'    => 'taxonomy',
 				'values'  => array(),
 				'default' => 'category',
-				'name'    => __( 'Taxonomy', 'upfront-shortcodes' ),
+				'name'    => __( 'Taxonomie', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Select taxonomy to show posts from',
+					'Wähle Taxonomie aus, um Beiträge von anzuzeigen',
 					'upfront-shortcodes'
 				),
 			),
@@ -64,28 +64,28 @@ su_add_shortcode(
 				'multiple' => true,
 				'values'   => array(),
 				'default'  => '',
-				'name'     => __( 'Terms', 'upfront-shortcodes' ),
-				'desc'     => __( 'Select terms to show posts from', 'upfront-shortcodes' ),
+				'name'     => __( 'Begriffe', 'upfront-shortcodes' ),
+				'desc'     => __( 'Wähle Begriffe aus, aus denen Beiträge angezeigt werden sollen', 'upfront-shortcodes' ),
 			),
 			'tax_operator'        => array(
 				'type'    => 'select',
 				'values'  => array(
 					'IN'     => __(
-						'IN - posts that have any of selected categories terms',
+						'ENTHALTEN - Beiträge mit Begriffen einer ausgewählten Kategorie',
 						'upfront-shortcodes'
 					),
 					'NOT IN' => __(
-						'NOT IN - posts that is does not have any of selected terms',
+						'NICHT ENTHALTEN - Beiträge, die keinen der ausgewählten Begriffe haben',
 						'upfront-shortcodes'
 					),
 					'AND'    => __(
-						'AND - posts that have all selected terms',
+						'AND - Beiträge, die alle ausgewählten Begriffe haben',
 						'upfront-shortcodes'
 					),
 				),
 				'default' => 'IN',
-				'name'    => __( 'Taxonomy term operator', 'upfront-shortcodes' ),
-				'desc'    => __( 'Operator to test', 'upfront-shortcodes' ),
+				'name'    => __( 'Taxonomiebegriffsoperator', 'upfront-shortcodes' ),
+				'desc'    => __( 'Operator zum testen', 'upfront-shortcodes' ),
 			),
 			// 'author' => array(
 			//  'type' => 'select',
@@ -97,17 +97,17 @@ su_add_shortcode(
 			// ),
 			'author'              => array(
 				'default' => '',
-				'name'    => __( 'Authors', 'upfront-shortcodes' ),
+				'name'    => __( 'Autoren', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Enter here comma-separated list of author\'s IDs. Example: 1,7,18',
+					'Gib hier eine durch Kommas getrennte Liste der Autoren-IDs ein. Beispiel: 1,7,18',
 					'upfront-shortcodes'
 				),
 			),
 			'meta_key'            => array(
 				'default' => '',
-				'name'    => __( 'Meta key', 'upfront-shortcodes' ),
+				'name'    => __( 'Metaschlüssel', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Enter meta key name to show posts that have this key',
+					'Gib den Namen des Metaschlüssels ein, um Beiträge mit diesem Schlüssel anzuzeigen',
 					'upfront-shortcodes'
 				),
 			),
@@ -117,83 +117,83 @@ su_add_shortcode(
 				'max'     => 10000,
 				'step'    => 1,
 				'default' => 0,
-				'name'    => __( 'Offset', 'upfront-shortcodes' ),
+				'name'    => __( 'Versatz', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Specify offset to start posts loop not from first post',
+					'Gib den Versatz an, um die Beitragsschleife nicht vom ersten Beitrag an zu starten',
 					'upfront-shortcodes'
 				),
 			),
 			'order'               => array(
 				'type'    => 'select',
 				'values'  => array(
-					'desc' => __( 'Descending', 'upfront-shortcodes' ),
-					'asc'  => __( 'Ascending', 'upfront-shortcodes' ),
+					'desc' => __( 'Absteigend', 'upfront-shortcodes' ),
+					'asc'  => __( 'Aufsteigend', 'upfront-shortcodes' ),
 				),
 				'default' => 'DESC',
-				'name'    => __( 'Order', 'upfront-shortcodes' ),
-				'desc'    => __( 'Posts order', 'upfront-shortcodes' ),
+				'name'    => __( 'Sortierung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Beiträge bestellen', 'upfront-shortcodes' ),
 			),
 			'orderby'             => array(
 				'type'    => 'select',
 				'values'  => array(
-					'none'           => __( 'None', 'upfront-shortcodes' ),
-					'id'             => __( 'Post ID', 'upfront-shortcodes' ),
-					'author'         => __( 'Post author', 'upfront-shortcodes' ),
-					'title'          => __( 'Post title', 'upfront-shortcodes' ),
-					'name'           => __( 'Post slug', 'upfront-shortcodes' ),
-					'date'           => __( 'Date', 'upfront-shortcodes' ),
-					'modified'       => __( 'Last modified date', 'upfront-shortcodes' ),
-					'parent'         => __( 'Post parent', 'upfront-shortcodes' ),
-					'rand'           => __( 'Random', 'upfront-shortcodes' ),
-					'comment_count'  => __( 'Comments number', 'upfront-shortcodes' ),
-					'menu_order'     => __( 'Menu order', 'upfront-shortcodes' ),
-					'meta_value'     => __( 'Meta key values', 'upfront-shortcodes' ),
-					'meta_value_num' => __( 'Meta key values (Numeric)', 'upfront-shortcodes' ),
+					'none'           => __( 'Nicht', 'upfront-shortcodes' ),
+					'id'             => __( 'Beitrag ID', 'upfront-shortcodes' ),
+					'author'         => __( 'Beitragsautor', 'upfront-shortcodes' ),
+					'title'          => __( 'Beitrag-Titel', 'upfront-shortcodes' ),
+					'name'           => __( 'Beitragsslug', 'upfront-shortcodes' ),
+					'date'           => __( 'Datum', 'upfront-shortcodes' ),
+					'modified'       => __( 'Zuletzt bearbeitet', 'upfront-shortcodes' ),
+					'parent'         => __( 'Beitragseltern', 'upfront-shortcodes' ),
+					'rand'           => __( 'Zufällig', 'upfront-shortcodes' ),
+					'comment_count'  => __( 'Kommentaranzahl', 'upfront-shortcodes' ),
+					'menu_order'     => __( 'Menüreihenfolge', 'upfront-shortcodes' ),
+					'meta_value'     => __( 'Meta-Schlüsselwerte', 'upfront-shortcodes' ),
+					'meta_value_num' => __( 'Meta-Schlüsselwerte (numerisch)', 'upfront-shortcodes' ),
 				),
 				'default' => 'date',
-				'name'    => __( 'Order by', 'upfront-shortcodes' ),
-				'desc'    => __( 'Order posts by', 'upfront-shortcodes' ),
+				'name'    => __( 'Sortieren nach', 'upfront-shortcodes' ),
+				'desc'    => __( 'Beiträge bestellen nach', 'upfront-shortcodes' ),
 			),
 			'post_parent'         => array(
 				'default' => '',
-				'name'    => __( 'Post parent', 'upfront-shortcodes' ),
+				'name'    => __( 'Beitragseltern', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Show childrens of entered post (enter post ID)',
+					'Kinder des eingegebenen Beitrags anzeigen (Beitrags-ID eingeben)',
 					'upfront-shortcodes'
 				),
 			),
 			'post_status'         => array(
 				'type'    => 'select',
 				'values'  => array(
-					'publish'    => __( 'Published', 'upfront-shortcodes' ),
-					'pending'    => __( 'Pending', 'upfront-shortcodes' ),
-					'draft'      => __( 'Draft', 'upfront-shortcodes' ),
-					'auto-draft' => __( 'Auto-draft', 'upfront-shortcodes' ),
-					'future'     => __( 'Future post', 'upfront-shortcodes' ),
-					'private'    => __( 'Private post', 'upfront-shortcodes' ),
-					'inherit'    => __( 'Inherit', 'upfront-shortcodes' ),
-					'trash'      => __( 'Trashed', 'upfront-shortcodes' ),
+					'publish'    => __( 'Veröffentlicht', 'upfront-shortcodes' ),
+					'pending'    => __( 'Ausstehend', 'upfront-shortcodes' ),
+					'draft'      => __( 'Entwurf', 'upfront-shortcodes' ),
+					'auto-draft' => __( 'Auto-Entwurf', 'upfront-shortcodes' ),
+					'future'     => __( 'Zukünftiger Beitrag', 'upfront-shortcodes' ),
+					'private'    => __( 'Privater Beitrag', 'upfront-shortcodes' ),
+					'inherit'    => __( 'Vererbt', 'upfront-shortcodes' ),
+					'trash'      => __( 'Im Papierkorb', 'upfront-shortcodes' ),
 					'any'        => __( 'Any', 'upfront-shortcodes' ),
 				),
 				'default' => 'publish',
-				'name'    => __( 'Post status', 'upfront-shortcodes' ),
+				'name'    => __( 'Beitragsstatus', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Show only posts with selected status',
+					'Nur Beiträge mit ausgewähltem Status anzeigen',
 					'upfront-shortcodes'
 				),
 			),
 			'ignore_sticky_posts' => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'Ignore sticky', 'upfront-shortcodes' ),
+				'name'    => __( 'Angeheftet ignorieren', 'upfront-shortcodes' ),
 				'desc'    => __(
-					'Set to yes to prevent sticky posts from being moved to the start of the returned list of posts. They are still included, but appear in regular order.',
+					'Setze diesen Wert auf "Ja", um zu verhindern, dass angeheftete Beiträge an den Anfang der zurückgegebenen Liste der Posts verschoben werden. Sie sind weiterhin enthalten, werden jedoch in regulärer Reihenfolge angezeigt.',
 					'upfront-shortcodes'
 				),
 			),
 		),
 		'desc'     => __(
-			'Custom posts query with customizable template',
+			'Abfrage von benutzerdefinierten Beiträgen mit anpassbarer Vorlage',
 			'upfront-shortcodes'
 		),
 		'icon'     => 'th-list',
@@ -380,7 +380,7 @@ function su_shortcode_posts( $atts = null, $content = null ) {
 
 		return su_error_message(
 			'Posts',
-			__( 'invalid template name', 'upfront-shortcodes' )
+			__( 'ungültiger Vorlagenname', 'upfront-shortcodes' )
 		);
 
 	}

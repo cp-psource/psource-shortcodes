@@ -6,20 +6,20 @@ su_add_shortcode( array(
 		'callback' => 'su_shortcode_carousel',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/carousel.svg',
 		// translators: Dep. – Deprecated
-		'name' => __( 'Carousel (Dep.)', 'upfront-shortcodes' ),
+		'name' => __( 'Karussell (Dep.)', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'gallery',
 		'note'  => sprintf(
 			'<p>%s</p><p><button class="button button-primary" onclick="document.querySelector(\'[data-shortcode=image_carousel]\').click(); return false;">%s &rarr;</button></p>',
-			__( 'There is a much better shortcode for your images. Have you already tried the Image Carousel? It can create both sliders and carousels.', 'upfront-shortcodes' ),
-			__( 'Switch to Image Carousel', 'upfront-shortcodes' )
+			__( 'Es gibt einen viel besseren Shortcode für Deine Bilder. Hast Du das Bildkarussell bereits ausprobiert? Es können sowohl Slider als auch Karusselle erstellt werden.', 'upfront-shortcodes' ),
+			__( 'Wechsel zu Bildkarussell', 'upfront-shortcodes' )
 		),
 		'atts' => array(
 			'source' => array(
 				'type'    => 'image_source',
 				'default' => 'none',
-				'name'    => __( 'Source', 'upfront-shortcodes' ),
-				'desc'    => __( 'Choose images source. You can use images from Media library or retrieve it from posts (thumbnails) posted under specified blog category. You can also pick any custom taxonomy', 'upfront-shortcodes' )
+				'name'    => __( 'Quelle', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle die Bildquelle. Du kannst Bilder aus der Medienbibliothek verwenden oder sie aus Posts (Miniaturansichten) abrufen, die unter der angegebenen Blog-Kategorie veröffentlicht wurden. Du kannst auch eine beliebige benutzerdefinierte Taxonomie auswählen', 'upfront-shortcodes' )
 			),
 			'limit' => array(
 				'type' => 'slider',
@@ -28,31 +28,31 @@ su_add_shortcode( array(
 				'step' => 1,
 				'default' => 20,
 				'name' => __( 'Limit', 'upfront-shortcodes' ),
-				'desc' => __( 'Maximum number of image source posts (for recent posts, category and custom taxonomy)', 'upfront-shortcodes' )
+				'desc' => __( 'Maximale Anzahl von Bildquellenbeiträgen (für aktuelle Beiträge, Kategorie und benutzerdefinierte Taxonomie)', 'upfront-shortcodes' )
 			),
 			'link' => array(
 				'type' => 'select',
 				'values' => array(
-					'none'       => __( 'None', 'upfront-shortcodes' ),
-					'image'      => __( 'Full-size image', 'upfront-shortcodes' ),
+					'none'       => __( 'Keins', 'upfront-shortcodes' ),
+					'image'      => __( 'Bild in voller Größe', 'upfront-shortcodes' ),
 					'lightbox'   => __( 'Lightbox', 'upfront-shortcodes' ),
-					'custom'     => __( 'Slide link (added in media editor)', 'upfront-shortcodes' ),
-					'attachment' => __( 'Attachment page', 'upfront-shortcodes' ),
-					'post'       => __( 'Post permalink', 'upfront-shortcodes' )
+					'custom'     => __( 'Dia-Link (im Medieneditor hinzugefügt)', 'upfront-shortcodes' ),
+					'attachment' => __( 'Anhang Seite', 'upfront-shortcodes' ),
+					'post'       => __( 'Beitrag Permalink', 'upfront-shortcodes' )
 				),
 				'default' => 'none',
 				'name' => __( 'Links', 'upfront-shortcodes' ),
-				'desc' => __( 'Select which links will be used for images in this gallery', 'upfront-shortcodes' )
+				'desc' => __( 'Wähle aus, welche Links für Bilder in dieser Galerie verwendet werden sollen', 'upfront-shortcodes' )
 			),
 			'target' => array(
 				'type' => 'select',
 				'values' => array(
-					'self' => __( 'Open in same tab', 'upfront-shortcodes' ),
-					'blank' => __( 'Open in new tab', 'upfront-shortcodes' )
+					'self' => __( 'Öffne in derselben Registerkarte', 'upfront-shortcodes' ),
+					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' )
 				),
 				'default' => 'self',
-				'name' => __( 'Links target', 'upfront-shortcodes' ),
-				'desc' => __( 'Open links in', 'upfront-shortcodes' )
+				'name' => __( 'Links Ziel', 'upfront-shortcodes' ),
+				'desc' => __( 'Öffne Links in', 'upfront-shortcodes' )
 			),
 			'width' => array(
 				'type' => 'slider',
@@ -60,8 +60,8 @@ su_add_shortcode( array(
 				'max' => 1600,
 				'step' => 20,
 				'default' => 600,
-				'name' => __( 'Width', 'upfront-shortcodes' ),
-				'desc' => __( 'Carousel width (in pixels)', 'upfront-shortcodes' )
+				'name' => __( 'Breite', 'upfront-shortcodes' ),
+				'desc' => __( 'Karussellbreite (in Pixel)', 'upfront-shortcodes' )
 			),
 			'height' => array(
 				'type' => 'slider',
@@ -69,14 +69,14 @@ su_add_shortcode( array(
 				'max' => 1600,
 				'step' => 20,
 				'default' => 100,
-				'name' => __( 'Height', 'upfront-shortcodes' ),
-				'desc' => __( 'Carousel height (in pixels)', 'upfront-shortcodes' )
+				'name' => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc' => __( 'Karussellhöhe (in Pixel)', 'upfront-shortcodes' )
 			),
 			'responsive' => array(
 				'type' => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Responsive', 'upfront-shortcodes' ),
-				'desc' => __( 'Ignore width and height parameters and make carousel responsive', 'upfront-shortcodes' )
+				'name' => __( 'Responsiv', 'upfront-shortcodes' ),
+				'desc' => __( 'Ignoriere die Parameter für Breite und Höhe und sorge dafür, dass das Karussell reagiert', 'upfront-shortcodes' )
 			),
 			'items' => array(
 				'type' => 'number',
@@ -84,42 +84,45 @@ su_add_shortcode( array(
 				'max' => 20,
 				'step' => 1,
 				'default' => 3,
-				'name' => __( 'Items to show', 'upfront-shortcodes' ),
-				'desc' => __( 'How much carousel items is visible', 'upfront-shortcodes' )
+				'name' => __( 'Elemente zu zeigen', 'upfront-shortcodes' ),
+				'desc' => __( 'Wie viele Karussellelemente sind sichtbar?', 'upfront-shortcodes' )
 			),
 			'scroll' => array(
 				'type' => 'number',
 				'min' => 1,
 				'max' => 20,
 				'step' => 1, 'default' => 1,
-				'name' => __( 'Scroll number', 'upfront-shortcodes' ),
-				'desc' => __( 'How much items are scrolled in one transition', 'upfront-shortcodes' )
+				'name' => __( 'Bildlaufnummer', 'upfront-shortcodes' ),
+				'desc' => __( 'Wie viele Elemente werden in einem Übergang gescrollt?', 'upfront-shortcodes' )
 			),
 			'title' => array(
 				'type' => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Show titles', 'upfront-shortcodes' ), 'desc' => __( 'Display titles for each item', 'upfront-shortcodes' )
+				'name' => __( 'Titel anzeigen', 'upfront-shortcodes' ), 
+				'desc' => __( 'Titel für jedes Element anzeigen', 'upfront-shortcodes' )
 			),
 			'centered' => array(
 				'type' => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Center', 'upfront-shortcodes' ), 'desc' => __( 'Is carousel centered on the page', 'upfront-shortcodes' )
+				'name' => __( 'Zentriert', 'upfront-shortcodes' ), 
+				'desc' => __( 'Ist das Karussell auf der Seite zentriert', 'upfront-shortcodes' )
 			),
 			'arrows' => array(
 				'type' => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Arrows', 'upfront-shortcodes' ), 'desc' => __( 'Show left and right arrows', 'upfront-shortcodes' )
+				'name' => __( 'Pfeile', 'upfront-shortcodes' ), 
+				'desc' => __( 'Linke und rechte Pfeile anzeigen', 'upfront-shortcodes' )
 			),
 			'pages' => array(
 				'type' => 'bool',
 				'default' => 'no',
-				'name' => __( 'Pagination', 'upfront-shortcodes' ),
-				'desc' => __( 'Show pagination', 'upfront-shortcodes' )
+				'name' => __( 'Paginierung', 'upfront-shortcodes' ),
+				'desc' => __( 'Paginierung anzeigen', 'upfront-shortcodes' )
 			),
 			'mousewheel' => array(
 				'type' => 'bool',
-				'default' => 'yes', 'name' => __( 'Mouse wheel control', 'upfront-shortcodes' ),
-				'desc' => __( 'Allow to rotate carousel with mouse wheel', 'upfront-shortcodes' )
+				'default' => 'yes', 'name' => __( 'Mausradsteuerung', 'upfront-shortcodes' ),
+				'desc' => __( 'Karussell mit dem Mausrad drehen lassen', 'upfront-shortcodes' )
 			),
 			'autoplay' => array(
 				'type' => 'number',
@@ -128,7 +131,7 @@ su_add_shortcode( array(
 				'step' => 100,
 				'default' => 5000,
 				'name' => __( 'Autoplay', 'upfront-shortcodes' ),
-				'desc' => __( 'Choose interval between auto animations. Set to 0 to disable autoplay', 'upfront-shortcodes' )
+				'desc' => __( 'Wähle das Intervall zwischen den automatischen Animationen. Auf 0 setzen, um die automatische Wiedergabe zu deaktivieren', 'upfront-shortcodes' )
 			),
 			'speed' => array(
 				'type' => 'number',
@@ -136,16 +139,17 @@ su_add_shortcode( array(
 				'max' => 20000,
 				'step' => 100,
 				'default' => 600,
-				'name' => __( 'Speed', 'upfront-shortcodes' ), 'desc' => __( 'Specify animation speed', 'upfront-shortcodes' )
+				'name' => __( 'Geschwindigkeit', 'upfront-shortcodes' ), 
+				'desc' => __( 'Gib die Animationsgeschwindigkeit an', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, die durch Leerzeichen getrennt sind', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Customizable image carousel', 'upfront-shortcodes' ),
+		'desc' => __( 'Anpassbares Bildkarussell', 'upfront-shortcodes' ),
 		'icon' => 'picture-o',
 	) );
 
@@ -235,6 +239,6 @@ function su_shortcode_carousel( $atts = null, $content = null ) {
 		su_query_asset( 'js', 'su-shortcodes' );
 	}
 	// Slides not found
-	else $return = su_error_message( 'Carousel', __( 'images not found', 'upfront-shortcodes' ) );
+	else $return = su_error_message( 'Carousel', __( 'Bilder nicht gefunden', 'upfront-shortcodes' ) );
 	return $return;
 }
