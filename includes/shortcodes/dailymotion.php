@@ -12,7 +12,7 @@ su_add_shortcode(
 			'url'        => array(
 				'default' => '',
 				'name'    => __( 'Url', 'upfront-shortcodes' ),
-				'desc'    => __( 'Url of Dailymotion page with video', 'upfront-shortcodes' ),
+				'desc'    => __( 'URL der Dailymotion-Seite mit Video', 'upfront-shortcodes' ),
 			),
 			'width'      => array(
 				'type'    => 'slider',
@@ -20,8 +20,8 @@ su_add_shortcode(
 				'max'     => 1600,
 				'step'    => 20,
 				'default' => 600,
-				'name'    => __( 'Width', 'upfront-shortcodes' ),
-				'desc'    => __( 'Player width', 'upfront-shortcodes' ),
+				'name'    => __( 'Breite', 'upfront-shortcodes' ),
+				'desc'    => __( 'Playerbreite', 'upfront-shortcodes' ),
 			),
 			'height'     => array(
 				'type'    => 'slider',
@@ -29,44 +29,44 @@ su_add_shortcode(
 				'max'     => 1600,
 				'step'    => 20,
 				'default' => 400,
-				'name'    => __( 'Height', 'upfront-shortcodes' ),
-				'desc'    => __( 'Player height', 'upfront-shortcodes' ),
+				'name'    => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Playerhöhe', 'upfront-shortcodes' ),
 			),
 			'responsive' => array(
 				'type'    => 'bool',
 				'default' => 'yes',
-				'name'    => __( 'Responsive', 'upfront-shortcodes' ),
-				'desc'    => __( 'Ignore width and height parameters and make player responsive', 'upfront-shortcodes' ),
+				'name'    => __( 'Responsiv', 'upfront-shortcodes' ),
+				'desc'    => __( 'Ignoriere Breiten- und Höhenparameter und mache den Player responsiv', 'upfront-shortcodes' ),
 			),
 			'autoplay'   => array(
 				'type'    => 'bool',
 				'default' => 'no',
 				'name'    => __( 'Autoplay', 'upfront-shortcodes' ),
-				'desc'    => __( 'Start the playback of the video automatically after the player load. May not work on some mobile OS versions', 'upfront-shortcodes' ),
+				'desc'    => __( 'Starte die Wiedergabe des Videos automatisch nach dem Laden des Players. Funktioniert möglicherweise nicht auf einigen mobilen Betriebssystemversionen', 'upfront-shortcodes' ),
 			),
 			'background' => array(
 				'type'    => 'color',
 				'default' => '#FFC300',
-				'name'    => __( 'Background color', 'upfront-shortcodes' ),
-				'desc'    => __( 'HTML color of the background of controls elements', 'upfront-shortcodes' ),
+				'name'    => __( 'Hintergrundfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'HTML-Farbe des Hintergrunds von Kontrollelementen', 'upfront-shortcodes' ),
 			),
 			'foreground' => array(
 				'type'    => 'color',
 				'default' => '#F7FFFD',
-				'name'    => __( 'Foreground color', 'upfront-shortcodes' ),
-				'desc'    => __( 'HTML color of the foreground of controls elements', 'upfront-shortcodes' ),
+				'name'    => __( 'Vordergrundfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'HTML-Farbe des Vordergrunds der Steuerelemente', 'upfront-shortcodes' ),
 			),
 			'highlight'  => array(
 				'type'    => 'color',
 				'default' => '#171D1B',
-				'name'    => __( 'Highlight color', 'upfront-shortcodes' ),
-				'desc'    => __( 'HTML color of the controls elements\' highlights', 'upfront-shortcodes' ),
+				'name'    => __( 'Hervorhebungsfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'HTML-Farbe der Hervorhebungen der Steuerelemente', 'upfront-shortcodes' ),
 			),
 			'logo'       => array(
 				'type'    => 'bool',
 				'default' => 'yes',
-				'name'    => __( 'Show logo', 'upfront-shortcodes' ),
-				'desc'    => __( 'Allows to hide or show the Dailymotion logo', 'upfront-shortcodes' ),
+				'name'    => __( 'Logo anzeigen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Ermöglicht das Ausblenden oder Anzeigen des Dailymotion-Logos', 'upfront-shortcodes' ),
 			),
 			'quality'    => array(
 				'type'    => 'select',
@@ -78,34 +78,34 @@ su_add_shortcode(
 					'1080' => '1080',
 				),
 				'default' => '380',
-				'name'    => __( 'Quality', 'upfront-shortcodes' ),
-				'desc'    => __( 'Determines the quality that must be played by default if available', 'upfront-shortcodes' ),
+				'name'    => __( 'Qualität', 'upfront-shortcodes' ),
+				'desc'    => __( 'Bestimmt die Qualität, die standardmäßig abgespielt werden muss, falls verfügbar', 'upfront-shortcodes' ),
 			),
 			'related'    => array(
 				'type'    => 'bool',
 				'default' => 'yes',
-				'name'    => __( 'Show related videos', 'upfront-shortcodes' ),
-				'desc'    => __( 'Show related videos at the end of the video', 'upfront-shortcodes' ),
+				'name'    => __( 'Ähnliche Videos anzeigen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Ähnliche Videos am Ende des Videos anzeigen', 'upfront-shortcodes' ),
 			),
 			'info'       => array(
 				'type'    => 'bool',
 				'default' => 'yes',
-				'name'    => __( 'Show video info', 'upfront-shortcodes' ),
-				'desc'    => __( 'Show videos info (title/author) on the start screen', 'upfront-shortcodes' ),
+				'name'    => __( 'Videoinfos anzeigen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Videoinfos (Titel/Autor) auf dem Startbildschirm anzeigen', 'upfront-shortcodes' ),
 			),
 			'title'      => array(
-				'name'    => __( 'Title', 'upfront-shortcodes' ),
-				'desc'    => __( 'A brief description of the embedded content (used by screenreaders)', 'upfront-shortcodes' ),
+				'name'    => __( 'Titel', 'upfront-shortcodes' ),
+				'desc'    => __( 'Eine kurze Beschreibung des eingebetteten Inhalts (von Screenreadern verwendet)', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 			'class'      => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc'     => __( 'Dailymotion video', 'upfront-shortcodes' ),
+		'desc'     => __( 'Dailymotion-Video', 'upfront-shortcodes' ),
 		'icon'     => 'youtube-play',
 	)
 );
@@ -134,14 +134,14 @@ function su_shortcode_dailymotion( $atts = null, $content = null ) {
 	);
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Dailymotion', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Dailymotion', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$atts['url'] = su_do_attribute( $atts['url'] );
 	$id          = strtok( basename( $atts['url'] ), '_' );
 
 	if ( ! $id ) {
-		return su_error_message( 'Screenr', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Screenr', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$params     = array();

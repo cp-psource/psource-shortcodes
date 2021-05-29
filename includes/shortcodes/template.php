@@ -5,18 +5,18 @@ su_add_shortcode(
 		'id'       => 'template',
 		'callback' => 'su_shortcode_template',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/template.svg',
-		'name'     => __( 'Template', 'upfront-shortcodes' ),
+		'name'     => __( 'Vorlage', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'other',
 		'atts'     => array(
 			'name' => array(
 				'default' => '',
-				'name'    => __( 'Template name', 'upfront-shortcodes' ),
+				'name'    => __( 'Vorlagenname', 'upfront-shortcodes' ),
 				// translators: %1$s, %2$s, %3$s – example values for the shortcode attribute
-				'desc'    => sprintf( __( 'Use template file name (with optional .php extension). If you need to use templates from theme sub-folder, use relative path. Example values: %1$s, %2$s, %3$s', 'upfront-shortcodes' ), '<b%value>page</b>', '<b%value>page.php</b>', '<b%value>includes/page.php</b>' ),
+				'desc'    => sprintf( __( 'Verwende den Dateinamen der Vorlage (mit optionaler Erweiterung .php). Wenn Du Vorlagen aus dem Unterordner des Themas verwenden musst, verwende den relativen Pfad. Beispielwerte: %1$s, %2$s, %3$s', 'upfront-shortcodes' ), '<b%value>page</b>', '<b%value>page.php</b>', '<b%value>includes/page.php</b>' ),
 			),
 		),
-		'desc'     => __( 'Theme template', 'upfront-shortcodes' ),
+		'desc'     => __( 'Theme-Vorlage', 'upfront-shortcodes' ),
 		'icon'     => 'puzzle-piece',
 	)
 );

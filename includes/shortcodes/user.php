@@ -5,59 +5,59 @@ su_add_shortcode(
 		'id'       => 'user',
 		'callback' => 'su_shortcode_user',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/user.svg',
-		'name'     => __( 'User data', 'upfront-shortcodes' ),
+		'name'     => __( 'Benutzerdaten', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'data',
 		'atts'     => array(
 			'field'   => array(
 				'type'    => 'select',
 				'values'  => array(
-					'first_name'          => __( 'First name', 'upfront-shortcodes' ),
-					'last_name'           => __( 'Last name', 'upfront-shortcodes' ),
+					'first_name'          => __( 'Vorname', 'upfront-shortcodes' ),
+					'last_name'           => __( 'Nachname', 'upfront-shortcodes' ),
 					'nickname'            => __( 'Nickname', 'upfront-shortcodes' ),
-					'description'         => __( 'Description', 'upfront-shortcodes' ),
-					'locale'              => __( 'Locale', 'upfront-shortcodes' ),
-					'display_name'        => __( 'Display name', 'upfront-shortcodes' ),
+					'description'         => __( 'Beschreibung', 'upfront-shortcodes' ),
+					'locale'              => __( 'Gebietsschema', 'upfront-shortcodes' ),
+					'display_name'        => __( 'Anzeigename', 'upfront-shortcodes' ),
 					'ID'                  => __( 'ID', 'upfront-shortcodes' ),
 					'user_login'          => __( 'Login', 'upfront-shortcodes' ),
-					'user_nicename'       => __( 'Nice name', 'upfront-shortcodes' ),
+					'user_nicename'       => __( 'Schöner Name', 'upfront-shortcodes' ),
 					'user_email'          => __( 'Email', 'upfront-shortcodes' ),
 					'user_url'            => __( 'URL', 'upfront-shortcodes' ),
-					'user_registered'     => __( 'Registered', 'upfront-shortcodes' ),
-					'user_activation_key' => __( 'Activation key', 'upfront-shortcodes' ),
+					'user_registered'     => __( 'Registriert', 'upfront-shortcodes' ),
+					'user_activation_key' => __( 'Aktivierungsschlüssel', 'upfront-shortcodes' ),
 					'user_status'         => __( 'Status', 'upfront-shortcodes' ),
 				),
 				'default' => 'display_name',
-				'name'    => __( 'Field', 'upfront-shortcodes' ),
-				'desc'    => __( 'User data field name. Custom meta field names are also allowed.', 'upfront-shortcodes' ),
+				'name'    => __( 'Feld', 'upfront-shortcodes' ),
+				'desc'    => __( 'Name des Benutzerdatenfelds. Benutzerdefinierte Metafeldnamen sind ebenfalls zulässig.', 'upfront-shortcodes' ),
 			),
 			'default' => array(
 				'default' => '',
-				'name'    => __( 'Default', 'upfront-shortcodes' ),
-				'desc'    => __( 'This text will be shown if data is not found', 'upfront-shortcodes' ),
+				'name'    => __( 'Standard', 'upfront-shortcodes' ),
+				'desc'    => __( 'Dieser Text wird angezeigt, wenn keine Daten gefunden werden', 'upfront-shortcodes' ),
 			),
 			'before'  => array(
 				'default' => '',
-				'name'    => __( 'Before', 'upfront-shortcodes' ),
-				'desc'    => __( 'This content will be shown before the value', 'upfront-shortcodes' ),
+				'name'    => __( 'Bevor', 'upfront-shortcodes' ),
+				'desc'    => __( 'Dieser Inhalt wird vor dem Wert angezeigt', 'upfront-shortcodes' ),
 			),
 			'after'   => array(
 				'default' => '',
-				'name'    => __( 'After', 'upfront-shortcodes' ),
-				'desc'    => __( 'This content will be shown after the value', 'upfront-shortcodes' ),
+				'name'    => __( 'Dannach', 'upfront-shortcodes' ),
+				'desc'    => __( 'Dieser Inhalt wird nach dem Wert angezeigt', 'upfront-shortcodes' ),
 			),
 			'user_id' => array(
 				'default' => '',
-				'name'    => __( 'User ID', 'upfront-shortcodes' ),
-				'desc'    => __( 'You can specify custom user ID. Leave this field empty to use an ID of the current user', 'upfront-shortcodes' ),
+				'name'    => __( 'Benutzer ID', 'upfront-shortcodes' ),
+				'desc'    => __( 'Du kannst eine benutzerdefinierte Benutzer-ID angeben. Lasse dieses Feld leer, um eine ID des aktuellen Benutzers zu verwenden', 'upfront-shortcodes' ),
 			),
 			'filter'  => array(
 				'default' => '',
 				'name'    => __( 'Filter', 'upfront-shortcodes' ),
-				'desc'    => __( 'You can apply custom filter to the retrieved value. Enter here function name. Your function must accept one argument and return modified value. Name of your function must include word <b>filter</b>. Example function: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Value is: ' . \$value;\n}</code></pre>",
+				'desc'    => __( 'Du kannst einen benutzerdefinierten Filter auf den abgerufenen Wert anwenden. Gib hier den Funktionsnamen ein. Deine Funktion muss ein Argument akzeptieren und einen geänderten Wert zurückgeben. Der Name Deiner Funktion muss das Wort <b>filter</b> enthalten. Beispielfunktion: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Value is: ' . \$value;\n}</code></pre>",
 			),
 		),
-		'desc'     => __( 'This shortcode can display a user data, like login or email, including meta fields', 'upfront-shortcodes' ),
+		'desc'     => __( 'Dieser Shortcode kann Benutzerdaten wie Login oder E-Mail anzeigen, einschließlich Metafelder', 'upfront-shortcodes' ),
 		'icon'     => 'info-circle',
 	)
 );
@@ -70,7 +70,7 @@ function su_shortcode_user( $atts = null, $content = null ) {
 
 		return su_error_message(
 			'User',
-			__( 'password field is not allowed', 'upfront-shortcodes' )
+			__( 'Passwortfeld ist nicht erlaubt', 'upfront-shortcodes' )
 		);
 
 	}
@@ -85,7 +85,7 @@ function su_shortcode_user( $atts = null, $content = null ) {
 
 		return su_error_message(
 			'User',
-			__( 'invalid user ID', 'upfront-shortcodes' )
+			__( 'Ungültige Benutzer-Id', 'upfront-shortcodes' )
 		);
 
 	}
@@ -96,7 +96,7 @@ function su_shortcode_user( $atts = null, $content = null ) {
 
 		return su_error_message(
 			'User',
-			__( 'user not found', 'upfront-shortcodes' )
+			__( 'Benutzer nicht gefunden', 'upfront-shortcodes' )
 		);
 
 	}

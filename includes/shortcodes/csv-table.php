@@ -5,8 +5,8 @@ su_add_shortcode(
 		'id'       => 'csv_table',
 		'callback' => 'su_shortcode_csv_table',
 		'type'     => 'single',
-		'name'     => __( 'CSV Table', 'upfront-shortcodes' ),
-		'desc'     => __( 'Styled table from CSV file', 'upfront-shortcodes' ),
+		'name'     => __( 'CSV-Tabelle', 'upfront-shortcodes' ),
+		'desc'     => __( 'Gestaltete Tabelle aus CSV-Datei', 'upfront-shortcodes' ),
 		'group'    => 'content',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/table.svg',
 		'icon'     => 'table',
@@ -14,43 +14,43 @@ su_add_shortcode(
 			'url'        => array(
 				'type'    => 'upload',
 				'default' => '',
-				'name'    => __( 'CSV file URL', 'upfront-shortcodes' ),
-				'desc'    => __( 'The URL of a CSV file that will be displayed', 'upfront-shortcodes' ),
+				'name'    => __( 'CSV-Datei-URL', 'upfront-shortcodes' ),
+				'desc'    => __( 'Die URL einer CSV-Datei, die angezeigt wird', 'upfront-shortcodes' ),
 			),
 			'delimiter'  => array(
 				'type'    => 'text',
 				'default' => ',',
-				'name'    => __( 'Delimiter', 'upfront-shortcodes' ),
-				'desc'    => __( 'Set the field delimiter (one character only)', 'upfront-shortcodes' ),
+				'name'    => __( 'Trennzeichen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Lege das Feldtrennzeichen fest (nur ein Zeichen).', 'upfront-shortcodes' ),
 			),
 			'header'     => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'Display header', 'upfront-shortcodes' ),
-				'desc'    => __( 'Display first row as table header', 'upfront-shortcodes' ),
+				'name'    => __( 'Kopfzeile anzeigen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Erste Zeile als Tabellenkopf anzeigen', 'upfront-shortcodes' ),
 			),
 			'responsive' => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'Responsive', 'upfront-shortcodes' ),
-				'desc'    => __( 'Add horizontal scrollbar if table width larger than page width', 'upfront-shortcodes' ),
+				'name'    => __( 'Responsiv', 'upfront-shortcodes' ),
+				'desc'    => __( 'Horizontale Bildlaufleiste hinzufügen, wenn die Tabellenbreite größer als die Seitenbreite ist', 'upfront-shortcodes' ),
 			),
 			'alternate'  => array(
 				'type'    => 'bool',
 				'default' => 'yes',
-				'name'    => __( 'Alternate row color', 'upfront-shortcodes' ),
-				'desc'    => __( 'Enable to use alternative background color for even rows', 'upfront-shortcodes' ),
+				'name'    => __( 'Alternative Zeilenfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Aktivieren, um alternative Hintergrundfarbe für gerade Zeilen zu verwenden', 'upfront-shortcodes' ),
 			),
 			'fixed'      => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'Fixed layout', 'upfront-shortcodes' ),
-				'desc'    => __( 'Fixed width table cells', 'upfront-shortcodes' ),
+				'name'    => __( 'Festes Layout', 'upfront-shortcodes' ),
+				'desc'    => __( 'Tabellenzellen mit fester Breite', 'upfront-shortcodes' ),
 			),
 			'class'      => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
@@ -74,17 +74,17 @@ function su_shortcode_csv_table( $atts = null, $content = null ) {
 	);
 
 	if ( filter_var( $atts['url'], FILTER_VALIDATE_URL ) === false ) {
-		return su_error_message( 'CSV Table', __( 'invalid URL', 'upfront-shortcodes' ) );
+		return su_error_message( 'CSV Table', __( 'ungültige URL', 'upfront-shortcodes' ) );
 	}
 
 	$response = wp_remote_get( $atts['url'] );
 
 	if ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
-		return su_error_message( 'CSV Table', __( 'invalid URL', 'upfront-shortcodes' ) );
+		return su_error_message( 'CSV Table', __( 'ungültige URL', 'upfront-shortcodes' ) );
 	}
 
 	if ( ! is_string( $atts['delimiter'] ) || 1 !== strlen( $atts['delimiter'] ) ) {
-		return su_error_message( 'CSV Table', __( 'invalid delimiter', 'upfront-shortcodes' ) );
+		return su_error_message( 'CSV Table', __( 'ungültiges Trennzeichen', 'upfront-shortcodes' ) );
 	}
 
 	$csv  = wp_remote_retrieve_body( $response );

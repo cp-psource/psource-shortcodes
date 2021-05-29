@@ -6,7 +6,7 @@ su_add_shortcode(
 		'callback' => 'su_shortcode_display_posts',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/display-posts.svg',
 		'icon'     => 'th-list',
-		'name'     => __( 'Posts', 'upfront-shortcodes' ),
+		'name'     => __( 'Beiträge', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'other',
 		'article'  => 'https://nerds.work/docs/display-posts/',

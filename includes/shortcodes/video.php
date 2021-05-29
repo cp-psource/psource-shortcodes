@@ -18,13 +18,13 @@ su_add_shortcode( array(
 				'type' => 'upload',
 				'default' => '',
 				'name' => __( 'Poster', 'upfront-shortcodes' ),
-				'desc' => __( 'Url to poster image, that will be shown before playback', 'upfront-shortcodes' )
+				'desc' => __( 'URL zum Posterbild, das vor der Wiedergabe angezeigt wird', 'upfront-shortcodes' )
 			),
 			'title' => array(
 				'values' => array( ),
 				'default' => '',
 				'name' => __( 'Titel', 'upfront-shortcodes' ),
-				'desc' => __( 'Player title', 'upfront-shortcodes' )
+				'desc' => __( 'Playertitel', 'upfront-shortcodes' )
 			),
 			'width' => array(
 				'type' => 'slider',
@@ -32,8 +32,8 @@ su_add_shortcode( array(
 				'max' => 1600,
 				'step' => 20,
 				'default' => 600,
-				'name' => __( 'Width', 'upfront-shortcodes' ),
-				'desc' => __( 'Player width', 'upfront-shortcodes' )
+				'name' => __( 'Breite', 'upfront-shortcodes' ),
+				'desc' => __( 'Playerbreite', 'upfront-shortcodes' )
 			),
 			'height' => array(
 				'type' => 'slider',
@@ -41,35 +41,35 @@ su_add_shortcode( array(
 				'max' => 1600,
 				'step' => 20,
 				'default' => 300,
-				'name' => __( 'Height', 'upfront-shortcodes' ),
-				'desc' => __( 'Player height', 'upfront-shortcodes' )
+				'name' => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc' => __( 'Playerhöhe', 'upfront-shortcodes' )
 			),
 			'controls' => array(
 				'type' => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Controls', 'upfront-shortcodes' ),
-				'desc' => __( 'Show player controls (play/pause etc.) or not', 'upfront-shortcodes' )
+				'name' => __( 'Kontrollen', 'upfront-shortcodes' ),
+				'desc' => __( 'Player-Steuerelemente anzeigen (Wiedergabe/Pause usw.) oder nicht', 'upfront-shortcodes' )
 			),
 			'autoplay' => array(
 				'type' => 'bool',
 				'default' => 'no',
 				'name' => __( 'Autoplay', 'upfront-shortcodes' ),
-				'desc' => __( 'Play file automatically when page is loaded', 'upfront-shortcodes' )
+				'desc' => __( 'Datei automatisch abspielen, wenn Seite geladen wird', 'upfront-shortcodes' )
 			),
 			'loop' => array(
 				'type' => 'bool',
 				'default' => 'no',
-				'name' => __( 'Loop', 'upfront-shortcodes' ),
-				'desc' => __( 'Repeat when playback is ended', 'upfront-shortcodes' )
+				'name' => __( 'Schleife', 'upfront-shortcodes' ),
+				'desc' => __( 'Wiederholen, wenn die Wiedergabe beendet ist', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Custom video player', 'upfront-shortcodes' ),
+		'desc' => __( 'Benutzerdefinierter Videoplayer', 'upfront-shortcodes' ),
 		'example' => 'media',
 		'icon' => 'play-circle',
 	) );
@@ -89,7 +89,7 @@ function su_shortcode_video( $atts = null, $content = null ) {
 		), $atts, 'video' );
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Video', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Video', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$atts['url'] = su_do_attribute( $atts['url'] );
@@ -97,7 +97,7 @@ function su_shortcode_video( $atts = null, $content = null ) {
 	$id = uniqid( 'su_video_player_' );
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Video', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Video', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$title = $atts['title']

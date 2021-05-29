@@ -5,15 +5,15 @@ su_add_shortcode(
 		'id'       => 'custom_gallery',
 		'callback' => 'su_shortcode_custom_gallery',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/custom_gallery.svg',
-		'name'     => __( 'Gallery', 'upfront-shortcodes' ),
+		'name'     => __( 'Galerie', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'gallery',
 		'atts'     => array(
 			'source' => array(
 				'type'    => 'image_source',
 				'default' => 'none',
-				'name'    => __( 'Source', 'upfront-shortcodes' ),
-				'desc'    => __( 'Choose images source. You can use images from Media library or retrieve it from posts (thumbnails) posted under specified blog category. You can also pick any custom taxonomy', 'upfront-shortcodes' ),
+				'name'    => __( 'Quelle', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle die Bildquelle. Du kannst Bilder aus der Medienbibliothek verwenden oder sie aus Beiträgen (Thumbnails) abrufen, die unter einer bestimmten Blog-Kategorie veröffentlicht wurden. Du kannst auch eine beliebige benutzerdefinierte Taxonomie auswählen', 'upfront-shortcodes' ),
 			),
 			'limit'  => array(
 				'type'    => 'slider',
@@ -22,31 +22,31 @@ su_add_shortcode(
 				'step'    => 1,
 				'default' => 20,
 				'name'    => __( 'Limit', 'upfront-shortcodes' ),
-				'desc'    => __( 'Maximum number of image source posts (for recent posts, category and custom taxonomy)', 'upfront-shortcodes' ),
+				'desc'    => __( 'Maximale Anzahl von Bildquellenbeiträgen (für aktuelle Beiträge, Kategorie und benutzerdefinierte Taxonomie)', 'upfront-shortcodes' ),
 			),
 			'link'   => array(
 				'type'    => 'select',
 				'values'  => array(
-					'none'       => __( 'None', 'upfront-shortcodes' ),
-					'image'      => __( 'Full-size image', 'upfront-shortcodes' ),
+					'none'       => __( 'Nichts', 'upfront-shortcodes' ),
+					'image'      => __( 'Bild in voller Größe', 'upfront-shortcodes' ),
 					'lightbox'   => __( 'Lightbox', 'upfront-shortcodes' ),
-					'custom'     => __( 'Slide link (added in media editor)', 'upfront-shortcodes' ),
-					'attachment' => __( 'Attachment page', 'upfront-shortcodes' ),
-					'post'       => __( 'Post permalink', 'upfront-shortcodes' ),
+					'custom'     => __( 'Slide-Link (im Medieneditor hinzugefügt)', 'upfront-shortcodes' ),
+					'attachment' => __( 'Anhangsseite', 'upfront-shortcodes' ),
+					'post'       => __( 'Permalink posten', 'upfront-shortcodes' ),
 				),
 				'default' => 'none',
 				'name'    => __( 'Links', 'upfront-shortcodes' ),
-				'desc'    => __( 'Select which links will be used for images in this gallery', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle aus, welche Links für Bilder in dieser Galerie verwendet werden', 'upfront-shortcodes' ),
 			),
 			'target' => array(
 				'type'    => 'select',
 				'values'  => array(
-					'self'  => __( 'Open in same tab', 'upfront-shortcodes' ),
-					'blank' => __( 'Open in new tab', 'upfront-shortcodes' ),
+					'self'  => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
+					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'self',
-				'name'    => __( 'Links target', 'upfront-shortcodes' ),
-				'desc'    => __( 'Open links in', 'upfront-shortcodes' ),
+				'name'    => __( 'Links Ziel', 'upfront-shortcodes' ),
+				'desc'    => __( 'Links öffnen in', 'upfront-shortcodes' ),
 			),
 			'width'  => array(
 				'type'    => 'slider',
@@ -54,8 +54,8 @@ su_add_shortcode(
 				'max'     => 1600,
 				'step'    => 10,
 				'default' => 90,
-				'name'    => __( 'Width', 'upfront-shortcodes' ),
-				'desc'    => __( 'Single item width (in pixels)', 'upfront-shortcodes' ),
+				'name'    => __( 'Breite', 'upfront-shortcodes' ),
+				'desc'    => __( 'Breite eines einzelnen Elements (in Pixel)', 'upfront-shortcodes' ),
 			),
 			'height' => array(
 				'type'    => 'slider',
@@ -63,28 +63,28 @@ su_add_shortcode(
 				'max'     => 1600,
 				'step'    => 10,
 				'default' => 90,
-				'name'    => __( 'Height', 'upfront-shortcodes' ),
-				'desc'    => __( 'Single item height (in pixels)', 'upfront-shortcodes' ),
+				'name'    => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Höhe eines einzelnen Elements (in Pixel)', 'upfront-shortcodes' ),
 			),
 			'title'  => array(
 				'type'    => 'select',
 				'values'  => array(
-					'never'  => __( 'Never', 'upfront-shortcodes' ),
-					'hover'  => __( 'On mouse over', 'upfront-shortcodes' ),
-					'always' => __( 'Always', 'upfront-shortcodes' ),
+					'never'  => __( 'Niemals', 'upfront-shortcodes' ),
+					'hover'  => __( 'Bei Mouseover', 'upfront-shortcodes' ),
+					'always' => __( 'Immer', 'upfront-shortcodes' ),
 				),
 				'default' => 'hover',
-				'name'    => __( 'Show titles', 'upfront-shortcodes' ),
-				'desc'    => __( 'Title display mode', 'upfront-shortcodes' ),
+				'name'    => __( 'Titel anzeigen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Titelanzeigemodus', 'upfront-shortcodes' ),
 			),
 			'class'  => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc'     => __( 'Customizable image gallery', 'upfront-shortcodes' ),
+		'desc'     => __( 'Anpassbare Bildergalerie', 'upfront-shortcodes' ),
 		'icon'     => 'picture-o',
 	)
 );
@@ -159,7 +159,7 @@ function su_shortcode_custom_gallery( $atts = null, $content = null ) {
 	}
 	// Slides not found
 	else {
-		$return = su_error_message( 'Custom Gallery', __( 'images not found', 'upfront-shortcodes' ) );
+		$return = su_error_message( 'Custom Gallery', __( 'Bilder nicht gefunden', 'upfront-shortcodes' ) );
 	}
 	return $return;
 }
