@@ -4,42 +4,42 @@ su_add_shortcode( array(
 		'id' => 'meta',
 		'callback' => 'su_shortcode_meta',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/meta.svg',
-		'name' => __( 'Meta data', 'upfront-shortcodes' ),
+		'name' => __( 'Metadaten', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'data',
 		'atts' => array(
 			'key' => array(
 				'default' => '',
-				'name' => __( 'Key', 'upfront-shortcodes' ),
-				'desc' => __( 'Meta key name', 'upfront-shortcodes' )
+				'name' => __( 'Schlüssel', 'upfront-shortcodes' ),
+				'desc' => __( 'Name des Metaschlüssels', 'upfront-shortcodes' )
 			),
 			'default' => array(
 				'default' => '',
-				'name' => __( 'Default', 'upfront-shortcodes' ),
-				'desc' => __( 'This text will be shown if data is not found', 'upfront-shortcodes' )
+				'name' => __( 'Standard', 'upfront-shortcodes' ),
+				'desc' => __( 'Dieser Text wird angezeigt, wenn keine Daten gefunden werden', 'upfront-shortcodes' )
 			),
 			'before' => array(
 				'default' => '',
-				'name' => __( 'Before', 'upfront-shortcodes' ),
-				'desc' => __( 'This content will be shown before the value', 'upfront-shortcodes' )
+				'name' => __( 'Bevor', 'upfront-shortcodes' ),
+				'desc' => __( 'Dieser Inhalt wird vor dem Wert angezeigt', 'upfront-shortcodes' )
 			),
 			'after' => array(
 				'default' => '',
-				'name' => __( 'After', 'upfront-shortcodes' ),
-				'desc' => __( 'This content will be shown after the value', 'upfront-shortcodes' )
+				'name' => __( 'Dannach', 'upfront-shortcodes' ),
+				'desc' => __( 'Dieser Inhalt wird nach dem Wert angezeigt', 'upfront-shortcodes' )
 			),
 			'post_id' => array(
 				'default' => '',
-				'name' => __( 'Post ID', 'upfront-shortcodes' ),
-				'desc' => __( 'You can specify custom post ID. Leave this field empty to use an ID of the current post. Current post ID may not work in Live Preview mode', 'upfront-shortcodes' )
+				'name' => __( 'Beitrags-ID', 'upfront-shortcodes' ),
+				'desc' => __( 'Du kannst eine benutzerdefinierte Beitrags-ID angeben. Lasse dieses Feld leer, um eine ID des aktuellen Beitrags zu verwenden. Die aktuelle Beitrags-ID funktioniert möglicherweise nicht im Live-Vorschaumodus', 'upfront-shortcodes' )
 			),
 			'filter' => array(
 				'default' => '',
 				'name' => __( 'Filter', 'upfront-shortcodes' ),
-				'desc' => __( 'You can apply custom filter to the retrieved value. Enter here function name. Your function must accept one argument and return modified value. Name of your function must include word <b>filter</b>. Example function: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Value is: ' . \$value;\n}</code></pre>"
+				'desc' => __( 'Du kannst einen benutzerdefinierten Filter auf den abgerufenen Wert anwenden. Gib hier den Funktionsnamen ein. Deine Funktion muss ein Argument akzeptieren und einen geänderten Wert zurückgeben. Der Name Deiner Funktion muss das Wort <b>filter</b> enthalten. Beispielfunktion: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Value is: ' . \$value;\n}</code></pre>"
 			)
 		),
-		'desc' => __( 'Post meta', 'upfront-shortcodes' ),
+		'desc' => __( 'Post-Meta', 'upfront-shortcodes' ),
 		'icon' => 'info-circle',
 	) );
 
@@ -55,9 +55,9 @@ function su_shortcode_meta( $atts = null, $content = null ) {
 	// Define current post ID
 	if ( !$atts['post_id'] ) $atts['post_id'] = get_the_ID();
 	// Check post ID
-	if ( !is_numeric( $atts['post_id'] ) || $atts['post_id'] < 1 ) return sprintf( '<p class="su-error">Meta: %s</p>', __( 'post ID is incorrect', 'upfront-shortcodes' ) );
+	if ( !is_numeric( $atts['post_id'] ) || $atts['post_id'] < 1 ) return sprintf( '<p class="su-error">Meta: %s</p>', __( 'Beitrags-ID ist falsch', 'upfront-shortcodes' ) );
 	// Check key name
-	if ( !$atts['key'] ) return sprintf( '<p class="su-error">Meta: %s</p>', __( 'please specify meta key name', 'upfront-shortcodes' ) );
+	if ( !$atts['key'] ) return sprintf( '<p class="su-error">Meta: %s</p>', __( 'Bitte gib den Namen des Metaschlüssels an', 'upfront-shortcodes' ) );
 	// Get the meta
 	$meta = get_post_meta( $atts['post_id'], $atts['key'], true );
 	// Set default value if meta is empty

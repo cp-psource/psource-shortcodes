@@ -117,57 +117,57 @@ su_add_shortcode(
 					'meta_value_num' => __( 'Metaschlüsselwerte (numerisch)', 'upfront-shortcodes' ),
 				),
 				'default' => 'date',
-				'name'    => __( 'Order by', 'upfront-shortcodes' ),
-				'desc'    => __( 'Sort retrieved posts by parameter', 'upfront-shortcodes' ),
+				'name'    => __( 'Sortieren nach', 'upfront-shortcodes' ),
+				'desc'    => __( 'Abgerufene Beiträge nach Parameter sortieren', 'upfront-shortcodes' ),
 			),
 			'order'             => array(
 				'type'    => 'select',
 				'values'  => array(
-					'desc' => __( 'Descending', 'upfront-shortcodes' ),
-					'asc'  => __( 'Ascending', 'upfront-shortcodes' ),
+					'desc' => __( 'Absteigend', 'upfront-shortcodes' ),
+					'asc'  => __( 'Aufsteigend', 'upfront-shortcodes' ),
 				),
 				'default' => 'desc',
-				'name'    => __( 'Order', 'upfront-shortcodes' ),
-				'desc'    => __( 'Designates the ascending or descending order of the orderby parameter', 'upfront-shortcodes' ),
+				'name'    => __( 'Sortierung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Gibt die aufsteigende oder absteigende Reihenfolge des Parameters orderby an', 'upfront-shortcodes' ),
 			),
 			'post_parent'       => array(
 				'default' => '',
-				'name'    => __( 'Post parent', 'upfront-shortcodes' ),
+				'name'    => __( 'Post Eltern', 'upfront-shortcodes' ),
 				'desc'    => sprintf(
 					// translators: %s will be replaced with clickable text "current"
-					__( 'Filter posts by post parent (use parent post ID). Use "%s" keyword to display childs of the current post.', 'upfront-shortcodes' ),
+					__( 'Filtere Beiträge nach dem übergeordneten Beitrag (verwende die ID des übergeordneten Beitrags). Verwende das Schlüsselwort "%s", um untergeordnete Elemente des aktuellen Beitrags anzuzeigen.', 'upfront-shortcodes' ),
 					'<b%value>current</b>'
 				),
 			),
 			'post_status'       => array(
 				'type'    => 'select',
 				'values'  => array(
-					'publish'    => __( 'Published', 'upfront-shortcodes' ),
-					'pending'    => __( 'Pending', 'upfront-shortcodes' ),
-					'draft'      => __( 'Draft', 'upfront-shortcodes' ),
-					'auto-draft' => __( 'Auto-draft', 'upfront-shortcodes' ),
-					'future'     => __( 'Future post', 'upfront-shortcodes' ),
-					'private'    => __( 'Private post', 'upfront-shortcodes' ),
-					'inherit'    => __( 'Inherit', 'upfront-shortcodes' ),
-					'trash'      => __( 'Trashed', 'upfront-shortcodes' ),
-					'any'        => __( 'Any', 'upfront-shortcodes' ),
+					'publish'    => __( 'Veröffentlicht', 'upfront-shortcodes' ),
+					'pending'    => __( 'Ausstehend', 'upfront-shortcodes' ),
+					'draft'      => __( 'Entwurf', 'upfront-shortcodes' ),
+					'auto-draft' => __( 'Auto-Entwurf', 'upfront-shortcodes' ),
+					'future'     => __( 'Zukünftiger Beitrag', 'upfront-shortcodes' ),
+					'private'    => __( 'Privater Beitrag', 'upfront-shortcodes' ),
+					'inherit'    => __( 'Erben', 'upfront-shortcodes' ),
+					'trash'      => __( 'Papierkorb', 'upfront-shortcodes' ),
+					'any'        => __( 'Irgendein', 'upfront-shortcodes' ),
 				),
 				'default' => 'publish',
-				'name'    => __( 'Post status', 'upfront-shortcodes' ),
-				'desc'    => __( 'Filter posts by status', 'upfront-shortcodes' ),
+				'name'    => __( 'Poststatus', 'upfront-shortcodes' ),
+				'desc'    => __( 'Beiträge nach Status filtern', 'upfront-shortcodes' ),
 			),
 			'ignore_sticky'     => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'Ignore sticky', 'upfront-shortcodes' ),
-				'desc'    => __( 'Set this option to yes to ignore sticky posts', 'upfront-shortcodes' ),
+				'name'    => __( 'Sticky ignorieren', 'upfront-shortcodes' ),
+				'desc'    => __( 'Setze diese Option auf Ja, um klebrige Beiträge zu ignorieren', 'upfront-shortcodes' ),
 			),
 			'exclude'           => array(
 				'default' => '',
-				'name'    => __( 'Exclude Posts', 'upfront-shortcodes' ),
+				'name'    => __( 'Beiträge ausschließen', 'upfront-shortcodes' ),
 				'desc'    => sprintf(
 					// translators: %s will be replaced with clickable text "current"
-					__( 'Comma separated list of post IDs to exclude. Use "%s" keyword to exclude the current post.', 'upfront-shortcodes' ),
+					__( 'Kommagetrennte Liste der auszuschließenden Beitrags-IDs. Verwende das Schlüsselwort "%s", um den aktuellen Beitrag auszuschließen.', 'upfront-shortcodes' ),
 					'<b%value>current</b>'
 				),
 			),
@@ -175,48 +175,48 @@ su_add_shortcode(
 				'type'    => 'select',
 				'values'  => su_get_image_sizes(),
 				'default' => 'thubmnail',
-				'name'    => __( 'Thumbnails quality (if applicable)', 'upfront-shortcodes' ),
-				'desc'    => __( 'This option controls the size of thumbnail images. This option only affects image quality, not the actual thumbnail size.', 'upfront-shortcodes' ),
+				'name'    => __( 'Qualität der Miniaturansichten (falls zutreffend)', 'upfront-shortcodes' ),
+				'desc'    => __( 'Diese Option steuert die Größe von Miniaturbildern. Diese Option wirkt sich nur auf die Bildqualität aus, nicht auf die tatsächliche Miniaturansichtsgröße.', 'upfront-shortcodes' ),
 			),
 			'pagination'        => array(
 				'type'    => 'select',
 				'values'  => array(
-					'no'        => __( 'Disabled', 'upfront-shortcodes' ),
-					'prev-next' => __( 'Previous/Next', 'upfront-shortcodes' ),
+					'no'        => __( 'Deaktiviert', 'upfront-shortcodes' ),
+					'prev-next' => __( 'Vorherige/Nächste', 'upfront-shortcodes' ),
 				),
 				'default' => 'no',
-				'name'    => __( 'Pagination', 'upfront-shortcodes' ),
-				'desc'    => __( 'This option controls pagination', 'upfront-shortcodes' ),
+				'name'    => __( 'Seitennummerierung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Diese Option steuert die Paginierung', 'upfront-shortcodes' ),
 			),
 			'pagination_prev'   => array(
-				'default' => __( 'Previous page', 'upfront-shortcodes' ),
-				'name'    => __( 'Previous page link label', 'upfront-shortcodes' ),
-				'desc'    => __( 'Use this option to set a custom label for the previous page link.', 'upfront-shortcodes' ),
+				'default' => __( 'Vorherige Seite', 'upfront-shortcodes' ),
+				'name'    => __( 'Link-Label der vorherigen Seite', 'upfront-shortcodes' ),
+				'desc'    => __( 'Verwende diese Option, um ein benutzerdefiniertes Label für den Link zur vorherigen Seite festzulegen.', 'upfront-shortcodes' ),
 			),
 			'pagination_next'   => array(
-				'default' => __( 'Next page', 'upfront-shortcodes' ),
-				'name'    => __( 'Next page link label', 'upfront-shortcodes' ),
-				'desc'    => __( 'Use this option to set a custom label for the next page link.', 'upfront-shortcodes' ),
+				'default' => __( 'Nächste Seite', 'upfront-shortcodes' ),
+				'name'    => __( 'Link-Label der nächsten Seite', 'upfront-shortcodes' ),
+				'desc'    => __( 'Verwende diese Option, um ein benutzerdefiniertes Label für den Link zur nächsten Seite festzulegen.', 'upfront-shortcodes' ),
 			),
 			'pagination_anchor' => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'Achors in Pagination', 'upfront-shortcodes' ),
-				'desc'    => __( 'Use this option to enable anchors in pagination links. As a result, after navigating to a new page, browser will scroll in the posts element.', 'upfront-shortcodes' ),
+				'name'    => __( 'Anker in Paginierung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Verwende diese Option, um Anker in Paginierungslinks zu aktivieren. Als Ergebnis scrollt der Browser nach dem Navigieren zu einer neuen Seite im Posts-Element.', 'upfront-shortcodes' ),
 			),
 			'id'                => array(
-				'name'    => __( 'HTML Anchor (ID)', 'upfront-shortcodes' ),
-				'desc'    => __( 'Anchors lets you link directly to an element on a page', 'upfront-shortcodes' ),
+				'name'    => __( 'HTML Anker (ID)', 'upfront-shortcodes' ),
+				'desc'    => __( 'Mit Ankern kannst Du direkt auf ein Element auf einer Seite verlinken', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 			'class'             => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc'     => __( 'Custom posts query with customizable template', 'upfront-shortcodes' ),
+		'desc'     => __( 'Benutzerdefinierte Posts-Abfrage mit anpassbarer Vorlage', 'upfront-shortcodes' ),
 	)
 );
 
@@ -248,7 +248,7 @@ function su_shortcode_display_posts( $atts = null, $content = null ) {
 
 		return su_error_message(
 			'Posts',
-			__( 'invalid template name', 'upfront-shortcodes' )
+			__( 'ungültiger Vorlagenname', 'upfront-shortcodes' )
 		);
 
 	}

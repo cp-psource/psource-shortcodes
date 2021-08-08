@@ -11,37 +11,37 @@ su_add_shortcode( array(
 			'id' => array(
 				'default' => 1,
 				'name' => __( 'ID', 'upfront-shortcodes' ),
-				'desc' => __( 'Post or page ID', 'upfront-shortcodes' )
+				'desc' => __( 'Beitrags- oder Seiten-ID', 'upfront-shortcodes' )
 			),
 			'target' => array(
 				'type' => 'select',
 				'values' => array(
-					'self' => __( 'Open in same tab', 'upfront-shortcodes' ),
-					'blank' => __( 'Open in new tab', 'upfront-shortcodes' )
+					'self' => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
+					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' )
 				),
 				'default' => 'self',
-				'name' => __( 'Target', 'upfront-shortcodes' ),
-				'desc' => __( 'Link target', 'upfront-shortcodes' )
+				'name' => __( 'Ziel', 'upfront-shortcodes' ),
+				'desc' => __( 'Linkziel', 'upfront-shortcodes' )
 			),
 			'title' => array(
 				'default' => '',
-				'name' => __( 'Title', 'upfront-shortcodes' ),
-				'desc' => __( 'A value for the title attribute of the link', 'upfront-shortcodes' )
+				'name' => __( 'Titel', 'upfront-shortcodes' ),
+				'desc' => __( 'Ein Wert für das Titelattribut des Links', 'upfront-shortcodes' )
 			),
 			'rel' => array(
 				'default' => '',
 				'name' => __( 'Rel', 'upfront-shortcodes' ),
-				'desc' => __( 'A value for the rel attribute of the link', 'upfront-shortcodes' )
+				'desc' => __( 'Ein Wert für das rel-Attribut des Links', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
 		'content' => '',
-		'desc' => __( 'Permalink to specified post/page', 'upfront-shortcodes' ),
+		'desc' => __( 'Permalink zum angegebenen Beitrag/Seite', 'upfront-shortcodes' ),
 		'icon' => 'link',
 	) );
 

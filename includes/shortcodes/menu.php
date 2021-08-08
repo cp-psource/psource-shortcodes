@@ -4,23 +4,23 @@ su_add_shortcode( array(
 		'id' => 'menu',
 		'callback' => 'su_shortcode_menu',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/menu.svg',
-		'name' => __( 'Menu', 'upfront-shortcodes' ),
+		'name' => __( 'Menü', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'other',
 		'atts' => array(
 			'name' => array(
 				'values' => array( ),
 				'default' => '',
-				'name' => __( 'Menu name', 'upfront-shortcodes' ), 'desc' => __( 'Custom menu name. Ex: Main menu', 'upfront-shortcodes' )
+				'name' => __( 'Menüname', 'upfront-shortcodes' ), 'desc' => __( 'Benutzerdefinierter Menüname. Exmenü: Haupt ', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Custom menu by name', 'upfront-shortcodes' ),
+		'desc' => __( 'Benutzerdefiniertes Menü nach Namen', 'upfront-shortcodes' ),
 		'icon' => 'bars',
 	) );
 
@@ -40,5 +40,5 @@ function su_shortcode_menu( $atts = null, $content = null ) {
 }
 
 function su_shortcode_menu_fallback() {
-	return __( 'This menu doesn\'t exists, or has no elements', 'upfront-shortcodes' );
+	return __( 'Dieses Menü existiert nicht oder hat keine Elemente', 'upfront-shortcodes' );
 }
