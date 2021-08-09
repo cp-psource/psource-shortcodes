@@ -11,13 +11,13 @@ su_add_shortcode( array(
 			'style' => array(
 				'type' => 'select',
 				'values' => array(
-					'default' => __( 'Default', 'upfront-shortcodes' ),
-					'flat' => __( 'Flat', 'upfront-shortcodes' ),
-					'light' => __( 'Light', 'upfront-shortcodes' ),
-					'simple' => __( 'Simple', 'upfront-shortcodes' )
+					'default' => __( 'Standard', 'upfront-shortcodes' ),
+					'flat' => __( 'Flach', 'upfront-shortcodes' ),
+					'light' => __( 'Leicht', 'upfront-shortcodes' ),
+					'simple' => __( 'Einfach', 'upfront-shortcodes' )
 				),
 				'default' => 'default',
-				'name' => __( 'Style', 'upfront-shortcodes' ), 'desc' => __( 'Dropcap style preset', 'upfront-shortcodes' )
+				'name' => __( 'Stil', 'upfront-shortcodes' ), 'desc' => __( 'Voreinstellung Dropcap-Stil', 'upfront-shortcodes' )
 			),
 			'size' => array(
 				'type' => 'slider',
@@ -25,13 +25,13 @@ su_add_shortcode( array(
 				'max' => 5,
 				'step' => 1,
 				'default' => 3,
-				'name' => __( 'Size', 'upfront-shortcodes' ),
-				'desc' => __( 'Choose dropcap size', 'upfront-shortcodes' )
+				'name' => __( 'Größe', 'upfront-shortcodes' ),
+				'desc' => __( 'Dropcap-Größe wählen', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),

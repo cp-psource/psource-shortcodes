@@ -4,29 +4,29 @@ su_add_shortcode( array(
 		'deprecated' => true,
 		'id' => 'frame',
 		'callback' => 'su_shortcode_frame',
-		'name' => __( 'Frame', 'upfront-shortcodes' ),
+		'name' => __( 'Rahmen', 'upfront-shortcodes' ),
 		'type' => 'wrap',
 		'group' => 'content',
 		'atts' => array(
 			'align' => array(
 				'type' => 'select',
 				'values' => array(
-					'left' => __( 'Left', 'upfront-shortcodes' ),
-					'center' => __( 'Center', 'upfront-shortcodes' ),
-					'right' => __( 'Right', 'upfront-shortcodes' )
+					'left' => __( 'Links', 'upfront-shortcodes' ),
+					'center' => __( 'Zentriert', 'upfront-shortcodes' ),
+					'right' => __( 'Rechts', 'upfront-shortcodes' )
 				),
 				'default' => 'left',
-				'name' => __( 'Align', 'upfront-shortcodes' ),
-				'desc' => __( 'Frame alignment', 'upfront-shortcodes' )
+				'name' => __( 'Ausrichten', 'upfront-shortcodes' ),
+				'desc' => __( 'Rahmenausrichtung', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'default' => '',
-				'name' => __( 'Class', 'upfront-shortcodes' ),
-				'desc' => __( 'Extra CSS class', 'upfront-shortcodes' )
+				'name' => __( 'Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' )
 			)
 		),
 		'content' => '<img src="http://lorempixel.com/g/400/200/" />',
-		'desc' => __( 'Styled image frame', 'upfront-shortcodes' ),
+		'desc' => __( 'Gestylter Bilderrahmen', 'upfront-shortcodes' ),
 		'icon' => 'picture-o',
 	) );
 

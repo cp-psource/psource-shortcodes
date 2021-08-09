@@ -12,24 +12,24 @@ su_add_shortcode( array(
 				'type' => 'color',
 				'values' => array( ),
 				'default' => '#DDFF99',
-				'name' => __( 'Background', 'upfront-shortcodes' ),
-				'desc' => __( 'Highlighted text background color', 'upfront-shortcodes' )
+				'name' => __( 'Hintergrund', 'upfront-shortcodes' ),
+				'desc' => __( 'Hintergrundfarbe für hervorgehobenen Text', 'upfront-shortcodes' )
 			),
 			'color' => array(
 				'type' => 'color',
 				'values' => array( ),
 				'default' => '#000000',
-				'name' => __( 'Text color', 'upfront-shortcodes' ), 'desc' => __( 'Highlighted text color', 'upfront-shortcodes' )
+				'name' => __( 'Textfarbe', 'upfront-shortcodes' ), 'desc' => __( 'Hervorgehobene Textfarbe', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content' => __( 'Highlighted text', 'upfront-shortcodes' ),
-		'desc' => __( 'Highlighted text', 'upfront-shortcodes' ),
+		'content' => __( 'Hervorgehobener Text', 'upfront-shortcodes' ),
+		'desc' => __( 'Hervorgehobener Text', 'upfront-shortcodes' ),
 		'icon' => 'pencil',
 	) );
 

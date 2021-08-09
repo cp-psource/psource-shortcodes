@@ -4,19 +4,19 @@ su_add_shortcode( array(
 		'id' => 'expand',
 		'callback' => 'su_shortcode_expand',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/expand.svg',
-		'name' => __( 'Expand', 'upfront-shortcodes' ),
+		'name' => __( 'Erweitern', 'upfront-shortcodes' ),
 		'type' => 'wrap',
 		'group' => 'box',
 		'atts' => array(
 			'more_text' => array(
-				'default' => __( 'Show more', 'upfront-shortcodes' ),
-				'name' => __( 'More text', 'upfront-shortcodes' ),
-				'desc' => __( 'Enter the text for more link', 'upfront-shortcodes' )
+				'default' => __( 'Zeig mehr', 'upfront-shortcodes' ),
+				'name' => __( 'Mehr Text', 'upfront-shortcodes' ),
+				'desc' => __( 'Gib den Text für Zeige mehr Link ein', 'upfront-shortcodes' )
 			),
 			'less_text' => array(
-				'default' => __( 'Show less', 'upfront-shortcodes' ),
-				'name' => __( 'Less text', 'upfront-shortcodes' ),
-				'desc' => __( 'Enter the text for less link', 'upfront-shortcodes' )
+				'default' => __( 'Zeige weniger', 'upfront-shortcodes' ),
+				'name' => __( 'Weniger Text', 'upfront-shortcodes' ),
+				'desc' => __( 'Gib den Text für Zeige weniger Link ein', 'upfront-shortcodes' )
 			),
 			'height' => array(
 				'type' => 'slider',
@@ -24,82 +24,82 @@ su_add_shortcode( array(
 				'max' => 1000,
 				'step' => 10,
 				'default' => 100,
-				'name' => __( 'Height', 'upfront-shortcodes' ),
-				'desc' => __( 'Height for collapsed state (in pixels)', 'upfront-shortcodes' )
+				'name' => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc' => __( 'Höhe für minimierten Zustand (in Pixel)', 'upfront-shortcodes' )
 			),
 			'hide_less' => array(
 				'type' => 'bool',
 				'default' => 'no',
-				'name' => __( 'Hide less link', 'upfront-shortcodes' ),
-				'desc' => __( 'This option allows you to hide less link, when the text block has been expanded', 'upfront-shortcodes' )
+				'name' => __( 'Weniger Link ausblenden', 'upfront-shortcodes' ),
+				'desc' => __( 'Mit dieser Option kannst Du Zeige weniger Links ausblenden, wenn der Textblock erweitert wurde', 'upfront-shortcodes' )
 			),
 			'text_color' => array(
 				'type' => 'color',
 				'values' => array( ),
 				'default' => '#333333',
-				'name' => __( 'Text color', 'upfront-shortcodes' ),
-				'desc' => __( 'Pick the text color', 'upfront-shortcodes' )
+				'name' => __( 'Textfarbe', 'upfront-shortcodes' ),
+				'desc' => __( 'Wähle die Textfarbe aus', 'upfront-shortcodes' )
 			),
 			'link_color' => array(
 				'type' => 'color',
 				'values' => array( ),
 				'default' => '#0088FF',
-				'name' => __( 'Link color', 'upfront-shortcodes' ),
-				'desc' => __( 'Pick the link color', 'upfront-shortcodes' )
+				'name' => __( 'Linkfarbe', 'upfront-shortcodes' ),
+				'desc' => __( 'Wähle die Linkfarbe', 'upfront-shortcodes' )
 			),
 			'link_style' => array(
 				'type' => 'select',
 				'values' => array(
-					'default'    => __( 'Default', 'upfront-shortcodes' ),
-					'underlined' => __( 'Underlined', 'upfront-shortcodes' ),
-					'dotted'     => __( 'Dotted', 'upfront-shortcodes' ),
-					'dashed'     => __( 'Dashed', 'upfront-shortcodes' ),
-					'button'     => __( 'Button', 'upfront-shortcodes' ),
+					'default'    => __( 'Standard', 'upfront-shortcodes' ),
+					'underlined' => __( 'Unterstrichen', 'upfront-shortcodes' ),
+					'dotted'     => __( 'Gepunktet', 'upfront-shortcodes' ),
+					'dashed'     => __( 'Gestrichelt', 'upfront-shortcodes' ),
+					'button'     => __( 'Schaltfläche', 'upfront-shortcodes' ),
 				),
 				'default' => 'default',
-				'name' => __( 'Link style', 'upfront-shortcodes' ),
-				'desc' => __( 'Select the style for more/less link', 'upfront-shortcodes' )
+				'name' => __( 'Link-Stil', 'upfront-shortcodes' ),
+				'desc' => __( 'Wähle den Stil für mehr/weniger Link', 'upfront-shortcodes' )
 			),
 			'link_align' => array(
 				'type' => 'select',
 				'values' => array(
-					'left' => __( 'Left', 'upfront-shortcodes' ),
-					'center' => __( 'Center', 'upfront-shortcodes' ),
-					'right' => __( 'Right', 'upfront-shortcodes' ),
+					'left' => __( 'Links', 'upfront-shortcodes' ),
+					'center' => __( 'Mittig', 'upfront-shortcodes' ),
+					'right' => __( 'Rechts', 'upfront-shortcodes' ),
 				),
 				'default' => 'left',
-				'name' => __( 'Link align', 'upfront-shortcodes' ),
-				'desc' => __( 'Select link alignment', 'upfront-shortcodes' )
+				'name' => __( 'Link ausrichten', 'upfront-shortcodes' ),
+				'desc' => __( 'Linkausrichtung auswählen', 'upfront-shortcodes' )
 			),
 			'more_icon' => array(
 				'type' => 'icon',
 				'default' => '',
-				'name' => __( 'More icon', 'upfront-shortcodes' ),
-				'desc' => __( 'Add an icon to the more link', 'upfront-shortcodes' )
+				'name' => __( 'Mehr Symbol', 'upfront-shortcodes' ),
+				'desc' => __( 'Füge dem Link "Mehr" ein Symbol hinzu', 'upfront-shortcodes' )
 			),
 			'less_icon' => array(
 				'type' => 'icon',
 				'default' => '',
-				'name' => __( 'Less icon', 'upfront-shortcodes' ),
-				'desc' => __( 'Add an icon to the less link', 'upfront-shortcodes' )
+				'name' => __( 'Weniger Symbol', 'upfront-shortcodes' ),
+				'desc' => __( 'Füge dem Link weniger ein Symbol hinzu', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content' => __( 'This text block can be expanded', 'upfront-shortcodes' ),
-		'desc' => __( 'Expandable text block', 'upfront-shortcodes' ),
+		'content' => __( 'Dieser Textblock kann erweitert werden', 'upfront-shortcodes' ),
+		'desc' => __( 'Erweiterbarer Textblock', 'upfront-shortcodes' ),
 		'icon' => 'sort-amount-asc',
 	) );
 
 function su_shortcode_expand( $atts = null, $content = null ) {
 
 	$atts = shortcode_atts( array(
-			'more_text'  => __( 'Show more', 'upfront-shortcodes' ),
-			'less_text'  => __( 'Show less', 'upfront-shortcodes' ),
+			'more_text'  => __( 'Zeige mehr', 'upfront-shortcodes' ),
+			'less_text'  => __( 'Zeige weniger', 'upfront-shortcodes' ),
 			'height'     => '100',
 			'hide_less'  => 'no',
 			'text_color' => '#333333',

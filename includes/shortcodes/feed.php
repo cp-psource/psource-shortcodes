@@ -5,7 +5,7 @@ su_add_shortcode(
 		'id'       => 'feed',
 		'callback' => 'su_shortcode_feed',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/feed.svg',
-		'name'     => __( 'RSS feed', 'upfront-shortcodes' ),
+		'name'     => __( 'RSS-Feed', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'content other',
 		'atts'     => array(
@@ -13,7 +13,7 @@ su_add_shortcode(
 				'values'  => array(),
 				'default' => '',
 				'name'    => __( 'URL', 'upfront-shortcodes' ),
-				'desc'    => __( 'RSS feed URL', 'upfront-shortcodes' ),
+				'desc'    => __( 'RSS-Feed-URL', 'upfront-shortcodes' ),
 			),
 			'limit'  => array(
 				'type'    => 'slider',
@@ -22,26 +22,26 @@ su_add_shortcode(
 				'step'    => 1,
 				'default' => 3,
 				'name'    => __( 'Limit', 'upfront-shortcodes' ),
-				'desc'    => __( 'Number of items to show', 'upfront-shortcodes' ),
+				'desc'    => __( 'Anzahl der anzuzeigenden Elemente', 'upfront-shortcodes' ),
 			),
 			'target' => array(
 				'type'    => 'select',
 				'values'  => array(
-					'self'  => __( 'Open in same tab', 'upfront-shortcodes' ),
-					'blank' => __( 'Open in new tab', 'upfront-shortcodes' ),
+					'self'  => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
+					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'self',
-				'name'    => __( 'Links target', 'upfront-shortcodes' ),
-				'desc'    => __( 'Feed links target', 'upfront-shortcodes' ),
+				'name'    => __( 'Linkziel', 'upfront-shortcodes' ),
+				'desc'    => __( 'Feed-Links-Ziel', 'upfront-shortcodes' ),
 			),
 			'class'  => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc'     => __( 'Feed grabber', 'upfront-shortcodes' ),
+		'desc'     => __( 'Feedgreifer', 'upfront-shortcodes' ),
 		'icon'     => 'rss',
 	)
 );
@@ -56,7 +56,7 @@ function su_shortcode_feed( $atts = null, $content = null ) {
 	$atts['url'] = wp_specialchars_decode( $atts['url'] );
 
 	if ( ! filter_var( $atts['url'], FILTER_VALIDATE_URL ) ) {
-		return su_error_message( 'Feed', __( 'invalid feed URL', 'upfront-shortcodes' ) );
+		return su_error_message( 'Feed', __( 'ungültige Feed-URL', 'upfront-shortcodes' ) );
 	}
 
 	$feed = fetch_feed( $atts['url'] );
@@ -68,7 +68,7 @@ function su_shortcode_feed( $atts = null, $content = null ) {
 	$items = $feed->get_items( 0, (int) $atts['limit'] );
 
 	if ( ! count( $items ) ) {
-		return su_error_message( 'Feed', __( 'no items in the feed', 'upfront-shortcodes' ) );
+		return su_error_message( 'Feed', __( 'keine Artikel im Feed', 'upfront-shortcodes' ) );
 	}
 
 	foreach ( $items as $item ) {

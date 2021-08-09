@@ -27,7 +27,7 @@
 				<h2 class="su-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 				<div class="su-post-meta">
-					<?php _e( 'Posted', 'upfront-shortcodes' ); ?>: <?php the_time( get_option( 'date_format' ) ); ?>
+					<?php _e( 'Veröffentlicht', 'upfront-shortcodes' ); ?>: <?php the_time( get_option( 'date_format' ) ); ?>
 				</div>
 
 				<div class="su-post-excerpt">

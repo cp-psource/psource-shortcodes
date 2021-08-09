@@ -4,7 +4,7 @@ su_add_shortcode( array(
 		'id' => 'dummy_image',
 		'callback' => 'su_shortcode_dummy_image',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/dummy_image.svg',
-		'name' => __( 'Dummy image', 'upfront-shortcodes' ),
+		'name' => __( 'Dummy-Bild', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'content',
 		'atts' => array(
@@ -14,8 +14,8 @@ su_add_shortcode( array(
 				'max' => 1600,
 				'step' => 10,
 				'default' => 500,
-				'name' => __( 'Width', 'upfront-shortcodes' ),
-				'desc' => __( 'Image width', 'upfront-shortcodes' )
+				'name' => __( 'Breite', 'upfront-shortcodes' ),
+				'desc' => __( 'Bildbreite', 'upfront-shortcodes' )
 			),
 			'height' => array(
 				'type' => 'slider',
@@ -23,39 +23,39 @@ su_add_shortcode( array(
 				'max' => 1600,
 				'step' => 10,
 				'default' => 300,
-				'name' => __( 'Height', 'upfront-shortcodes' ),
-				'desc' => __( 'Image height', 'upfront-shortcodes' )
+				'name' => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc' => __( 'Bildhöhe', 'upfront-shortcodes' )
 			),
 			'theme' => array(
 				'type' => 'select',
 				'values' => array(
-					'any'       => __( 'Any', 'upfront-shortcodes' ),
-					'abstract'  => __( 'Abstract', 'upfront-shortcodes' ),
-					'animals'   => __( 'Animals', 'upfront-shortcodes' ),
-					'business'  => __( 'Business', 'upfront-shortcodes' ),
-					'cats'      => __( 'Cats', 'upfront-shortcodes' ),
-					'city'      => __( 'City', 'upfront-shortcodes' ),
-					'food'      => __( 'Food', 'upfront-shortcodes' ),
-					'nightlife' => __( 'Night life', 'upfront-shortcodes' ),
-					'fashion'   => __( 'Fashion', 'upfront-shortcodes' ),
-					'people'    => __( 'People', 'upfront-shortcodes' ),
-					'nature'    => __( 'Nature', 'upfront-shortcodes' ),
-					'sports'    => __( 'Sports', 'upfront-shortcodes' ),
-					'technics'  => __( 'Technics', 'upfront-shortcodes' ),
+					'any'       => __( 'Irgendein', 'upfront-shortcodes' ),
+					'abstract'  => __( 'Abstrakt', 'upfront-shortcodes' ),
+					'animals'   => __( 'Tiere', 'upfront-shortcodes' ),
+					'business'  => __( 'Unternehmen', 'upfront-shortcodes' ),
+					'cats'      => __( 'Katzen', 'upfront-shortcodes' ),
+					'city'      => __( 'Stadt', 'upfront-shortcodes' ),
+					'food'      => __( 'Essen', 'upfront-shortcodes' ),
+					'nightlife' => __( 'Nachtleben', 'upfront-shortcodes' ),
+					'fashion'   => __( 'Mode', 'upfront-shortcodes' ),
+					'people'    => __( 'Menschen', 'upfront-shortcodes' ),
+					'nature'    => __( 'Natur', 'upfront-shortcodes' ),
+					'sports'    => __( 'Sport', 'upfront-shortcodes' ),
+					'technics'  => __( 'Technik', 'upfront-shortcodes' ),
 					'transport' => __( 'Transport', 'upfront-shortcodes' )
 				),
 				'default' => 'any',
 				'name' => __( 'Theme', 'upfront-shortcodes' ),
-				'desc' => __( 'Select the theme for this image', 'upfront-shortcodes' )
+				'desc' => __( 'Wähle das Theme für dieses Bild aus', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Image placeholder with random image', 'upfront-shortcodes' ),
+		'desc' => __( 'Bildplatzhalter mit zufälligem Bild', 'upfront-shortcodes' ),
 		'icon' => 'picture-o',
 	) );
 
@@ -68,5 +68,5 @@ function su_shortcode_dummy_image( $atts = null, $content = null ) {
 		), $atts, 'dummy_image' );
 	$url = 'http://lorempixel.com/' . $atts['width'] . '/' . $atts['height'] . '/';
 	if ( $atts['theme'] !== 'any' ) $url .= $atts['theme'] . '/' . rand( 0, 10 ) . '/';
-	return '<img src="' . $url . '" alt="' . __( 'Dummy image', 'upfront-shortcodes' ) . '" width="' . $atts['width'] . '" height="' . $atts['height'] . '" class="su-dummy-image' . su_get_css_class( $atts ) . '" />';
+	return '<img src="' . $url . '" alt="' . __( 'Dummy-Bild', 'upfront-shortcodes' ) . '" width="' . $atts['width'] . '" height="' . $atts['height'] . '" class="su-dummy-image' . su_get_css_class( $atts ) . '" />';
 }

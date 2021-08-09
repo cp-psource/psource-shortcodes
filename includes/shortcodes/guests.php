@@ -4,19 +4,19 @@ su_add_shortcode( array(
 		'id' => 'guests',
 		'callback' => 'su_shortcode_guests',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/guests.svg',
-		'name' => __( 'Guests', 'upfront-shortcodes' ),
+		'name' => __( 'Gäste', 'upfront-shortcodes' ),
 		'type' => 'wrap',
 		'group' => 'other',
 		'atts' => array(
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content' => __( 'This content will be available only for non-logged visitors', 'upfront-shortcodes' ),
-		'desc' => __( 'Content for guests only', 'upfront-shortcodes' ),
+		'content' => __( 'Dieser Inhalt ist nur für nicht eingeloggte Besucher verfügbar', 'upfront-shortcodes' ),
+		'desc' => __( 'Inhalte nur für Gäste', 'upfront-shortcodes' ),
 		'icon' => 'user',
 	) );
 
