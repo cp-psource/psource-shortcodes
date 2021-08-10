@@ -4,16 +4,16 @@ su_add_shortcode( array(
 		'id' => 'row',
 		'callback' => 'su_shortcode_row',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/row.svg',
-		'name' => __( 'Columns', 'upfront-shortcodes' ),
+		'name' => __( 'Spalten', 'upfront-shortcodes' ),
 		'type' => 'wrap',
 		'group' => 'box',
 		'required_child' => 'column',
-		'article' => 'https://nerds.work/docs/columns/',
+		'article' => 'https://n3rds.work/docs/columns/',
 		'atts' => array(
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
@@ -21,7 +21,7 @@ su_add_shortcode( array(
 			'id'     => 'column',
 			'number' => 2,
 		),
-		'desc' => __( 'Row for flexible columns', 'upfront-shortcodes' ),
+		'desc' => __( 'Zeile für flexible Spalten', 'upfront-shortcodes' ),
 		'icon' => 'columns',
 	) );
 

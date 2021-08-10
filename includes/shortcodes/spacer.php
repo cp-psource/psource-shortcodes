@@ -4,7 +4,7 @@ su_add_shortcode( array(
 		'id' => 'spacer',
 		'callback' => 'su_shortcode_spacer',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/spacer.svg',
-		'name' => __( 'Spacer', 'upfront-shortcodes' ),
+		'name' => __( 'Abstandshalter', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'content other',
 		'atts' => array(
@@ -14,17 +14,17 @@ su_add_shortcode( array(
 				'max' => 800,
 				'step' => 10,
 				'default' => 20,
-				'name' => __( 'Height', 'upfront-shortcodes' ),
-				'desc' => __( 'Height of the spacer in pixels', 'upfront-shortcodes' )
+				'name' => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc' => __( 'Höhe des Abstandshalters in Pixel', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Empty space with adjustable height', 'upfront-shortcodes' ),
+		'desc' => __( 'Leerer Raum mit einstellbarer Höhe', 'upfront-shortcodes' ),
 		'icon' => 'arrows-v',
 	) );
 

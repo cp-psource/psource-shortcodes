@@ -4,19 +4,19 @@ su_add_shortcode( array(
 		'id' => 'private',
 		'callback' => 'su_shortcode_private',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/private.svg',
-		'name' => __( 'Private', 'upfront-shortcodes' ),
+		'name' => __( 'Privat', 'upfront-shortcodes' ),
 		'type' => 'wrap',
 		'group' => 'other',
 		'atts' => array(
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content' => __( 'Private note text', 'upfront-shortcodes' ),
-		'desc' => __( 'Private note for post authors. Any content wrapped with this shortcode will only be visible to post authors (users with publish_posts capability).', 'upfront-shortcodes' ),
+		'content' => __( 'Privater Notiztext', 'upfront-shortcodes' ),
+		'desc' => __( 'Private Anmerkung für Post-Autoren. Alle mit diesem Shortcode umschlossenen Inhalte sind nur für Beitragsautoren sichtbar (Benutzer mit der Funktion publish_posts).', 'upfront-shortcodes' ),
 		'icon' => 'lock',
 	) );
 

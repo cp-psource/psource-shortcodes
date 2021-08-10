@@ -11,16 +11,16 @@ su_add_shortcode( array(
 			'align' => array(
 				'type' => 'select',
 				'values' => array(
-					'left' => __( 'Left', 'upfront-shortcodes' ),
-					'right' => __( 'Right', 'upfront-shortcodes' )
+					'left' => __( 'Links', 'upfront-shortcodes' ),
+					'right' => __( 'Rechts', 'upfront-shortcodes' )
 				),
 				'default' => 'left',
-				'name' => __( 'Align', 'upfront-shortcodes' ), 'desc' => __( 'Pullquote alignment (float)', 'upfront-shortcodes' )
+				'name' => __( 'Ausrichtung', 'upfront-shortcodes' ), 'desc' => __( 'Pullquote-Ausrichtung (Float)', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),

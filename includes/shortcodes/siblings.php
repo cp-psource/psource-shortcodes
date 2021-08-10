@@ -4,24 +4,24 @@ su_add_shortcode( array(
 		'id' => 'siblings',
 		'callback' => 'su_shortcode_siblings',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/siblings.svg',
-		'name' => __( 'Siblings', 'upfront-shortcodes' ),
+		'name' => __( 'Geschwister', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'other',
 		'atts' => array(
 			'depth' => array(
 				'type' => 'select',
 				'values' => array( 1, 2, 3 ), 'default' => 1,
-				'name' => __( 'Depth', 'upfront-shortcodes' ),
-				'desc' => __( 'Max depth level', 'upfront-shortcodes' )
+				'name' => __( 'Tiefe', 'upfront-shortcodes' ),
+				'desc' => __( 'Maximale Tiefenstufe', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'List of cureent page siblings', 'upfront-shortcodes' ),
+		'desc' => __( 'Liste der aktuellen Seitengeschwister', 'upfront-shortcodes' ),
 		'icon' => 'bars',
 	) );
 

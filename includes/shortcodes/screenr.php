@@ -21,14 +21,14 @@ function su_shortcode_screenr( $atts = null, $content = null ) {
 		), $atts, 'screenr' );
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Screenr', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Screenr', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$atts['url'] = su_do_attribute( $atts['url'] );
 	$id = ( preg_match( '~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*screenr\.com(?:[\/\w]*\/videos?)?\/([a-zA-Z0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $atts['url'], $match ) ) ? $match[1] : false;
 
 	if ( ! $id ) {
-		return su_error_message( 'Screenr', __( 'please specify correct url', 'upfront-shortcodes' ) );
+		return su_error_message( 'Screenr', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	su_query_asset( 'css', 'su-shortcodes' );

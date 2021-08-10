@@ -11,21 +11,21 @@ su_add_shortcode(
 		'atts'     => array(
 			'title'      => array(
 				'values'  => array(),
-				'default' => __( 'Service title', 'upfront-shortcodes' ),
-				'name'    => __( 'Title', 'upfront-shortcodes' ),
-				'desc'    => __( 'Service name', 'upfront-shortcodes' ),
+				'default' => __( 'Service Titel', 'upfront-shortcodes' ),
+				'name'    => __( 'Titel', 'upfront-shortcodes' ),
+				'desc'    => __( 'Service Name', 'upfront-shortcodes' ),
 			),
 			'icon'       => array(
 				'type'    => 'icon',
 				'default' => 'icon: star',
-				'name'    => __( 'Icon', 'upfront-shortcodes' ),
-				'desc'    => __( 'You can upload custom icon for this box', 'upfront-shortcodes' ),
+				'name'    => __( 'Symbol', 'upfront-shortcodes' ),
+				'desc'    => __( 'Du kannst ein benutzerdefiniertes Symbol für dieses Feld hochladen', 'upfront-shortcodes' ),
 			),
 			'icon_color' => array(
 				'type'    => 'color',
 				'default' => '#333333',
-				'name'    => __( 'Icon color', 'upfront-shortcodes' ),
-				'desc'    => __( 'This color will be applied to the selected icon. Does not works with uploaded icons', 'upfront-shortcodes' ),
+				'name'    => __( 'Symbolfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Diese Farbe wird auf das ausgewählte Symbol angewendet. Funktioniert nicht mit hochgeladenen Icons', 'upfront-shortcodes' ),
 			),
 			'size'       => array(
 				'type'    => 'slider',
@@ -33,18 +33,18 @@ su_add_shortcode(
 				'max'     => 128,
 				'step'    => 2,
 				'default' => 32,
-				'name'    => __( 'Icon size', 'upfront-shortcodes' ),
-				'desc'    => __( 'Size of the uploaded icon in pixels', 'upfront-shortcodes' ),
+				'name'    => __( 'Symbolgröße', 'upfront-shortcodes' ),
+				'desc'    => __( 'Größe des hochgeladenen Symbols in Pixel', 'upfront-shortcodes' ),
 			),
 			'class'      => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content'  => __( 'Service description', 'upfront-shortcodes' ),
-		'desc'     => __( 'Service box with title', 'upfront-shortcodes' ),
+		'content'  => __( 'Leistungsbeschreibung', 'upfront-shortcodes' ),
+		'desc'     => __( 'Servicebox mit Titel', 'upfront-shortcodes' ),
 		'icon'     => 'check-square-o',
 	)
 );
@@ -53,7 +53,7 @@ function su_shortcode_service( $atts = null, $content = null ) {
 
 	$atts = shortcode_atts(
 		array(
-			'title'      => __( 'Service title', 'upfront-shortcodes' ),
+			'title'      => __( 'Service Titel', 'upfront-shortcodes' ),
 			'icon'       => 'icon: star',
 			'icon_color' => '#333',
 			'size'       => 32,
