@@ -4,30 +4,30 @@ su_add_shortcode( array(
 		'id' => 'subpages',
 		'callback' => 'su_shortcode_subpages',
 		'image' => su_get_plugin_url() . 'admin/images/shortcodes/subpages.svg',
-		'name' => __( 'Sub pages', 'upfront-shortcodes' ),
+		'name' => __( 'Unterseiten', 'upfront-shortcodes' ),
 		'type' => 'single',
 		'group' => 'other',
 		'atts' => array(
 			'depth' => array(
 				'type' => 'select',
 				'values' => array( 1, 2, 3, 4, 5 ), 'default' => 1,
-				'name' => __( 'Depth', 'upfront-shortcodes' ),
-				'desc' => __( 'Max depth level of children pages', 'upfront-shortcodes' )
+				'name' => __( 'Tiefe', 'upfront-shortcodes' ),
+				'desc' => __( 'Maximale Tiefe der untergeordneten Seiten', 'upfront-shortcodes' )
 			),
 			'p' => array(
 				'values' => array( ),
 				'default' => '',
-				'name' => __( 'Parent ID', 'upfront-shortcodes' ),
-				'desc' => __( 'ID of the parent page. Leave blank to use current page', 'upfront-shortcodes' )
+				'name' => __( 'Eltern ID', 'upfront-shortcodes' ),
+				'desc' => __( 'ID der übergeordneten Seite. Leer lassen, um die aktuelle Seite zu verwenden', 'upfront-shortcodes' )
 			),
 			'class' => array(
 				'type' => 'extra_css_class',
-				'name' => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc' => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'List of sub pages', 'upfront-shortcodes' ),
+		'desc' => __( 'Liste der Unterseiten', 'upfront-shortcodes' ),
 		'icon' => 'bars',
 	) );
 
