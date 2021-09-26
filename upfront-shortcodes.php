@@ -12,7 +12,7 @@
  * Requires at least: 4.6
  * Tested up to: 5.7
  */
-require 'vendor/psource-plugin-update/plugin-update-checker.php';
+require 'psource/psource-plugin-update/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=upfront-shortcodes', 
 	__FILE__, 
