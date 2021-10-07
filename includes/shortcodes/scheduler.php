@@ -12,12 +12,12 @@ su_add_shortcode(
 			'time'       => array(
 				'default' => '',
 				'name'    => __( 'Zeit', 'upfront-shortcodes' ),
-				'desc'    => sprintf( __( 'In diesem Feld kannst Du einen oder mehrere Zeitbereiche angeben. Jeden Tag zu dieser Zeit wird der Inhalt des Shortcodes sichtbar sein. %1$s %2$s %3$s - Inhalt von 9:00 bis 18:00 anzeigen %4$s - Inhalt von 9:00 bis 13:00 und von 14:00 bis 18:00 anzeigen %5$ s - Beispiel mit Minuten (Inhalt wird jeden Tag sichtbar sein, 45 Minuten) %6$s - Beispiel mit Sekunden', 'upfront-shortcodes' ), '<br><br>', __( 'Beispiele (zum Einstellen klicken)', 'upfront-shortcodes' ), '<br><b%value>9-18</b>', '<br><b%value>9-13, 14-18</b>', '<br><b%value>9:30-10:15</b>', '<br><b%value>9:00:00-17:59:59</b>' ),
+				'desc'    => sprintf( __( 'In diesem Feld kannst Du einen oder mehrere Zeitbereiche angeben. Jeden Tag zu dieser Zeit wird der Inhalt des Shortcodes sichtbar sein. %1$s %2$s %3$s - Inhalt von 9:00 bis 18:00 anzeigen %4$s - Inhalt von 9:00 bis 13:00 und von 14:00 bis 18:00 anzeigen %5$s - Beispiel mit Minuten (Inhalt wird jeden Tag sichtbar sein, 45 Minuten) %6$s - Beispiel mit Sekunden', 'upfront-shortcodes' ), '<br><br>', __( 'Beispiele (zum Einstellen klicken)', 'upfront-shortcodes' ), '<br><b%value>9-18</b>', '<br><b%value>9-13, 14-18</b>', '<br><b%value>9:30-10:15</b>', '<br><b%value>9:00:00-17:59:59</b>' ),
 			),
 			'days_week'  => array(
 				'default' => '',
 				'name'    => __( 'Tage der Woche', 'upfront-shortcodes' ),
-				'desc'    => sprintf( __( 'In diesem Feld kannst Du einen oder mehrere Wochentage angeben. An diesen Tagen wird jede Woche der Inhalt des Shortcodes sichtbar sein. %1$s 0 - Sonntag %2$s 1 - Montag %3$s 2 - Dienstag %4$s 3 - Mittwoch %5$s 4 - Donnerstag %6$s 5 - Freitag %7$s 6 - Samstag % 8$s %9$s %10$s - Inhalt anzeigen von Montag bis Freitag %11$s - Inhalt nur am Sonntag anzeigen %12$s - Inhalt anzeigen am Sonntag und von Mittwoch bis Freitag', 'upfront-shortcodes' ), '<br><br>', '<br>', '<br>', '<br>', '<br>', '<br>', '<br>', '<br><br>', __( 'Beispiele (zum Einstellen klicken)', 'upfront-shortcodes' ), '<br><b%value>1-5</b>', '<br><b%value>0</b>', '<br><b%value>0, 3-5</b>' ),
+				'desc'    => sprintf( __( 'In diesem Feld kannst Du einen oder mehrere Wochentage angeben. An diesen Tagen wird jede Woche der Inhalt des Shortcodes sichtbar sein. %1$s 0 - Sonntag %2$s 1 - Montag %3$s 2 - Dienstag %4$s 3 - Mittwoch %5$s 4 - Donnerstag %6$s 5 - Freitag %7$s 6 - Samstag %8$s %9$s %10$s - Inhalt anzeigen von Montag bis Freitag %11$s - Inhalt nur am Sonntag anzeigen %12$s - Inhalt anzeigen am Sonntag und von Mittwoch bis Freitag', 'upfront-shortcodes' ), '<br><br>', '<br>', '<br>', '<br>', '<br>', '<br>', '<br>', '<br><br>', __( 'Beispiele (zum Einstellen klicken)', 'upfront-shortcodes' ), '<br><b%value>1-5</b>', '<br><b%value>0</b>', '<br><b%value>0, 3-5</b>' ),
 			),
 			'days_month' => array(
 				'default' => '',
