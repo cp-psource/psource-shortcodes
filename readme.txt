@@ -38,6 +38,11 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.0.8 = DerN3rd =
+
+* PhP8 Updates
+* PSource Updater v1.1 integriert
+
 = 1.0.7 = DerN3rd =
 
 * Release 
