@@ -8,7 +8,7 @@ su_add_shortcode(
 		'name'     => __( 'Beiträge', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'other',
-		'article'  => 'https://nerds.work/docs/posts/',
+		'article'  => 'https://n3rds.work/docs/upfront-shortcodes-beitraege/',
 		'atts'     => array(
 			'template'            => array(
 				'default' => 'templates/default-loop.php',
@@ -71,11 +71,11 @@ su_add_shortcode(
 				'type'    => 'select',
 				'values'  => array(
 					'IN'     => __(
-						'ENTHALTEN - Beiträge mit Begriffen einer ausgewählten Kategorie',
+						'IN - Beiträge mit Begriffen einer ausgewählten Kategorie',
 						'upfront-shortcodes'
 					),
 					'NOT IN' => __(
-						'NICHT ENTHALTEN - Beiträge, die keinen der ausgewählten Begriffe haben',
+						'NOT IN - Beiträge, die keinen der ausgewählten Begriffe haben',
 						'upfront-shortcodes'
 					),
 					'AND'    => __(
@@ -117,7 +117,7 @@ su_add_shortcode(
 				'max'     => 10000,
 				'step'    => 1,
 				'default' => 0,
-				'name'    => __( 'Versatz', 'upfront-shortcodes' ),
+				'name'    => __( 'Offset', 'upfront-shortcodes' ),
 				'desc'    => __(
 					'Gib den Versatz an, um die Beitragsschleife nicht vom ersten Beitrag an zu starten',
 					'upfront-shortcodes'
@@ -173,7 +173,7 @@ su_add_shortcode(
 					'private'    => __( 'Privater Beitrag', 'upfront-shortcodes' ),
 					'inherit'    => __( 'Vererbt', 'upfront-shortcodes' ),
 					'trash'      => __( 'Im Papierkorb', 'upfront-shortcodes' ),
-					'any'        => __( 'Any', 'upfront-shortcodes' ),
+					'any'        => __( 'Alle', 'upfront-shortcodes' ),
 				),
 				'default' => 'publish',
 				'name'    => __( 'Beitragsstatus', 'upfront-shortcodes' ),
@@ -359,7 +359,7 @@ function su_shortcode_posts( $atts = null, $content = null ) {
 				$tax_relation = $original_atts['tax_relation'];
 			}
 
-			$args['tax_query']['relation'] = $tax_relation;
+			$tax_args['tax_query']['relation'] = $tax_relation;
 		}
 
 		$args = array_merge( $args, $tax_args );

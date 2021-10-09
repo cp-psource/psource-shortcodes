@@ -1,7 +1,7 @@
-=== Cloner ===
+=== UpFront Shortcodes ===
 Contributors: DerN3rd (WMS N@W)
 Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
-Tags: multisite, suche, netzwerksuche
+Tags: upfront, shortcodes
 Requires at least: 4.9
 Tested up to: 5.6
 Stable tag: 1.0.7

@@ -27,7 +27,7 @@ su_add_shortcode(
 			'target' => array(
 				'type'    => 'select',
 				'values'  => array(
-					'self'  => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
+					'self'  => __( 'Im selben Tab öffnen', 'upfront-shortcodes' ),
 					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'self',

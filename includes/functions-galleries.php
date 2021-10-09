@@ -22,7 +22,7 @@
  *   ...
  * ]
  *
- * @since  1.0.0
+ * @since  1.0.8
  * @param  array $atts Shortcode atts.
  * @return array       Array with parsed data on success, False otherwise.
  */
@@ -205,7 +205,7 @@ function su_get_gallery_slides_posts( $atts ) {
  *   'ids'  => [ 1, 2, 3 ]
  * ]
  *
- * @since  1.0.0
+ * @since  1.0.8
  * @param  string     $source Images source string.
  * @return array|bool         Array with parsed data on success, False otherwise.
  */
@@ -249,13 +249,13 @@ function su_parse_images_source( $source ) {
 /**
  * Helper function to get array with available intermediate image sizes.
  *
- * @since 1.0.0
+ * @since 1.0.8
  * @return array Array with available image sizes.
  */
 function su_get_image_sizes() {
 
 	$sizes = array(
-		'full' => __( 'Originalbildgröße', 'upfront-shortcodes' ),
+		'full' => __( 'Original image size', 'upfront-shortcodes' ),
 	);
 
 	foreach ( get_intermediate_image_sizes() as $size ) {
@@ -284,12 +284,12 @@ function su_is_media_taxonomy( $taxonomy ) {
 /**
  * Adds 'Slide Link' field at attachment page.
  *
- * @since  1.0.0
+ * @since  5.0.5
  */
 function su_slide_link_input( $form_fields, $post ) {
 
 	$form_fields['su_slide_link'] = array(
-		'label' => __( 'Slide Link', 'upfront-shortcodes' ),
+		'label' => __( 'Slider Link', 'upfront-shortcodes' ),
 		'input' => 'text',
 		'value' => get_post_meta( $post->ID, 'su_slide_link', true ),
 		'helps' => sprintf(
@@ -306,7 +306,7 @@ function su_slide_link_input( $form_fields, $post ) {
 /**
  * Saves 'Slide Link' field.
  *
- * @since  1.0.0
+ * @since  5.0.5
  */
 function su_slide_link_save( $post, $attachment ) {
 
@@ -321,7 +321,7 @@ function su_slide_link_save( $post, $attachment ) {
 /**
  * Get slides data.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param array   $args Query args.
  * @return array        Slides collection.
  */
@@ -455,7 +455,7 @@ function su_get_slides( $args ) {
  *
  * Deprecated since 4.3.2.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param array   $args Query args.
  * @return array       Slides collection.
  */

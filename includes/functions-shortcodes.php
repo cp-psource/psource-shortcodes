@@ -3,7 +3,7 @@
 /**
  * Functions responsible for shortcodes management.
  *
- * @since        1.0.0
+ * @since        5.0.5
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/includes
  */
@@ -11,7 +11,7 @@
 /**
  * Add a shortcode.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param array   $data    New shortcode data.
  * @param boolean $replace Replace existing shortcode or not.
  */
@@ -22,7 +22,7 @@ function su_add_shortcode( $data, $replace = true ) {
 /**
  * Remove a shortcode.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $id Shortcode ID to remove.
  */
 function su_remove_shortcode( $id ) {
@@ -32,7 +32,7 @@ function su_remove_shortcode( $id ) {
 /**
  * Get all shortcodes.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @return array The collection of available shortcodes.
  */
 function su_get_all_shortcodes() {
@@ -42,7 +42,7 @@ function su_get_all_shortcodes() {
 /**
  * Get specific shortcode by ID.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $id The ID (without prefix) of shortcode.
  * @return array|boolean   Shortcode data if found, False otherwise.
  */
@@ -53,7 +53,7 @@ function su_get_shortcode( $id ) {
 /**
  * Get shortcode default settings.
  *
- * @since 1.0.0
+ * @since 1.0.8
  * @param  string $id Shortcode ID.
  * @return array      Array with default settings.
  */
@@ -77,7 +77,7 @@ function su_get_shortcode_defaults( $id ) {
 /**
  * Parse shortcode attribute values.
  *
- * @since  1.0.0
+ * @since  1.0.8
  * @param  string $id    Shortcode ID.
  * @param  array  $atts  Input values.
  * @param  array  $extra Additional attributes.
@@ -146,7 +146,7 @@ function su_do_nested_shortcodes( $content, $shortcode ) {
 /**
  * Get shortcode prefix.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @return string Shortcode prefix.
  */
 function su_get_shortcode_prefix() {
@@ -158,7 +158,7 @@ function su_get_shortcode_prefix() {
  *
  * Replace braces with square brackets: {shortcode} => [shortcode], applies do_shortcode() filter.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $value Attribute value with shortcodes.
  * @return string        Parsed string.
  */

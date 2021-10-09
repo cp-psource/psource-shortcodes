@@ -11,7 +11,7 @@ su_add_shortcode(
 		'atts'     => array(
 			'title'       => array(
 				'values'  => array(),
-				'default' => __( 'Box-Titel', 'upfront-shortcodes' ),
+				'default' => __( 'Box Titel', 'upfront-shortcodes' ),
 				'name'    => __( 'Titel', 'upfront-shortcodes' ),
 				'desc'    => __( 'Text für den Feldtitel', 'upfront-shortcodes' ),
 			),
@@ -26,7 +26,7 @@ su_add_shortcode(
 				),
 				'default' => 'default',
 				'name'    => __( 'Stil', 'upfront-shortcodes' ),
-				'desc'    => __( 'Box Style Preset', 'upfront-shortcodes' ),
+				'desc'    => __( 'Voreinstellung Boxstil', 'upfront-shortcodes' ),
 			),
 			'box_color'   => array(
 				'type'    => 'color',
@@ -49,12 +49,12 @@ su_add_shortcode(
 				'step'    => 1,
 				'default' => 3,
 				'name'    => __( 'Radius', 'upfront-shortcodes' ),
-				'desc'    => __( 'Radius der Kastenecken', 'upfront-shortcodes' ),
+				'desc'    => __( 'Radius der Boxecken', 'upfront-shortcodes' ),
 			),
 			'class'       => array(
 				'type'    => 'extra_css_class',
 				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
-				'desc'    => __( 'Zusätzliche CSS-Klassennamen, die durch Leerzeichen getrennt sind', 'upfront-shortcodes' ),
+				'desc'    => __( 'usätzliche CSS-Klassennamen, die durch Leerzeichen getrennt sind', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 			'id'          => array(
@@ -105,11 +105,11 @@ function su_shortcode_box( $atts = null, $content = null ) {
 		'<div class="su-box su-box-style-%1$s%2$s" id="%10$s" style="border-color:%3$s;border-radius:%4$spx"><div class="su-box-title" style="background-color:%5$s;color:%6$s;border-top-left-radius:%7$spx;border-top-right-radius:%7$spx">%8$s</div><div class="su-box-content su-u-clearfix su-u-trim" style="border-bottom-left-radius:%7$spx;border-bottom-right-radius:%7$spx">%9$s</div></div>',
 		esc_attr( $atts['style'] ),
 		su_get_css_class( $atts ),
-		su_adjust_brightness( $atts['box_color'], -20 ),
+		esc_attr( su_adjust_brightness( $atts['box_color'], -20 ) ),
 		$atts['radius'],
-		$atts['box_color'],
-		$atts['title_color'],
-		$atts['inner_radius'],
+		esc_attr( $atts['box_color'] ),
+		esc_attr( $atts['title_color'] ),
+		esc_attr( $atts['inner_radius'] ),
 		su_do_attribute( $atts['title'] ),
 		su_do_nested_shortcodes( $content, 'box' ),
 		sanitize_html_class( $atts['id'] )

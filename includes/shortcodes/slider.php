@@ -1,138 +1,148 @@
 <?php
 
-su_add_shortcode( array(
+su_add_shortcode(
+	array(
 		'deprecated' => true,
-		'id' => 'slider',
-		'callback' => 'su_shortcode_slider',
-		'image' => su_get_plugin_url() . 'admin/images/shortcodes/slider.svg',
+		'id'         => 'slider',
+		'callback'   => 'su_shortcode_slider',
+		'image'      => su_get_plugin_url() . 'admin/images/shortcodes/slider.svg',
 		// translators: Dep. – Deprecated
-		'name' => __( 'Slider (Abt.)', 'upfront-shortcodes' ),
-		'type' => 'single',
-		'group' => 'gallery',
-		'note'  => sprintf(
+		'name'       => __( 'Slider (Dep.)', 'upfront-shortcodes' ),
+		'type'       => 'single',
+		'group'      => 'gallery',
+		'note'       => sprintf(
 			'<p>%s</p><p><button class="button button-primary" onclick="document.querySelector(\'[data-shortcode=image_carousel]\').click(); return false;">%s &rarr;</button></p>',
 			__( 'Es gibt einen viel besseren Shortcode für Deine Bilder. Hast Du das Bilderkarussell schon ausprobiert? Es kann sowohl Slider als auch Karussells erstellen.', 'upfront-shortcodes' ),
 			__( 'Zum Bildkarussell wechseln', 'upfront-shortcodes' )
 		),
-		'atts' => array(
-			'source' => array(
+		'atts'       => array(
+			'source'     => array(
 				'type'    => 'image_source',
 				'default' => 'none',
 				'name'    => __( 'Quelle', 'upfront-shortcodes' ),
-				'desc'    => __( 'Wähle die Bildquelle. Du kannst Bilder aus der Medienbibliothek verwenden oder sie aus Beiträgen (Thumbnails) abrufen, die unter einer bestimmten Blog-Kategorie veröffentlicht wurden. Du kannst auch eine beliebige benutzerdefinierte Taxonomie auswählen', 'upfront-shortcodes' )
+				'desc'    => __( 'Wähle die Bildquelle. Du kannst Bilder aus der Medienbibliothek verwenden oder sie aus Beiträgen (Thumbnails) abrufen, die unter einer bestimmten Blog-Kategorie veröffentlicht wurden. Du kannst auch eine beliebige benutzerdefinierte Taxonomie auswählen', 'upfront-shortcodes' ),
 			),
-			'limit' => array(
-				'type' => 'slider',
-				'min' => -1,
-				'max' => 100,
-				'step' => 1,
+			'limit'      => array(
+				'type'    => 'slider',
+				'min'     => -1,
+				'max'     => 100,
+				'step'    => 1,
 				'default' => 20,
-				'name' => __( 'Limit', 'upfront-shortcodes' ),
-				'desc' => __( 'Maximale Anzahl von Bildquellenbeiträgen (für aktuelle Beiträge, Kategorie und benutzerdefinierte Taxonomie)', 'upfront-shortcodes' )
+				'name'    => __( 'Limit', 'upfront-shortcodes' ),
+				'desc'    => __( 'Maximale Anzahl von Bildquellenbeiträgen (für aktuelle Beiträge, Kategorie und benutzerdefinierte Taxonomie)', 'upfront-shortcodes' ),
 			),
-			'link' => array(
-				'type' => 'select',
-				'values' => array(
+			'link'       => array(
+				'type'    => 'select',
+				'values'  => array(
 					'none'       => __( 'Keine', 'upfront-shortcodes' ),
 					'image'      => __( 'Bild in voller Größe', 'upfront-shortcodes' ),
 					'lightbox'   => __( 'Lightbox', 'upfront-shortcodes' ),
 					'custom'     => __( 'Slidelink (im Medieneditor hinzugefügt)', 'upfront-shortcodes' ),
 					'attachment' => __( 'Anhangsseite', 'upfront-shortcodes' ),
-					'post'       => __( 'Post Permalink', 'upfront-shortcodes' )
+					'post'       => __( 'Post Permalink', 'upfront-shortcodes' ),
 				),
 				'default' => 'none',
-				'name' => __( 'Links', 'upfront-shortcodes' ),
-				'desc' => __( 'Wähle aus, welche Links für Bilder in dieser Galerie verwendet werden', 'upfront-shortcodes' )
+				'name'    => __( 'Links', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle aus, welche Links für Bilder in dieser Galerie verwendet werden', 'upfront-shortcodes' ),
 			),
-			'target' => array(
-				'type' => 'select',
-				'values' => array(
-					'self' => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
-					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' )
+			'target'     => array(
+				'type'    => 'select',
+				'values'  => array(
+					'self'  => __( 'Im selben Tab öffnen', 'upfront-shortcodes' ),
+					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'self',
-				'name' => __( 'Linkziel', 'upfront-shortcodes' ),
-				'desc' => __( 'Links öffnen in', 'upfront-shortcodes' )
+				'name'    => __( 'Linkziel', 'upfront-shortcodes' ),
+				'desc'    => __( 'Links öffnen in', 'upfront-shortcodes' ),
 			),
-			'width' => array(
-				'type' => 'slider',
-				'min' => 200,
-				'max' => 1600,
-				'step' => 20,
+			'width'      => array(
+				'type'    => 'slider',
+				'min'     => 200,
+				'max'     => 1600,
+				'step'    => 20,
 				'default' => 600,
-				'name' => __( 'Breite', 'upfront-shortcodes' ), 'desc' => __( 'Sliderbreite (in Pixel)', 'upfront-shortcodes' )
+				'name'    => __( 'Breite', 'upfront-shortcodes' ),
+				'desc'    => __( 'Sliderbreite (in Pixel)', 'upfront-shortcodes' ),
 			),
-			'height' => array(
-				'type' => 'slider',
-				'min' => 200,
-				'max' => 1600,
-				'step' => 20,
+			'height'     => array(
+				'type'    => 'slider',
+				'min'     => 200,
+				'max'     => 1600,
+				'step'    => 20,
 				'default' => 300,
-				'name' => __( 'Höhe', 'upfront-shortcodes' ), 'desc' => __( 'Sliderhöhe (in Pixel)', 'upfront-shortcodes' )
+				'name'    => __( 'Höhe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Sliderbreite (in Pixel)', 'upfront-shortcodes' ),
 			),
 			'responsive' => array(
-				'type' => 'bool',
+				'type'    => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Responsiv', 'upfront-shortcodes' ),
-				'desc' => __( 'Ignoriere Breiten- und Höhenparameter und mache den Slider reaktionsschnell', 'upfront-shortcodes' )
+				'name'    => __( 'Responsiv', 'upfront-shortcodes' ),
+				'desc'    => __( 'Ignoriere Breiten- und Höhenparameter und mache den Slider responsiv', 'upfront-shortcodes' ),
 			),
-			'title' => array(
-				'type' => 'bool',
+			'title'      => array(
+				'type'    => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Titel anzeigen', 'upfront-shortcodes' ), 'desc' => __( 'Folientitel anzeigen', 'upfront-shortcodes' )
+				'name'    => __( 'Titel anzeigen', 'upfront-shortcodes' ),
+				'desc'    => __( 'Folientitel anzeigen', 'upfront-shortcodes' ),
 			),
-			'centered' => array(
-				'type' => 'bool',
+			'centered'   => array(
+				'type'    => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Zentriert', 'upfront-shortcodes' ), 'desc' => __( 'Ist der Slider auf der Seite zentriert', 'upfront-shortcodes' )
+				'name'    => __( 'Zentriert', 'upfront-shortcodes' ),
+				'desc'    => __( 'Ist der Slider auf der Seite zentriert', 'upfront-shortcodes' ),
 			),
-			'arrows' => array(
-				'type' => 'bool',
+			'arrows'     => array(
+				'type'    => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Pfeile', 'upfront-shortcodes' ), 'desc' => __( 'Links- und Rechtspfeil anzeigen', 'upfront-shortcodes' )
+				'name'    => __( 'Pfeile', 'upfront-shortcodes' ),
+				'desc'    => __( 'Links- und Rechtspfeil anzeigen', 'upfront-shortcodes' ),
 			),
-			'pages' => array(
-				'type' => 'bool',
+			'pages'      => array(
+				'type'    => 'bool',
 				'default' => 'yes',
-				'name' => __( 'Seitennummerierung', 'upfront-shortcodes' ),
-				'desc' => __( 'Paginierung anzeigen', 'upfront-shortcodes' )
+				'name'    => __( 'Paginierung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Seitennummerierung anzeigen', 'upfront-shortcodes' ),
 			),
 			'mousewheel' => array(
-				'type' => 'bool',
-				'default' => 'yes', 'name' => __( 'Mausradsteuerung', 'upfront-shortcodes' ),
-				'desc' => __( 'Erlaube Folien mit dem Mausrad zu wechseln', 'upfront-shortcodes' )
+				'type'    => 'bool',
+				'default' => 'yes',
+				'name'    => __( 'Mausradsteuerung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Erlaube Folien mit dem Mausrad zu wechseln', 'upfront-shortcodes' ),
 			),
-			'autoplay' => array(
-				'type' => 'number',
-				'min' => 0,
-				'max' => 100000,
-				'step' => 100,
+			'autoplay'   => array(
+				'type'    => 'number',
+				'min'     => 0,
+				'max'     => 100000,
+				'step'    => 100,
 				'default' => 5000,
-				'name' => __( 'Autoplay', 'upfront-shortcodes' ),
-				'desc' => __( 'Wähle das Intervall zwischen den Folienanimationen. Auf 0 setzen, um die automatische Wiedergabe zu deaktivieren', 'upfront-shortcodes' )
+				'name'    => __( 'Autoplay', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle das Intervall zwischen den Folienanimationen. Auf 0 setzen, um die automatische Wiedergabe zu deaktivieren', 'upfront-shortcodes' ),
 			),
-			'speed' => array(
-				'type' => 'number',
-				'min' => 0,
-				'max' => 20000,
-				'step' => 100,
+			'speed'      => array(
+				'type'    => 'number',
+				'min'     => 0,
+				'max'     => 20000,
+				'step'    => 100,
 				'default' => 600,
-				'name' => __( 'Geschwindigkeit', 'upfront-shortcodes' ), 'desc' => __( 'Animationsgeschwindigkeit angeben', 'upfront-shortcodes' )
+				'name'    => __( 'Geschwindigkeit', 'upfront-shortcodes' ),
+				'desc'    => __( 'Animationsgeschwindigkeit angeben', 'upfront-shortcodes' ),
 			),
-			'class' => array(
-				'type' => 'extra_css_class',
-				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
-				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
+			'class'      => array(
+				'type'    => 'extra_css_class',
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'desc' => __( 'Anpassbarer Bildslider', 'upfront-shortcodes' ),
-		'icon' => 'picture-o',
-	) );
+		'desc'       => __( 'Anpassbarer Bildslider', 'upfront-shortcodes' ),
+		'icon'       => 'picture-o',
+	)
+);
 
 function su_shortcode_slider( $atts = null, $content = null ) {
 	$return = '';
-	$atts = shortcode_atts( array(
+	$atts   = shortcode_atts(
+		array(
 			'source'     => 'none',
 			'limit'      => 20,
 			'gallery'    => null, // Dep. 4.3.2
@@ -148,11 +158,17 @@ function su_shortcode_slider( $atts = null, $content = null ) {
 			'mousewheel' => 'yes',
 			'autoplay'   => 3000,
 			'speed'      => 600,
-			'class'      => ''
-		), $atts, 'slider' );
+			'class'      => '',
+		),
+		$atts,
+		'slider'
+	);
 
 	$slides = su_get_slides( $atts );
 	$slides = apply_filters( 'su/shortcode/slider/slides', $slides, $atts );
+
+	$atts['width']  = intval( $atts['width'] );
+	$atts['height'] = intval( $atts['height'] );
 
 	// Loop slides
 	if ( count( $slides ) ) {
@@ -165,11 +181,13 @@ function su_shortcode_slider( $atts = null, $content = null ) {
 		// Wheel control
 		$mousewheel = ( $atts['mousewheel'] === 'yes' ) ? 'true' : 'false';
 		// Prepare width and height
-		$size = ( $atts['responsive'] === 'yes' ) ? 'width:100%' : 'width:' . intval( $atts['width'] ) . 'px;height:' . intval( $atts['height'] ) . 'px';
+		$size = ( $atts['responsive'] === 'yes' ) ? 'width:100%' : 'width:' . $atts['width'] . 'px;height:' . $atts['height'] . 'px';
 		// Add lightbox class
-		if ( $atts['link'] === 'lightbox' ) $atts['class'] .= ' su-lightbox-gallery';
+		if ( $atts['link'] === 'lightbox' ) {
+			$atts['class'] .= ' su-lightbox-gallery';
+		}
 		// Open slider
-		$return .= '<div id="' . $id . '" class="su-slider' . $centered . ' su-slider-pages-' . $atts['pages'] . ' su-slider-responsive-' . $atts['responsive'] . su_get_css_class( $atts ) . '" style="' . $size . '" data-autoplay="' . $atts['autoplay'] . '" data-speed="' . $atts['speed'] . '" data-mousewheel="' . $mousewheel . '"><div class="su-slider-slides">';
+		$return .= '<div id="' . $id . '" class="su-slider' . $centered . ' su-slider-pages-' . esc_attr( $atts['pages'] ) . ' su-slider-responsive-' . esc_attr( $atts['responsive'] ) . su_get_css_class( $atts ) . '" style="' . $size . '" data-autoplay="' . esc_attr( $atts['autoplay'] ) . '" data-speed="' . esc_attr( $atts['speed'] ) . '" data-mousewheel="' . $mousewheel . '"><div class="su-slider-slides">';
 		// Create slides
 		foreach ( $slides as $slide ) {
 			// Crop the image
@@ -184,9 +202,13 @@ function su_shortcode_slider( $atts = null, $content = null ) {
 			// Open slide
 			$return .= '<div class="su-slider-slide">';
 			// Slide content with link
-			if ( $slide['link'] ) $return .= '<a href="' . $slide['link'] . '" ' . $target . ' title="' . esc_attr( $slide['title'] ) . '"><img src="' . $image['url'] . '" alt="' . esc_attr( $slide['title'] ) . '" />' . $title . '</a>';
+			if ( $slide['link'] ) {
+				$return .= '<a href="' . esc_attr( $slide['link'] ) . '" ' . $target . ' title="' . esc_attr( $slide['title'] ) . '"><img src="' . $image['url'] . '" alt="' . esc_attr( $slide['title'] ) . '" />' . $title . '</a>';
+			}
 			// Slide content without link
-			else $return .= '<a><img src="' . $image['url'] . '" alt="' . esc_attr( $slide['title'] ) . '" />' . $title . '</a>';
+			else {
+				$return .= '<a><img src="' . $image['url'] . '" alt="' . esc_attr( $slide['title'] ) . '" />' . $title . '</a>';
+			}
 			// Close slide
 			$return .= '</div>';
 		}
@@ -195,7 +217,9 @@ function su_shortcode_slider( $atts = null, $content = null ) {
 		// Open nav section
 		$return .= '<div class="su-slider-nav">';
 		// Append direction nav
-		if ( $atts['arrows'] === 'yes' ) $return .= '<div class="su-slider-direction"><span class="su-slider-prev"></span><span class="su-slider-next"></span></div>';
+		if ( $atts['arrows'] === 'yes' ) {
+			$return .= '<div class="su-slider-direction"><span class="su-slider-prev"></span><span class="su-slider-next"></span></div>';
+		}
 		// Append pagination nav
 		$return .= '<div class="su-slider-pagination"></div>';
 		// Close nav section
@@ -213,6 +237,8 @@ function su_shortcode_slider( $atts = null, $content = null ) {
 		su_query_asset( 'js', 'su-shortcodes' );
 	}
 	// Slides not found
-	else $return = su_error_message( 'Slider', __( 'Bilder nicht gefunden', 'upfront-shortcodes' ) );
+	else {
+		$return = su_error_message( 'Slider', __( 'Bilder nicht gefunden', 'upfront-shortcodes' ) );
+	}
 	return $return;
 }

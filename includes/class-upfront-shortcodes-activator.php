@@ -5,7 +5,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since        1.0.0
+ * @since        1.0.7
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/includes
  */
@@ -17,7 +17,7 @@ class UpFront_Shortcodes_Activator {
 	/**
 	 * Plugin activation.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 */
 	public static function activate() {
 
@@ -34,7 +34,7 @@ class UpFront_Shortcodes_Activator {
 	 * Check PHP version.
 	 *
 	 * @access  private
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	private static function check_php_version() {
 
@@ -46,7 +46,7 @@ class UpFront_Shortcodes_Activator {
 
 		$message = sprintf(
 			// Translators: %1$s - required version number, %2$s - current version number
-			__( 'UpFront Shortcodes ist nicht aktiviert, da PHP-Version %1$s (oder höher) erforderlich ist. Sie haben Version %2$s.', 'upfront-shortcodes' ),
+			__( 'UpFront Shortcodes ist nicht aktiviert, da PHP-Version %1$s (oder höher) erforderlich ist. Du hast Version %2$s.', 'upfront-shortcodes' ),
 			self::$required_php,
 			$current
 		);
@@ -59,7 +59,7 @@ class UpFront_Shortcodes_Activator {
 	 * Check WordPress version.
 	 *
 	 * @access  private
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	private static function check_wp_version() {
 
@@ -84,7 +84,7 @@ class UpFront_Shortcodes_Activator {
 	 * Setup plugin's default settings.
 	 *
 	 * @access  private
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	private static function setup_defaults() {
 
@@ -92,11 +92,9 @@ class UpFront_Shortcodes_Activator {
 
 		foreach ( $defaults as $option => $value ) {
 
-			if ( get_option( $option, 0 ) !== 0 ) {
-				continue;
+			if ( get_option( $option, 0 ) === 0 ) {
+				add_option( $option, $value );
 			}
-
-			add_option( $option, $value );
 
 		}
 

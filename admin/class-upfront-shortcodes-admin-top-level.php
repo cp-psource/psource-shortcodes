@@ -3,7 +3,7 @@
 /**
  * The Shortcodes menu component.
  *
- * @since        1.0.0
+ * @since        1.0.7
  *
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/admin
@@ -13,7 +13,7 @@ final class UpFront_Shortcodes_Admin_Top_Level extends UpFront_Shortcodes_Admin 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @param string  $plugin_file    The path of the main plugin file
 	 * @param string  $plugin_version The current version of the plugin
 	 */
@@ -24,7 +24,7 @@ final class UpFront_Shortcodes_Admin_Top_Level extends UpFront_Shortcodes_Admin 
 	/**
 	 * Add menu page
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	public function add_menu_pages() {
 

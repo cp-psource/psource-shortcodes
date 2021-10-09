@@ -3,7 +3,7 @@
 /**
  * Simple helper to create icon markup.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $src FA icon name or image URL.
  * @return string      HTML markup, <i> or <img> tag.
  */
@@ -70,7 +70,7 @@ function su_html_icon( $args ) {
 /**
  * Create HTML dropdown.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param array   $args Args.
  * @return string       Dropdown markup.
  */

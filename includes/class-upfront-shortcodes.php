@@ -5,7 +5,7 @@
  *
  * This is used to define internationalization and hooks.
  *
- * @since        1.0.0
+ * @since        1.0.7
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/includes
  */
@@ -14,7 +14,7 @@ class UpFront_Shortcodes {
 	/**
 	 * The path to the main plugin file.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @var      string      $plugin_file   The path to the main plugin file.
 	 */
@@ -23,7 +23,7 @@ class UpFront_Shortcodes {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @var      string      $plugin_version   The current version of the plugin.
 	 */
@@ -32,11 +32,16 @@ class UpFront_Shortcodes {
 	/**
 	 * The path to the plugin folder.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @var      string      $plugin_path   The path to the plugin folder.
 	 */
 	private $plugin_path;
+
+	/**
+	 * The basename of the plugin.
+	 */
+	private $plugin_basename;
 
 	/**
 	 * The prefix of the plugin.
@@ -84,7 +89,7 @@ class UpFront_Shortcodes {
 	/**
 	 * Admin Extra Shortcodes instance.
 	 *
-	 * @since  5.6.0
+	 * @since  1.0.9
 	 */
 	public $admin_extra_shortcodes;
 
@@ -101,17 +106,18 @@ class UpFront_Shortcodes {
 	/**
 	 * Define the core functionality of the plugin.
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 * @param string  $plugin_file    The path to the main plugin file.
 	 * @param string  $plugin_version The current version of the plugin.
 	 * @param string  $plugin_prefix  The prefix of the plugin.
 	 */
 	public function __construct( $plugin_file, $plugin_version, $plugin_prefix ) {
 
-		$this->plugin_file    = $plugin_file;
-		$this->plugin_version = $plugin_version;
-		$this->plugin_path    = plugin_dir_path( $plugin_file );
-		$this->plugin_prefix  = $plugin_prefix;
+		$this->plugin_file     = $plugin_file;
+		$this->plugin_version  = $plugin_version;
+		$this->plugin_path     = plugin_dir_path( $plugin_file );
+		$this->plugin_prefix   = $plugin_prefix;
+		$this->plugin_basename = plugin_basename( $this->plugin_file );
 
 		$this->load_dependencies();
 		$this->define_admin_hooks();
@@ -124,10 +130,18 @@ class UpFront_Shortcodes {
 	/**
 	 * Load the required dependencies for the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 */
 	private function load_dependencies() {
+
+		/**
+		 * Legacy dependencies.
+		 */
+		require_once $this->plugin_path . 'inc/core/assets.php';
+		require_once $this->plugin_path . 'inc/core/tools.php';
+		require_once $this->plugin_path . 'inc/core/generator-views.php';
+		require_once $this->plugin_path . 'inc/core/generator.php';
 
 		/**
 		 * The class responsible for adding, storing and accessing shortcodes data.
@@ -144,7 +158,7 @@ class UpFront_Shortcodes {
 		 */
 		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-admin.php';
 		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-admin-top-level.php';
-		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-admin-shortcodes.php';
+		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-admin-about.php';
 		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-admin-settings.php';
 		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-admin-addons.php';
 
@@ -153,6 +167,12 @@ class UpFront_Shortcodes {
 		 */
 		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-notice.php';
 		//require_once $this->plugin_path . 'admin/class-upfront-shortcodes-notice-rate.php';
+		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-notice-unsafe-features.php';
+
+		/**
+		 * Register custom widget
+		 */
+		require_once $this->plugin_path . 'admin/class-upfront-shortcodes-widget.php';
 
 		/**
 		 * Add Extra Shortcodes
@@ -178,6 +198,7 @@ class UpFront_Shortcodes {
 		 */
 		require_once $this->plugin_path . 'includes/deprecated/class-su-data.php';
 		require_once $this->plugin_path . 'includes/deprecated/class-su-tools.php';
+		require_once $this->plugin_path . 'includes/deprecated/class-su-widget.php';
 		require_once $this->plugin_path . 'includes/deprecated/functions.php';
 
 		/**
@@ -197,7 +218,7 @@ class UpFront_Shortcodes {
 	 * Register all of the hooks related to the admin area functionality of the
 	 * plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -219,24 +240,23 @@ class UpFront_Shortcodes {
 			$this->plugin_prefix
 		);
 
-		add_action( 'admin_menu', array( $this->top_level_menu, 'add_menu_pages' ), 5 );
+		add_action( 'admin_menu', array( $this->top_level_menu, 'add_menu_pages' ), 0 );
 
 		/**
-		 * Submenu: Available shortcodes
+		 * Submenu: PSOURCE
 		 * admin.php?page=upfront-shortcodes
 		 */
-		$this->shortcodes_menu = new UpFront_Shortcodes_Admin_Shortcodes(
+		$this->about_menu = new UpFront_Shortcodes_Admin_About(
 			$this->plugin_file,
 			$this->plugin_version,
 			$this->plugin_prefix
 		);
 
-		add_action( 'admin_menu', array( $this->shortcodes_menu, 'add_menu_pages' ), 5 );
-		add_action( 'current_screen', array( $this->shortcodes_menu, 'add_help_tabs' ) );
-		add_action( 'admin_enqueue_scripts', array( $this->shortcodes_menu, 'enqueue_scripts' ) );
+		add_action( 'admin_menu', array( $this->about_menu, 'add_menu_pages' ), 0 );
+		add_action( 'admin_enqueue_scripts', array( $this->about_menu, 'enqueue_scripts' ) );
 		add_filter(
-			'plugin_action_links_' . plugin_basename( $this->plugin_file ),
-			array( $this->shortcodes_menu, 'add_action_links' ),
+			'plugin_action_links_' . $this->plugin_basename,
+			array( $this->about_menu, 'plugin_action_links' ),
 			20,
 			1
 		);
@@ -256,21 +276,22 @@ class UpFront_Shortcodes {
 		add_action( 'current_screen', array( $this->settings_menu, 'add_help_tabs' ) );
 		add_action( 'admin_enqueue_scripts', array( $this->settings_menu, 'enqueue_scripts' ) );
 		add_filter(
-			'plugin_action_links_' . plugin_basename( $this->plugin_file ),
+			'plugin_action_links_' . $this->plugin_basename,
 			array( $this->settings_menu, 'add_action_links' ),
 			10,
 			1
 		);
+		add_action( 'admin_init', array( $this->settings_menu, 'maybe_disable_unsafe_features' ) );
 
 		/**
-		 * Submenu: Add-ons
+		 * Submenu: Mehr UpFront
 		 * admin.php?page=upfront-shortcodes-addons
 		 */
-		/*$this->addons_menu = new UpFront_Shortcodes_Admin_Addons(
+		$this->addons_menu = new UpFront_Shortcodes_Admin_Addons(
 			$this->plugin_file,
 			$this->plugin_version,
 			$this->plugin_prefix
-		);*/
+		);
 
 		add_action( 'admin_menu', array( $this->addons_menu, 'add_menu_pages' ), 30 );
 		add_action( 'admin_enqueue_scripts', array( $this->addons_menu, 'enqueue_scripts' ) );
@@ -284,9 +305,20 @@ class UpFront_Shortcodes {
 			$this->plugin_path . 'admin/partials/notices/rate.php'
 		);*/
 
-		//add_action( 'load-plugins.php', array( $this->rate_notice, 'defer_first_time' ) );
-		//add_action( 'admin_notices', array( $this->rate_notice, 'display_notice' ) );
-		//add_action( 'admin_post_su_dismiss_notice', array( $this->rate_notice, 'dismiss_notice' ) );
+		add_action( 'load-plugins.php', array( $this->rate_notice, 'defer_first_time' ) );
+		add_action( 'admin_notices', array( $this->rate_notice, 'display_notice' ) );
+		add_action( 'admin_post_su_dismiss_notice', array( $this->rate_notice, 'dismiss_notice' ) );
+
+		/**
+		 * Notice: Unsafe features
+		 */
+		$this->unsafe_features_notice = new UpFront_Shortcodes_Notice_Unsafe_Features(
+			'unsafe-features',
+			$this->plugin_path . 'admin/partials/notices/unsafe-features.php'
+		);
+
+		add_action( 'admin_notices', array( $this->unsafe_features_notice, 'display_notice' ) );
+		add_action( 'admin_post_su_dismiss_notice', array( $this->unsafe_features_notice, 'dismiss_notice' ) );
 
 		/**
 		 * Add/Save 'Slide link' field on attachment page.
@@ -295,12 +327,19 @@ class UpFront_Shortcodes {
 		add_filter( 'attachment_fields_to_save', 'su_slide_link_save', 10, 2 );
 
 		/**
+		 * Register custom widget
+		 */
+		$this->widget = new UpFront_Shortcodes_Widget( $this->plugin_prefix );
+
+		add_action( 'widgets_init', array( $this->widget, 'register' ) );
+
+		/**
 		 * Add Extra Shortcodes
 		 */
-		/*$this->admin_extra_shortcodes = new UpFront_Shortcodes_Admin_Extra_Shortcodes();
+		$this->admin_extra_shortcodes = new UpFront_Shortcodes_Admin_Extra_Shortcodes();
 
 		add_action( 'admin_init', array( $this->admin_extra_shortcodes, 'register_shortcodes' ) );
-		add_filter( 'su/data/groups', array( $this->admin_extra_shortcodes, 'register_group' ) );*/
+		add_filter( 'su/data/groups', array( $this->admin_extra_shortcodes, 'register_group' ) );
 
 	}
 

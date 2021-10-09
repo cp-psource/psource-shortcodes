@@ -1,1 +1,1 @@
-<?php // noch nichts hier
+<?php // nothing here, yet

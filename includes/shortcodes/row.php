@@ -1,29 +1,31 @@
 <?php
 
-su_add_shortcode( array(
-		'id' => 'row',
-		'callback' => 'su_shortcode_row',
-		'image' => su_get_plugin_url() . 'admin/images/shortcodes/row.svg',
-		'name' => __( 'Spalten', 'upfront-shortcodes' ),
-		'type' => 'wrap',
-		'group' => 'box',
+su_add_shortcode(
+	array(
+		'id'             => 'row',
+		'callback'       => 'su_shortcode_row',
+		'image'          => su_get_plugin_url() . 'admin/images/shortcodes/row.svg',
+		'name'           => __( 'Spalten', 'upfront-shortcodes' ),
+		'type'           => 'wrap',
+		'group'          => 'box',
 		'required_child' => 'column',
-		'article' => 'https://n3rds.work/docs/columns/',
-		'atts' => array(
+		'article'        => 'https://n3rds.work/docs/upfront-shortcodes-spalten/',
+		'atts'           => array(
 			'class' => array(
-				'type' => 'extra_css_class',
-				'name' => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
-				'desc' => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
+				'type'    => 'extra_css_class',
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content' => array(
+		'content'        => array(
 			'id'     => 'column',
 			'number' => 2,
 		),
-		'desc' => __( 'Zeile für flexible Spalten', 'upfront-shortcodes' ),
-		'icon' => 'columns',
-	) );
+		'desc'           => __( 'Zeile für flexible Spalten', 'upfront-shortcodes' ),
+		'icon'           => 'columns',
+	)
+);
 
 function su_shortcode_row( $atts = null, $content = null ) {
 

@@ -8,7 +8,7 @@
  * lost after the plugin update. Read the following article to learn how to
  * change this template or create a custom one:
  *
- * https://nerds.work/docs/posts/#built-in-templates
+ * https://n3rds.work/docs/upfront-shortcodes-beitraege/
  */
 ?>
 

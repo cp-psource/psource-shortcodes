@@ -21,7 +21,7 @@ function su_is_valid_hex( $color ) {
  * Helper function that expands 3-sybol string into 6-sybol by repeating each
  * symbol twice.
  *
- * @since  5.6.0
+ * @since  1.0.9
  * @param  string $hex Short value.
  * @return string      Expanded value.
  */
@@ -87,7 +87,7 @@ function su_adjust_brightness( $color, $percent ) {
  * `su_adjust_lightness( '#fc0', 50 )` - increase color lightness by 50%
  * `su_adjust_lightness( 'ffcc00', -50 )` - decrease color lightness by 50%
  *
- * @since  5.6.0
+ * @since  1.0.9
  * @param  string $color A valid HEX color
  * @param  int $percent  The percent to adjust lightness to.
  * @return string        Adjusted HEX color value.

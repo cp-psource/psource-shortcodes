@@ -5,14 +5,19 @@ su_add_shortcode(
 		'id'       => 'qrcode',
 		'callback' => 'su_shortcode_qrcode',
 		'image'    => su_get_plugin_url() . 'admin/images/shortcodes/qrcode.svg',
-		'name'     => __( 'QR code', 'upfront-shortcodes' ),
+		'name'     => __( 'QR Code', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'content',
 		'atts'     => array(
 			'data'       => array(
 				'default' => '',
 				'name'    => __( 'Daten', 'upfront-shortcodes' ),
-				'desc'    => __( 'Der Text, der im QR-Code gespeichert werden soll. Du kannst hier jeden beliebigen Text oder sogar URL verwenden', 'upfront-shortcodes' ),
+				'desc'    => sprintf(
+					// translators: %1$s and %2$s will be replaced with %CURRENT_URL% and %PERMALINK% tokens respectively
+					__( 'Der Text, der im QR-Code gespeichert werden soll. Du kannst hier jeden beliebigen Text oder sogar URL verwenden.<br>Verwende %1$s, um die URL der aktuellen Seite anzuzeigen, oder %2$s, um den Permalink des aktuellen Beitrags anzuzeigen.', 'upfront-shortcodes' ),
+					'<b%value>%CURRENT_URL%</b>',
+					'<b%value>%PERMALINK%</b>'
+				),
 			),
 			'title'      => array(
 				'default' => '',
@@ -57,7 +62,7 @@ su_add_shortcode(
 			'target'     => array(
 				'type'    => 'select',
 				'values'  => array(
-					'self'  => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
+					'self'  => __( 'Im selben Tab öffnen', 'upfront-shortcodes' ),
 					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'blank',
@@ -89,6 +94,7 @@ su_add_shortcode(
 );
 
 function su_shortcode_qrcode( $atts = null, $content = null ) {
+
 	$atts = shortcode_atts(
 		array(
 			'data'       => '',
@@ -105,21 +111,33 @@ function su_shortcode_qrcode( $atts = null, $content = null ) {
 		$atts,
 		'qrcode'
 	);
-	// Check the data
+
 	if ( ! $atts['data'] ) {
 		return su_error_message( 'QR code', __( 'bitte gib die Daten an', 'upfront-shortcodes' ) );
 	}
+
+	$atts['data'] = str_replace(
+		array( '%CURRENT_URL%', '%PERMALINK%' ),
+		array( su_get_current_url(), get_permalink() ),
+		$atts['data']
+	);
+
 	$atts['data'] = su_do_attribute( $atts['data'] );
 	$atts['data'] = sanitize_text_field( $atts['data'] );
-	// Prepare link
-	$href = ( $atts['link'] ) ? ' href="' . $atts['link'] . '"' : '';
-	// Prepare clickable class
+
 	if ( $atts['link'] ) {
+
+		$atts['link'] = sprintf(
+			' href="%s"',
+			esc_attr( su_do_attribute( $atts['link'] ) )
+		);
+
 		$atts['class'] .= ' su-qrcode-clickable';
+
 	}
-	// Prepare title
+
 	$atts['title'] = esc_attr( $atts['title'] );
-	// Query assets
+
 	su_query_asset( 'css', 'su-shortcodes' );
 
 	$url = add_query_arg(
@@ -134,6 +152,14 @@ function su_shortcode_qrcode( $atts = null, $content = null ) {
 		'https://api.qrserver.com/v1/create-qr-code/'
 	);
 
-	// Return result
-	return '<span class="su-qrcode su-qrcode-align-' . $atts['align'] . su_get_css_class( $atts ) . '"><a' . $href . ' target="_' . $atts['target'] . '" title="' . $atts['title'] . '"><img src="' . esc_url( $url ) . '" alt="' . $atts['title'] . '" /></a></span>';
+	return sprintf(
+		'<span class="su-qrcode su-qrcode-align-%1$s%2$s"><a%3$s target="_%4$s" title="%5$s"><img src="%6$s" alt="%5$s" /></a></span>',
+		/* %1$s */ esc_attr( $atts['align'] ),
+		/* %2$s */ su_get_css_class( $atts ),
+		/* %3$s */ $atts['link'],
+		/* %4$s */ esc_attr( $atts['target'] ),
+		/* %5$s */ esc_attr( $atts['title'] ),
+		/* %6$s */ esc_url( $url )
+	);
+
 }

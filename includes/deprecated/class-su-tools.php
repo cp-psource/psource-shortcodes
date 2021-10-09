@@ -5,14 +5,14 @@ if ( ! class_exists( 'Su_Tools' ) ) {
 	/**
 	 *
 	 *
-	 * @deprecated 1.0.0
+	 * @deprecated 5.0.5
 	 */
 	class Su_Tools {
 
 		/**
 		 *
 		 *
-		 * @deprecated 1.0.0
+		 * @deprecated 5.0.5
 		 */
 		public static function get_icon( $args ) {
 
@@ -70,7 +70,7 @@ if ( ! class_exists( 'Su_Tools' ) ) {
 		/**
 		 *
 		 *
-		 * @deprecated 1.0.0
+		 * @deprecated 5.0.5
 		 */
 		public static function do_attr( $value ) {
 			return do_shortcode( str_replace( array( '{', '}' ), array( '[', ']' ), $value ) );

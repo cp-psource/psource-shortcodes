@@ -3,7 +3,7 @@
 /**
  * The abstract class for creating admin notices.
  *
- * @since        1.0.0
+ * @since        1.0.7
  *
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/admin
@@ -13,7 +13,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * The ID of the notice.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $notice_id    The ID of the notice.
 	 */
@@ -22,7 +22,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * The full path to the notice template file.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $template_file    The full path to the notice template file.
 	 */
@@ -31,7 +31,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * The delay before displaying the notice at the first time (in seconds).
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $first_time_delay   The delay before displaying the notice at the first time (in seconds).
 	 */
@@ -40,7 +40,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * The delay for deferring the notice (in seconds).
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $defer_delay   The delay for deferring the notice (in seconds).
 	 */
@@ -49,7 +49,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * The required user capability to view the notice.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $capability   The required user capability to view the notice.
 	 */
@@ -58,7 +58,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * The name of the option to store dismissed notices.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @var      string    $option_name   The name of the option to store dismissed notices.
 	 */
@@ -67,17 +67,17 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @param string  $notice_id     The ID of the notice.
 	 * @param string  $template_file The full path to the notice template file.
 	 */
-	protected function __construct( $notice_id, $template_file ) {
+	public function __construct( $notice_id, $template_file ) {
 
 		$this->notice_id        = $notice_id;
 		$this->template_file    = $template_file;
 		$this->first_time_delay = 0;
-		$this->defer_delay      = 1 * DAY_IN_SECONDS;
+		$this->defer_delay      = 3 * DAY_IN_SECONDS;
 		$this->capability       = 'manage_options';
 		$this->option_name      = 'su_option_dismissed_notices';
 
@@ -86,14 +86,14 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * This method should be implemented by childs.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	abstract function display_notice();
 
 	/**
 	 * Include template file.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @param mixed   $data The data to pass to the template.
 	 */
@@ -108,7 +108,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Set new status for the notice.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @param string  $status New status. Can be 'dismissed' or 'deferred'
 	 */
@@ -118,15 +118,11 @@ abstract class UpFront_Shortcodes_Notice {
 		$id        = $this->notice_id;
 
 		if ( $status === 'dismissed' ) {
-			$dismissed[$id] = true;
-		}
-
-		elseif ( $status === 'deferred' ) {
-			$dismissed[$id] = time() + (int) $this->defer_delay;
-		}
-
-		elseif ( is_numeric( $status ) ) {
-			$dismissed[$id] = time() + (int) $status;
+			$dismissed[ $id ] = true;
+		} elseif ( $status === 'deferred' ) {
+			$dismissed[ $id ] = time() + (int) $this->defer_delay;
+		} elseif ( is_numeric( $status ) ) {
+			$dismissed[ $id ] = time() + (int) $status;
 		}
 
 		update_option( $this->option_name, $dismissed );
@@ -136,7 +132,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Dismiss the notice.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	public function dismiss_notice() {
 
@@ -177,7 +173,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Retrieve the link to dismiss the notice.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @param bool    $defer    Defer the notice instead of dismissing.
 	 * @param string  $redirect Custom redirect URL.
@@ -185,12 +181,14 @@ abstract class UpFront_Shortcodes_Notice {
 	 */
 	public function get_dismiss_link( $defer = false, $redirect = '' ) {
 
-		$link = admin_url( sprintf(
+		$link = admin_url(
+			sprintf(
 				'admin-post.php?action=%s&nonce=%s&id=%s',
 				'su_dismiss_notice',
 				wp_create_nonce( 'su_dismiss_notice' ),
 				$this->notice_id
-			) );
+			)
+		);
 
 		if ( $defer ) {
 			$link = add_query_arg( 'defer', 1, $link );
@@ -207,7 +205,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * This conditional tag checks if the notice has been dismissed.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @return boolean True if the notice has been dismissed, false if not.
 	 */
@@ -217,17 +215,17 @@ abstract class UpFront_Shortcodes_Notice {
 		$id        = $this->notice_id;
 
 		// No data about the notice (not dismissed/deferred)
-		if ( ! isset( $dismissed[$id] ) ) {
+		if ( ! isset( $dismissed[ $id ] ) ) {
 			return false;
 		}
 
 		// Notice deferred
-		if ( is_numeric( $dismissed[$id] ) && time() < $dismissed[$id] ) {
+		if ( is_numeric( $dismissed[ $id ] ) && time() < $dismissed[ $id ] ) {
 			return true;
 		}
 
 		// Notice dismissed
-		if ( $dismissed[$id] === true ) {
+		if ( $dismissed[ $id ] === true ) {
 			return true;
 		}
 
@@ -239,14 +237,14 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Defer the notice at the first time it should be displayed.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	public function defer_first_time() {
 
 		$dismissed = $this->get_dismissed_notices();
 		$id        = $this->notice_id;
 
-		if ( ! isset( $dismissed[$id] ) ) {
+		if ( ! isset( $dismissed[ $id ] ) ) {
 			$this->update_notice_status( $this->first_time_delay );
 		}
 
@@ -255,7 +253,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Helper function to retrieve dismissed notices.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @return mixed Dismissed notices.
 	 */
@@ -266,7 +264,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Helper function to retrieve the ID of the current screen.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @return string  The ID of the current screen.
 	 */
@@ -280,7 +278,7 @@ abstract class UpFront_Shortcodes_Notice {
 	/**
 	 * Check if current user can view the notice.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @return bool       True if current user can view the notice, False otherwise.
 	 */

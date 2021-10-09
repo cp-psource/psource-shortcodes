@@ -88,7 +88,7 @@ su_add_shortcode(
 				'type'    => 'bool',
 				'default' => 'yes',
 				'name'    => __( 'Zeige verwandte Videos desselben Kanals an', 'upfront-shortcodes' ),
-				'desc'    => __( 'Wenn dieser Parameter auf YES gesetzt ist, stammen verwandte Videos vom selben Kanal wie das gerade abgespielte Video.', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wenn dieser Parameter auf YES gesetzt ist, stammen verwandte Videos vom selben Kanal wie das gerade abgespielte Video', 'upfront-shortcodes' ),
 			),
 			'fs'             => array(
 				'type'    => 'bool',
@@ -171,7 +171,7 @@ function su_shortcode_youtube_advanced( $atts = null, $content = null ) {
 	);
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'YouTube Advanced', __( 'bitte gib die richtige URL an', 'upfront-shortcodes' ) );
+		return su_error_message( 'YouTube Advanced', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$atts['url'] = su_do_attribute( $atts['url'] );
@@ -181,7 +181,7 @@ function su_shortcode_youtube_advanced( $atts = null, $content = null ) {
 		: false;
 
 	if ( ! $video_id ) {
-		return su_error_message( 'YouTube Advanced', __( 'bitte gib die richtige URL an', 'upfront-shortcodes' ) );
+		return su_error_message( 'YouTube Advanced', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	if ( 'alt' === $atts['controls'] ) {
@@ -213,6 +213,10 @@ function su_shortcode_youtube_advanced( $atts = null, $content = null ) {
 		$url_params['playlist'] = $video_id;
 	}
 
+	if ( empty( $url_params['playlist'] ) ) {
+		unset( $url_params['playlist'] );
+	}
+
 	$url_params = http_build_query( $url_params );
 
 	$domain = strpos( $atts['url'], 'youtube-nocookie.com' ) !== false
@@ -221,6 +225,6 @@ function su_shortcode_youtube_advanced( $atts = null, $content = null ) {
 
 	su_query_asset( 'css', 'su-shortcodes' );
 
-	return '<div class="su-youtube su-u-responsive-media-' . $atts['responsive'] . su_get_css_class( $atts ) . '"><iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="https://' . $domain . '/embed/' . $video_id . '?' . $url_params . '" frameborder="0" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" title="' . esc_attr( $atts['title'] ) . '"></iframe></div>';
+	return '<div class="su-youtube su-u-responsive-media-' . esc_attr( $atts['responsive'] ) . su_get_css_class( $atts ) . '"><iframe width="' . esc_attr( $atts['width'] ) . '" height="' . esc_attr( $atts['height'] ) . '" src="https://' . $domain . '/embed/' . $video_id . '?' . esc_attr( $url_params ) . '" frameborder="0" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" title="' . esc_attr( $atts['title'] ) . '"></iframe></div>';
 
 }

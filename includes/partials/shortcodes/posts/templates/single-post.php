@@ -8,7 +8,7 @@
  * lost after the plugin update. Read the following article to learn how to
  * change this template or create a custom one:
  *
- * https://nerds.work/docs/posts/#built-in-templates
+ * https://n3rds.work/docs/upfront-shortcodes-beitraege/
  */
 ?>
 
@@ -28,7 +28,7 @@
 					?>
 					<div id="su-post-<?php the_ID(); ?>" class="su-post">
 						<h1 class="su-post-title"><?php the_title(); ?></h1>
-						<div class="su-post-meta"><?php _e( 'Veröffentlicht', 'upfront-shortcodes' ); ?>: <?php the_time( get_option( 'date_format' ) ); ?>
+						<div class="su-post-meta"><?php _e( 'Posted', 'upfront-shortcodes' ); ?>: <?php the_time( get_option( 'date_format' ) ); ?>
 						<?php if ( have_comments() || comments_open() ) : ?>
 							 | <a href="<?php comments_link(); ?>" class="su-post-comments-link"><?php comments_number( __( '0 Kommentare', 'upfront-shortcodes' ), __( '1 Kommentar', 'upfront-shortcodes' ), __( '%n Kommentare', 'upfront-shortcodes' ) ); ?></a>
 						<?php endif; ?>

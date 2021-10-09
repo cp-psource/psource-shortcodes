@@ -21,7 +21,7 @@ su_add_shortcode(
 				'values'  => array(),
 				'default' => '#333333',
 				'name'    => __( 'Textfarbe', 'upfront-shortcodes' ),
-				'desc'    => __( 'Hinweistextfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Notiztextfarbe', 'upfront-shortcodes' ),
 			),
 			'radius'     => array(
 				'type'    => 'slider',
@@ -30,7 +30,7 @@ su_add_shortcode(
 				'step'    => 1,
 				'default' => 3,
 				'name'    => __( 'Radius', 'upfront-shortcodes' ),
-				'desc'    => __( 'Hinweis Eckenradius', 'upfront-shortcodes' ),
+				'desc'    => __( 'Notiz Eckenradius', 'upfront-shortcodes' ),
 			),
 			'class'      => array(
 				'type'    => 'extra_css_class',
@@ -44,7 +44,7 @@ su_add_shortcode(
 				'default' => '',
 			),
 		),
-		'content'  => __( 'Hinweistext', 'upfront-shortcodes' ),
+		'content'  => __( 'Notiztext', 'upfront-shortcodes' ),
 		'desc'     => __( 'Farbige Box', 'upfront-shortcodes' ),
 		'icon'     => 'list-alt',
 	)
@@ -79,8 +79,12 @@ function su_shortcode_note( $atts = null, $content = null ) {
 		? 'border-radius:' . $atts['radius'] . 'px;-moz-border-radius:' . $atts['radius'] . 'px;-webkit-border-radius:' . $atts['radius'] . 'px;'
 		: '';
 
+	if ( $atts['id'] ) {
+		$atts['id'] = sprintf( 'id="%s"', sanitize_html_class( $atts['id'] ) );
+	}
+
 	su_query_asset( 'css', 'su-shortcodes' );
 
-	return '<div class="su-note' . su_get_css_class( $atts ) . '" id="' . sanitize_html_class( $atts['id'] ) . '" style="border-color:' . su_adjust_brightness( $atts['note_color'], -10 ) . ';' . $radius . '"><div class="su-note-inner su-u-clearfix su-u-trim" style="background-color:' . $atts['note_color'] . ';border-color:' . su_adjust_brightness( $atts['note_color'], 80 ) . ';color:' . $atts['text_color'] . ';' . $radius . '">' . su_do_nested_shortcodes( $content, 'note' ) . '</div></div>';
+	return '<div class="su-note' . su_get_css_class( $atts ) . '" ' . $atts['id'] . ' style="border-color:' . su_adjust_brightness( $atts['note_color'], -10 ) . ';' . esc_attr( $radius ) . '"><div class="su-note-inner su-u-clearfix su-u-trim" style="background-color:' . esc_attr( $atts['note_color'] ) . ';border-color:' . su_adjust_brightness( $atts['note_color'], 80 ) . ';color:' . esc_attr( $atts['text_color'] ) . ';' . esc_attr( $radius ) . '">' . su_do_nested_shortcodes( $content, 'note' ) . '</div></div>';
 
 }

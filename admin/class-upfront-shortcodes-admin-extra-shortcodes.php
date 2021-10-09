@@ -23,7 +23,6 @@ class UpFront_Shortcodes_Admin_Extra_Shortcodes {
 						'callback'           => '__return_empty_string',
 						'atts'               => array(),
 						'generator_callback' => array( $this, 'generator_callback' ),
-						'as_callback'        => array( $this, 'as_callback' ),
 					)
 				)
 			);
@@ -48,12 +47,6 @@ class UpFront_Shortcodes_Admin_Extra_Shortcodes {
 		// phpcs:enable
 	}
 
-	public function as_callback( $shortcode ) {
-		// phpcs:disable
-		echo $this->get_template( 'available-shortcodes', $shortcode );
-		// phpcs:enable
-	}
-
 	public function get_image_url( $path ) {
 		return plugin_dir_url( __FILE__ ) . 'images/extra/' . $path;
 	}
@@ -67,11 +60,11 @@ class UpFront_Shortcodes_Admin_Extra_Shortcodes {
 		return array(
 			array(
 				'id'   => 'splash',
-				'name' => __( 'Begrüßungsbildschirm', 'upfront-shortcodes' ),
+				'name' => __( 'Splash screen', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'exit_popup',
-				'name' => __( 'Verlassen PopUp', 'upfront-shortcodes' ),
+				'name' => __( 'Exit popup', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'panel',
@@ -79,35 +72,35 @@ class UpFront_Shortcodes_Admin_Extra_Shortcodes {
 			),
 			array(
 				'id'   => 'photo_panel',
-				'name' => __( 'Fotopanel', 'upfront-shortcodes' ),
+				'name' => __( 'Photo panel', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'icon_panel',
-				'name' => __( 'Symbolpanel', 'upfront-shortcodes' ),
+				'name' => __( 'Icon panel', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'icon_text',
-				'name' => __( 'Text mit Symbol', 'upfront-shortcodes' ),
+				'name' => __( 'Text with icon', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'progress_pie',
-				'name' => __( 'Fortschrittskuchen', 'upfront-shortcodes' ),
+				'name' => __( 'Progress pie', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'progress_bar',
-				'name' => __( 'Fortschrittsbalken', 'upfront-shortcodes' ),
+				'name' => __( 'Progress bar', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'member',
-				'name' => __( 'Mitglied', 'upfront-shortcodes' ),
+				'name' => __( 'Member', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'section',
-				'name' => __( 'Abschnitt', 'upfront-shortcodes' ),
+				'name' => __( 'Section', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'pricing_table',
-				'name' => __( 'Preistabelle', 'upfront-shortcodes' ),
+				'name' => __( 'Pricing table', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'testimonial',
@@ -115,15 +108,15 @@ class UpFront_Shortcodes_Admin_Extra_Shortcodes {
 			),
 			array(
 				'id'   => 'icon',
-				'name' => __( 'Symbol', 'upfront-shortcodes' ),
+				'name' => __( 'Icon', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'content_slider',
-				'name' => __( 'Inhaltsschieberegler', 'upfront-shortcodes' ),
+				'name' => __( 'Content slider', 'upfront-shortcodes' ),
 			),
 			array(
 				'id'   => 'shadow',
-				'name' => __( 'Schatten', 'upfront-shortcodes' ),
+				'name' => __( 'Shadow', 'upfront-shortcodes' ),
 			),
 		);
 

@@ -62,13 +62,13 @@ su_add_shortcode(
 			'post_type' => array(
 				'type'    => 'post_type',
 				'default' => 'post',
-				'name'    => __( 'Post type', 'upfront-shortcodes' ),
+				'name'    => __( 'Post Typ', 'upfront-shortcodes' ),
 				'desc'    => __( 'Beitragstyp des Beitrags, dessen Daten Du anzeigen möchtest', 'upfront-shortcodes' ),
 			),
 			'filter'    => array(
 				'default' => '',
 				'name'    => __( 'Filter', 'upfront-shortcodes' ),
-				'desc'    => __( 'Du kannst einen benutzerdefinierten Filter auf den abgerufenen Wert anwenden. Gib hier den Funktionsnamen ein. Deine Funktion muss ein Argument akzeptieren und einen geänderten Wert zurückgeben. Der Name Deiner Funktion muss das Wort <b>filter</b> enthalten. Beispielfunktion: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Value is: ' . \$value;\n}</code></pre>",
+				'desc'    => __( 'Du kannst einen benutzerdefinierten Filter auf den abgerufenen Wert anwenden. Gib hier den Funktionsnamen ein. Deine Funktion muss ein Argument akzeptieren und einen geänderten Wert zurückgeben. Der Name Deiner Funktion muss das Wort <b>filter</b> enthalten. Beispielfunktion: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Wert ist: ' . \$value;\n}</code></pre>",
 			),
 		),
 	)
@@ -115,13 +115,7 @@ function su_shortcode_post( $atts = null, $content = null ) {
 		$data = su_filter_the_content( $data );
 	}
 
-	if (
-		$atts['filter'] &&
-		su_is_filter_safe( $atts['filter'] ) &&
-		function_exists( $atts['filter'] )
-	) {
-		$data = call_user_func( $atts['filter'], $data );
-	}
+	$data = su_safely_apply_user_filter( $atts['filter'], $data );
 
 	if ( empty( $data ) ) {
 		$data = $atts['default'];

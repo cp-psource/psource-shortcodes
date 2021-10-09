@@ -9,7 +9,7 @@ su_add_shortcode(
 		'name'     => __( 'Beiträge', 'upfront-shortcodes' ),
 		'type'     => 'single',
 		'group'    => 'other',
-		'article'  => 'https://nerds.work/docs/display-posts/',
+		'article'  => 'https://n3rds.work/docs/upfront-shortcodes-beitraege/',
 		'atts'     => array(
 			'template'          => array(
 				'default' => 'default',
@@ -28,7 +28,7 @@ su_add_shortcode(
 					__( 'kleine Teaser mit Thumbnails und Titeln von Beiträgen', 'upfront-shortcodes' ),
 					'<b%value>single</b>',
 					__( 'einzelne Beitragsvorlage', 'upfront-shortcodes' ),
-					'https://nerds.work/docs/display-posts/',
+					'https://n3rds.work/docs/upfront-shortcodes-beitraege/',
 					__( 'So erstellest/bearbeitest Du eine Vorlage', 'upfront-shortcodes' )
 				),
 			),
@@ -72,9 +72,18 @@ su_add_shortcode(
 			'tax_operator_1'    => array(
 				'type'    => 'select',
 				'values'  => array(
-					'IN'     => __( 'BEINHALTET - Beiträge mit einem der ausgewählten Begriffe', 'upfront-shortcodes' ),
-					'NOT IN' => __( 'BEINHALTET NICHT - Beiträge, die keinen der ausgewählten Begriffe enthalten', 'upfront-shortcodes' ),
-					'AND'    => __( 'UND - Beiträge, die alle ausgewählten Begriffe enthalten', 'upfront-shortcodes' ),
+					'IN'     => __(
+						'IN - Beiträge mit einem der ausgewählten Begriffe',
+						'upfront-shortcodes'
+					),
+					'NOT IN' => __(
+						'NOT IN - Beiträge, die keinen der ausgewählten Begriffe enthalten',
+						'upfront-shortcodes'
+					),
+					'AND'    => __(
+						'AND - Beiträge, die alle ausgewählten Begriffe enthalten',
+						'upfront-shortcodes'
+					),
 				),
 				'default' => 'IN',
 				'name'    => __( 'Taxonomie-Begriffsoperator', 'upfront-shortcodes' ),
@@ -150,7 +159,7 @@ su_add_shortcode(
 					'private'    => __( 'Privater Beitrag', 'upfront-shortcodes' ),
 					'inherit'    => __( 'Erben', 'upfront-shortcodes' ),
 					'trash'      => __( 'Papierkorb', 'upfront-shortcodes' ),
-					'any'        => __( 'Irgendein', 'upfront-shortcodes' ),
+					'any'        => __( 'Alle', 'upfront-shortcodes' ),
 				),
 				'default' => 'publish',
 				'name'    => __( 'Poststatus', 'upfront-shortcodes' ),
@@ -185,7 +194,7 @@ su_add_shortcode(
 					'prev-next' => __( 'Vorherige/Nächste', 'upfront-shortcodes' ),
 				),
 				'default' => 'no',
-				'name'    => __( 'Seitennummerierung', 'upfront-shortcodes' ),
+				'name'    => __( 'Paginierung', 'upfront-shortcodes' ),
 				'desc'    => __( 'Diese Option steuert die Paginierung', 'upfront-shortcodes' ),
 			),
 			'pagination_prev'   => array(

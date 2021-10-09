@@ -34,7 +34,7 @@ su_add_shortcode(
 				'type'    => 'bool',
 				'default' => 'no',
 				'name'    => __( 'Vertikal', 'upfront-shortcodes' ),
-				'desc'    => __( 'Tabs vertikal ausrichten', 'upfront-shortcodes' ),
+				'desc'    => __( 'Registerkarten vertikal ausrichten', 'upfront-shortcodes' ),
 			),
 			'mobile'        => array(
 				'type'    => 'select',
@@ -50,7 +50,7 @@ su_add_shortcode(
 			'anchor_in_url' => array(
 				'type'    => 'bool',
 				'default' => 'no',
-				'name'    => __( 'In URL verankern', 'upfront-shortcodes' ),
+				'name'    => __( 'Anker in URL', 'upfront-shortcodes' ),
 				'desc'    => __( 'Diese Option gibt an, ob ein Anker zur Seiten-URL hinzugefügt wird, nachdem auf eine Registerkarte geklickt wurde', 'upfront-shortcodes' ),
 			),
 			'class'         => array(
@@ -95,17 +95,17 @@ su_add_shortcode(
 			'anchor'   => array(
 				'default' => '',
 				'name'    => __( 'Anker', 'upfront-shortcodes' ),
-				'desc'    => __( 'Du kannst einen eindeutigen Anker für diese Registerkarte verwenden, um mit Hash in der Seiten-URL darauf zuzugreifen. Beispiel: Verwende <b%value>Hallo</b> und navigiere dann zu einer URL wie http://example.com/page-url#Hello. Diese Registerkarte wird aktiviert und hineingescrollt', 'upfront-shortcodes' ),
+				'desc'    => __( 'Du kannst einen eindeutigen Anker für diese Registerkarte verwenden, um mit Hash in der Seiten-URL darauf zuzugreifen. Beispiel: Verwende <b%value>Hallo</b> und navigiere dann zu einer URL wie http://example.com/page-url#Hallo. Diese Registerkarte wird aktiviert und hineingescrollt', 'upfront-shortcodes' ),
 			),
 			'url'      => array(
 				'default' => '',
 				'name'    => __( 'URL', 'upfront-shortcodes' ),
-				'desc'    => __( 'Link-Registerkarte zu einer beliebigen Webseite. Verwende die vollständige URL, um den Titel der Registerkarte in einen Link umzuwandeln', 'upfront-shortcodes' ),
+				'desc'    => __( 'Verinke Registerkarte zu einer beliebigen Webseite. Verwende die vollständige URL, um den Titel der Registerkarte in einen Link umzuwandeln', 'upfront-shortcodes' ),
 			),
 			'target'   => array(
 				'type'    => 'select',
 				'values'  => array(
-					'self'  => __( 'Im gleichen Tab öffnen', 'upfront-shortcodes' ),
+					'self'  => __( 'Im selben Tab öffnen', 'upfront-shortcodes' ),
 					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'blank',
@@ -174,7 +174,7 @@ function su_shortcode_tabs( $atts = null, $content = null ) {
 
 	$atts['mobile'] = sanitize_key( $atts['mobile'] );
 
-	$output = '<div class="su-tabs su-tabs-style-' . $atts['style'] . ' su-tabs-mobile-' . $atts['mobile'] . su_get_css_class( $atts ) . '" data-active="' . (string) $atts['active'] . '" data-scroll-offset="' . intval( $atts['scroll_offset'] ) . '" data-anchor-in-url="' . sanitize_key( $atts['anchor_in_url'] ) . '"><div class="su-tabs-nav">' . implode( '', $tabs ) . '</div><div class="su-tabs-panes">' . implode( "\n", $panes ) . '</div></div>';
+	$output = '<div class="su-tabs su-tabs-style-' . esc_attr( $atts['style'] ) . ' su-tabs-mobile-' . esc_attr( $atts['mobile'] ) . su_get_css_class( $atts ) . '" data-active="' . esc_attr( $atts['active'] ) . '" data-scroll-offset="' . intval( $atts['scroll_offset'] ) . '" data-anchor-in-url="' . sanitize_key( $atts['anchor_in_url'] ) . '"><div class="su-tabs-nav">' . implode( '', $tabs ) . '</div><div class="su-tabs-panes">' . implode( "\n", $panes ) . '</div></div>';
 
 	// Reset tabs
 	$upfront_shortcodes_global_tabs       = array();
@@ -211,9 +211,9 @@ function su_shortcode_tab( $atts = null, $content = null ) {
 		'title'    => $atts['title'],
 		'content'  => do_shortcode( $content ),
 		'disabled' => 'yes' === $atts['disabled'] ? ' su-tabs-disabled' : '',
-		'anchor'   => $atts['anchor'] ? ' data-anchor="' . str_replace( array( ' ', '#' ), '', sanitize_text_field( $atts['anchor'] ) ) . '"' : '',
-		'url'      => ' data-url="' . $atts['url'] . '"',
-		'target'   => ' data-target="' . $atts['target'] . '"',
+		'anchor'   => $atts['anchor'] ? ' data-anchor="' . str_replace( array( ' ', '#' ), '', esc_attr( $atts['anchor'] ) ) . '"' : '',
+		'url'      => ' data-url="' . esc_attr( $atts['url'] ) . '"',
+		'target'   => ' data-target="' . esc_attr( $atts['target'] ) . '"',
 		'class'    => $atts['class'],
 	);
 

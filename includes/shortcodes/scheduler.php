@@ -16,7 +16,7 @@ su_add_shortcode(
 			),
 			'days_week'  => array(
 				'default' => '',
-				'name'    => __( 'Tage der Woche', 'upfront-shortcodes' ),
+				'name'    => __( 'Wochentage', 'upfront-shortcodes' ),
 				'desc'    => sprintf( __( 'In diesem Feld kannst Du einen oder mehrere Wochentage angeben. An diesen Tagen wird jede Woche der Inhalt des Shortcodes sichtbar sein. %1$s 0 - Sonntag %2$s 1 - Montag %3$s 2 - Dienstag %4$s 3 - Mittwoch %5$s 4 - Donnerstag %6$s 5 - Freitag %7$s 6 - Samstag %8$s %9$s %10$s - Inhalt anzeigen von Montag bis Freitag %11$s - Inhalt nur am Sonntag anzeigen %12$s - Inhalt anzeigen am Sonntag und von Mittwoch bis Freitag', 'upfront-shortcodes' ), '<br><br>', '<br>', '<br>', '<br>', '<br>', '<br>', '<br>', '<br><br>', __( 'Beispiele (zum Einstellen klicken)', 'upfront-shortcodes' ), '<br><b%value>1-5</b>', '<br><b%value>0</b>', '<br><b%value>0, 3-5</b>' ),
 			),
 			'days_month' => array(
@@ -42,7 +42,7 @@ su_add_shortcode(
 		),
 		'content'  => __( 'Geplanter Inhalt', 'upfront-shortcodes' ),
 		'desc'     => __( 'Ermöglicht das Anzeigen des Inhalts nur im angegebenen Zeitraum', 'upfront-shortcodes' ),
-		'note'     => __( 'Mit diesem Shortcode kannst Du Inhalte nur zur angegebenen Zeit anzeigen.', 'upfront-shortcodes' ) . '<br><br>' . __( 'Bitte achte besonders auf die Beschreibungen, die sich unter jedem Textfeld befinden. Es wird dir viel Zeit sparen', 'upfront-shortcodes' ) . '<br><br>' . __( 'By default, the content of this shortcode will be visible all the time. By using fields below, you can add some limitations. For example, if you type 1-5 in the Days of the week field, content will be only shown from Monday to Friday. Using the same principles, you can limit content visibility from years to seconds.', 'upfront-shortcodes' ),
+		'note'     => __( 'Mit diesem Shortcode kannst Du Inhalte nur zur angegebenen Zeit anzeigen.', 'upfront-shortcodes' ) . '<br><br>' . __( 'Bitte achte besonders auf die Beschreibungen, die sich unter jedem Textfeld befinden. Es wird dir viel Zeit sparen', 'upfront-shortcodes' ) . '<br><br>' . __( 'Standardmäßig ist der Inhalt dieses Shortcodes ständig sichtbar. Indem Sie die Felder unten verwenden, können Sie einige Einschränkungen hinzufügen. Wenn Du beispielsweise 1-5 in das Feld Wochentage eingibst, wird der Inhalt nur von Montag bis Freitag angezeigt. Nach denselben Prinzipien kannst Du die Sichtbarkeit von Inhalten von Jahren auf Sekunden begrenzen.', 'upfront-shortcodes' ),
 		'icon'     => 'clock-o',
 	)
 );

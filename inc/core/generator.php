@@ -7,12 +7,12 @@ class Su_Generator {
 	public function __construct() {
 		add_action(
 			'media_buttons',
-			array( __CLASS__, 'classic_editor_button' ),
+			array( __CLASS__, 'button_classic_editor' ),
 			1000
 		);
 		add_action(
 			'enqueue_block_editor_assets',
-			array( __CLASS__, 'block_editor_button' )
+			array( __CLASS__, 'button_block_editor' )
 		);
 
 		add_action( 'wp_footer', array( __CLASS__, 'popup' ) );
@@ -34,10 +34,13 @@ class Su_Generator {
 	 * @deprecated 5.1.0 Replaced with Su_Generator::classic_editor_button()
 	 */
 	public static function button( $args = array() ) {
-		return self::classic_editor_button( $args );
+		return self::button_html_editor( $args );
+	}
+	public static function classic_editor_button( $args = array() ) {
+		return self::button_html_editor( $args );
 	}
 
-	public static function classic_editor_button( $args = array() ) {
+	public static function button_html_editor( $args = array() ) {
 
 		if ( ! self::access_check() ) {
 			return;
@@ -45,13 +48,12 @@ class Su_Generator {
 
 		self::enqueue_generator();
 
-		$target = is_string( $args ) ? $args : 'content';
-
 		$args = wp_parse_args(
 			$args,
 			array(
-				'target'    => $target,
-				'text'      => __( 'Shortcode einfügen', 'upfront-shortcodes' ),
+				'target'    => '',
+				'tag'       => 'button',
+				'text'      => __( 'Insert shortcode', 'upfront-shortcodes' ),
 				'class'     => 'button',
 				'icon'      => true,
 				'echo'      => true,
@@ -66,28 +68,26 @@ class Su_Generator {
 		}
 
 		$onclick = sprintf(
-			"SUG.App.insert( 'classic', { editorID: '%s', shortcode: '%s' } );",
+			"SUG.App.insert('html',{editorID:'%s',shortcode:'%s'});return false;",
 			esc_attr( $args['target'] ),
 			esc_attr( $args['shortcode'] )
 		);
 
 		$button = sprintf(
-			'<button
+			'<%6$s
 				type="button"
+				href="javascript:;"
 				class="su-generator-button %1$s"
 				title="%2$s"
 				onclick="%3$s"
-			>
-				%4$s %5$s
-			</button>',
+			>%4$s %5$s</%6$s>',
 			esc_attr( $args['class'] ),
 			esc_attr( $args['text'] ),
 			$onclick,
 			$args['icon'],
-			esc_html( $args['text'] )
+			esc_html( $args['text'] ),
+			sanitize_key( $args['tag'] )
 		);
-
-		do_action( 'su/button', $args );
 
 		if ( $args['echo'] ) {
 			echo $button;
@@ -97,7 +97,40 @@ class Su_Generator {
 
 	}
 
-	public static function block_editor_button() {
+	public static function button_classic_editor( $target ) {
+
+		if ( ! self::access_check() ) {
+			return;
+		}
+
+		self::enqueue_generator();
+
+		$onclick = sprintf(
+			"SUG.App.insert('classic',{editorID:'%s',shortcode:''});",
+			esc_attr( $target )
+		);
+
+		$icon = '<svg style="vertical-align:middle;position:relative;top:-1px;opacity:.8;width:18px;height:18px" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path fill="currentcolor" d="M8.48 2.75v2.5H5.25v9.5h3.23v2.5H2.75V2.75h5.73zm9.27 14.5h-5.73v-2.5h3.23v-9.5h-3.23v-2.5h5.73v14.5z"/></svg>';
+
+		$button = sprintf(
+			'<button
+				type="button"
+				class="su-generator-button button"
+				title="%1$s"
+				onclick="%2$s"
+			>
+				%3$s %1$s
+			</button>',
+			__( 'Insert shortcode', 'upfront-shortcodes' ),
+			$onclick,
+			$icon
+		);
+
+		echo $button;
+
+	}
+
+	public static function button_block_editor() {
 
 		if ( ! self::access_check() ) {
 			return;
@@ -108,7 +141,7 @@ class Su_Generator {
 		wp_enqueue_script(
 			'upfront-shortcodes-block-editor',
 			plugins_url( 'includes/js/block-editor/index.js', SU_PLUGIN_FILE ),
-			array( 'wp-element', 'wp-editor', 'wp-components', 'su-generator' ),
+			array( 'wp-element', 'wp-components', 'su-generator' ),
 			SU_PLUGIN_VERSION,
 			true
 		);
@@ -116,7 +149,7 @@ class Su_Generator {
 		wp_localize_script(
 			'upfront-shortcodes-block-editor',
 			'SUBlockEditorL10n',
-			array( 'insertShortcode' => __( 'Shortcode einfügen', 'upfront-shortcodes' ) )
+			array( 'insertShortcode' => __( 'Insert shortcode', 'upfront-shortcodes' ) )
 		);
 
 		wp_localize_script(
@@ -174,16 +207,20 @@ class Su_Generator {
 
 		$tools = apply_filters( 'su/generator/tools', array(
 				'<a href="' . admin_url( 'admin.php?page=upfront-shortcodes-settings' ) . '" target="_blank" title="' . __( 'Einstellungen', 'upfront-shortcodes' ) . '">' . __( 'Plugin Einstellungen', 'upfront-shortcodes' ) . '</a>',
-				'<a href="https://nerds.work/" target="_blank" title="' . __( 'Plugin Homepage', 'upfront-shortcodes' ) . '">' . __( 'Plugin Homepage', 'upfront-shortcodes' ) . '</a>',
+				'<a href="https://n3rds.work/piestingtal_source/upfront/" target="_blank" title="' . __( 'Plugin Webseite', 'upfront-shortcodes' ) . '">' . __( 'Plugin Webseite', 'upfront-shortcodes' ) . '</a>',
 			) );
 
+		// Add add-ons links
+		if ( ! self::is_addons_active() ) {
+			$tools[] = '<a href="' . admin_url( 'admin.php?page=upfront-shortcodes-addons&from-generator' ) . '" target="_blank" title="' . __( 'Mehr UpFront', 'upfront-shortcodes' ) . '" class="su-add-ons">&#9733; ' . __( 'UpFront Erweiterungen', 'upfront-shortcodes' ) . '</a>';
+		}
 ?>
 	<div id="su-generator-wrap" style="display:none">
 		<div id="su-generator">
 			<div id="su-generator-header">
 				<div id="su-generator-tools"><?php echo implode( ' <span></span> ', $tools ); ?></div>
 				<input type="text" name="su_generator_search" id="su-generator-search" value="" placeholder="<?php _e( 'Suche nach Shortcodes', 'upfront-shortcodes' ); ?>" />
-				<p id="su-generator-search-pro-tip"><?php printf( '<strong>%s:</strong> %s', __( 'Pro Tipp', 'upfront-shortcodes' ), __( 'Drücke die Eingabetaste, um während der Suche den markierten Shortcode auszuwählen' ) ) ?></p>
+				<p id="su-generator-search-pro-tip"><?php printf( '<strong>%s:</strong> %s', __( 'Pro Tipp', 'upfront-shortcodes' ), __( 'Drücke die Eingabetaste, um während der Suche den hervorgehobenen Shortcode auszuwählen' ) ) ?></p>
 				<div id="su-generator-filter">
 					<strong><?php _e( 'Nach Typ filtern', 'upfront-shortcodes' ); ?></strong>
 					<?php foreach ( su_get_config( 'groups' ) as $group => $label ) echo '<a href="#" data-filter="' . $group . '">' . $label . '</a>'; ?>
@@ -265,7 +302,7 @@ class Su_Generator {
 				if ( is_callable( array( 'Su_Generator_Views', $attr_info['type'] ) ) ) $return .= call_user_func( array( 'Su_Generator_Views', $attr_info['type'] ), $attr_name, $attr_info );
 				elseif ( isset( $attr_info['callback'] ) && is_callable( $attr_info['callback'] ) ) $return .= call_user_func( $attr_info['callback'], $attr_name, $attr_info );
 				if ( isset( $attr_info['desc'] ) ) $attr_info['desc'] = str_replace( '%su_skins_link%', self::skins_link(), $attr_info['desc'] );
-				if ( isset( $attr_info['desc'] ) ) $return .= '<div class="su-generator-attr-desc">' . str_replace( array( '<b%value>', '<b_>' ), '<b class="su-generator-set-value" title="' . __( 'Klicke um diesen Wert festzulegen', 'upfront-shortcodes' ) . '">', $attr_info['desc'] ) . '</div>';
+				if ( isset( $attr_info['desc'] ) ) $return .= '<div class="su-generator-attr-desc">' . str_replace( array( '<b%value>', '<b_>' ), '<b class="su-generator-set-value" title="' . __( 'Klicke hier, um diesen Wert festzulegen', 'upfront-shortcodes' ) . '">', $attr_info['desc'] ) . '</div>';
 				$return .= '</div>';
 			}
 		}
@@ -283,7 +320,7 @@ class Su_Generator {
 			}
 
 			// Prepare shortcode content
-			$return .= '<div class="su-generator-attr-container"><h5>' . __( 'Content', 'upfront-shortcodes' ) . '</h5><textarea name="su-generator-content" id="su-generator-content" rows="5">' . esc_attr( str_replace( array( '%prefix_', '__' ), su_get_shortcode_prefix(), $shortcode['content'] ) ) . '</textarea></div>';
+			$return .= '<div class="su-generator-attr-container"><h5>' . __( 'Inhalt', 'upfront-shortcodes' ) . '</h5><textarea name="su-generator-content" id="su-generator-content" rows="5">' . esc_attr( str_replace( array( '%prefix_', '__' ), su_get_shortcode_prefix(), $shortcode['content'] ) ) . '</textarea></div>';
 		}
 		$return .= '<div id="su-generator-preview"></div>';
 		$return .= '<div class="su-generator-actions su-generator-clearfix">' . implode( ' ', array_values( $actions ) ) . '</div>';
@@ -356,7 +393,7 @@ class Su_Generator {
 	<a href="javascript:void(0);" class="button button-large su-gp-button"><i class="sui sui-bars"></i> <?php _e( 'Voreinstellungen', 'upfront-shortcodes' ); ?></a>
 	<div class="su-gp-popup">
 		<div class="su-gp-head">
-			<a href="javascript:void(0);" class="button button-small button-primary su-gp-new"><?php _e( 'Speichere die aktuellen Einstellungen als voreingestellt', 'upfront-shortcodes' ); ?></a>
+			<a href="javascript:void(0);" class="button button-small button-primary su-gp-new"><?php _e( 'Aktuelle Einstellungen als Voreinstellung speichern', 'upfront-shortcodes' ); ?></a>
 		</div>
 		<div class="su-gp-list">
 			<?php self::presets_list(); ?>
@@ -468,7 +505,7 @@ class Su_Generator {
 	 * Example output: "[su_button color="#ff0000" ... ] Click me [/su_button]".
 	 *
 	 * @param mixed   $args Array with settings
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @return string      Shortcode code
 	 */
 	public static function get_shortcode_code( $args ) {
@@ -560,7 +597,7 @@ class Su_Generator {
 	/**
 	 * Helper function to check if all available addons were activated.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @return boolean True if all addons active, False otherwise.
 	 */
 	public static function is_addons_active() {
@@ -586,7 +623,7 @@ class Su_Generator {
 	/**
 	 * Display "Install additional skins" link if add-on isn't installed.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @return string
 	 */
 	public static function skins_link() {
@@ -596,25 +633,25 @@ class Su_Generator {
 			return sprintf(
 				'<br><strong>%s</strong><br><strong>%s</strong>',
 				__( 'Zusätzliche Skins erfolgreich installiert', 'upfront-shortcodes' ),
-				__( 'Öffne die Dropdown-Liste, um einen der neuen Stile auszuwählen', 'upfront-shortcodes' )
+				__( 'Dropdown-Menü öffnen, um einen der neuen Stile auszuwählen', 'upfront-shortcodes' )
 			);
 
 		}
-		/*else {
+		else {
 
 			return sprintf(
-				'<br><a href="https://nerds.work/add-ons/additional-skins/" target="_blank">%s &rarr;</a>',
-				__( 'Get more styles', 'upfront-shortcodes' )
+				'<br><a href="https://n3rds.work/shop/artikel/category/upfront-themes/additional-skins/" target="_blank">%s &rarr;</a>',
+				__( 'Hole Dir mehr Stile', 'upfront-shortcodes' )
 			);
 
-		}*/
+		}
 
 	}
 
 	/**
 	 * Get available shortcodes, skipping deprecated ones.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @return array Available shortcodes data.
 	 */
 	public static function get_shortcodes() {
@@ -637,7 +674,7 @@ class Su_Generator {
 	/**
 	 * Filter shortcodes and skip deprecated ones.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @param array   $shortcode A single shortcode data.
 	 * @return boolean            False if shortcode deprecated, True otherwise.
 	 */
@@ -648,7 +685,7 @@ class Su_Generator {
 	/**
 	 * Get list of taxonomies as key-value pairs.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @return array List of taxonomies.
 	 */
 	public static function get_taxonomies() {
@@ -666,7 +703,7 @@ class Su_Generator {
 	/**
 	 * Get list of terms as key-value pairs.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @return array List of terms.
 	 */
 	public static function get_terms( $tax = 'category', $key = 'id' ) {

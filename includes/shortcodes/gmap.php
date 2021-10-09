@@ -31,7 +31,7 @@ su_add_shortcode(
 				'type'    => 'bool',
 				'default' => 'yes',
 				'name'    => __( 'Responsiv', 'upfront-shortcodes' ),
-				'desc'    => __( 'Ignoriere Die Breiten- und Höhenparameter und mache die Karte reaktionsfähig', 'upfront-shortcodes' ),
+				'desc'    => __( 'Ignoriere Die Breiten- und Höhenparameter und mache die Karte responsiv', 'upfront-shortcodes' ),
 			),
 			'address'    => array(
 				'values'  => array(),
@@ -72,7 +72,7 @@ function su_shortcode_gmap( $atts = null, $content = null ) {
 			'width'      => 600,
 			'height'     => 400,
 			'responsive' => 'yes',
-			'address'    => 'Vienna',
+			'address'    => 'Moscow',
 			'zoom'       => 0,
 			'title'      => '',
 			'class'      => '',

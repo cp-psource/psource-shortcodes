@@ -3,15 +3,24 @@
 /**
  * Helper Functions.
  *
- * @since        1.0.0
+ * @since        5.0.5
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/includes
  */
 
 /**
+ * Retrieves instance of the main plugin class.
+ *
+ * @since  5.0.4
+ */
+function upfront_shortcodes() {
+	return UpFront_Shortcodes::get_instance();
+}
+
+/**
  * Retrieve the URL of the plugin directory (with trailing slash).
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @return string The URL of the plugin directory (with trailing slash).
  */
 function su_get_plugin_url() {
@@ -21,7 +30,7 @@ function su_get_plugin_url() {
 /**
  * Retrieve the filesystem path of the plugin directory (with trailing slash).
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @return string The filesystem path of the plugin directory (with trailing slash).
  */
 function su_get_plugin_path() {
@@ -41,7 +50,7 @@ function su_get_plugin_version() {
 /**
  * Get plugin config.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $key
  * @return mixed      Config data if found, False otherwise.
  */
@@ -75,7 +84,7 @@ function su_get_config( $key = null, $default = false ) {
 /**
  * Create an error message.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $title   Error title.
  * @param string  $message Error message.
  * @return string          Error message markup.
@@ -91,7 +100,7 @@ function su_error_message( $title = '', $message = '' ) {
 	}
 
 	return sprintf(
-		'<p class="su-error" style="padding:5px 10px;color:#ff685e;border-left:3px solid #ff685e;background:#fff">%1$s%2$s</p>',
+		'<p class="su-error" style="padding:5px 10px;color:#8f3a35;border-left:3px solid #8f3a35;background:#fff7f6;line-height:1.35">%1$s%2$s</p>',
 		$title,
 		$message
 	);
@@ -101,7 +110,7 @@ function su_error_message( $title = '', $message = '' ) {
 /**
  * Conditional check if current user can use the plugin.
  *
- * @since 1.0.0
+ * @since 1.0.8
  * @return bool True if user is allowed to use the plugin, False otherwise.
  */
 function su_current_user_can_insert() {
@@ -118,7 +127,7 @@ function su_current_user_can_insert() {
 /**
  * Validate filter callback name.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $filter Filter callback name.
  * @return boolean         True if filter name contains word 'filter', False otherwise.
  */
@@ -127,11 +136,32 @@ function su_is_filter_safe( $filter ) {
 }
 
 /**
+ * Helper function to safely apply user defined filter to a given value
+ * @param  string $filter Filter function name
+ * @param  string $value  Filterable value
+ * @return string         A filtered value if the given filter is safe
+ */
+function su_safely_apply_user_filter( $filter = null, $value = null ) {
+
+	if (
+		is_string( $filter ) &&
+		is_string( $value ) &&
+		su_is_filter_safe( $filter ) &&
+		function_exists( $filter )
+	) {
+		$value = call_user_func( $filter, $value );
+	}
+
+	return $value;
+
+}
+
+/**
  * Range converter.
  *
  * Converts string ranges like '1, 3-5' into arrays like [1, 3, 4, 5].
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param string  $string Range string.
  * @return array          Parsed range.
  */
@@ -172,14 +202,14 @@ function su_parse_range( $string = '' ) {
 /**
  * Extract CSS class name(s) from shortcode $atts and prepend with a space.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @param array   $atts Shortcode atts.
  * @return string       Extra CSS class(es) prepended by a space.
  */
 if ( ! function_exists( 'su_get_css_class' ) ) {
 
 	function su_get_css_class( $atts ) {
-		return $atts['class'] ? ' ' . trim( $atts['class'] ) : '';
+		return $atts['class'] ? ' ' . esc_attr( trim( $atts['class'] ) ) : '';
 	}
 
 }
@@ -201,7 +231,7 @@ function su_enqueue_generator() {
  * Helper function to check that the given path is related to the current theme
  * or to the plugin directory.
  *
- * @since  1.0.0
+ * @since  1.0.8
  * @param  string $path Relative path to check.
  * @return bool         True if the given path relates to theme/plugin directory, False otherwise.
  */
@@ -239,7 +269,7 @@ function su_is_valid_template_name( $path ) {
 /**
  * Helper function to add/remove file extension to/from a given path.
  *
- * @since  1.0.0
+ * @since  1.0.8
  * @param  string      $path      Path to add/remove file extension to/from.
  * @param  string|bool $extension Extension to add/remove.
  * @return string                 Modified file path.
@@ -324,4 +354,36 @@ function su_join_paths() {
 
 	return $path;
 
+}
+
+/**
+ * Helper function that adds CSS units to the supplied numeric value
+ * @param  mixed  $value The original value (String or Integer)
+ * @param  string $units CSS units to add
+ * @return string        Value with CSS units
+ */
+function su_maybe_add_css_units( $value = '', $units = '' ) {
+
+	if ( is_numeric( $value ) ) {
+		$value .= $units;
+	}
+
+	return $value;
+
+}
+
+/**
+ * Helper to get the current page URL
+ * @return string Current page URL
+ */
+function su_get_current_url() {
+
+	$protocol = is_ssl() ? 'https' : 'http';
+
+	return esc_url( "{$protocol}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}" );
+
+}
+
+function su_is_unsafe_features_enabled() {
+	return 'on' === get_option( 'su_option_unsafe_features' );
 }

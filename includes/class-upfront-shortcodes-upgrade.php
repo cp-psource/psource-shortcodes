@@ -3,7 +3,7 @@
 /**
  * The class responsible for plugin upgrade procedures.
  *
- * @since        1.0.0
+ * @since        1.0.7
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/includes
  */
@@ -12,7 +12,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @var      string    $current_version   The current version of the plugin.
 	 */
@@ -21,7 +21,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Name of the option which stores plugin version.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @var      string    $saved_version_option   Name of the option which stores plugin version.
 	 */
@@ -30,7 +30,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * The full path of the upgrade file.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.8
 	 * @access   private
 	 * @var      string    $upgrade_path   The full path of the upgrade file.
 	 */
@@ -39,7 +39,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Define the functionality of the updater.
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 * @param string  $plugin_version The current version of the plugin.
 	 */
 	public function __construct( $plugin_version ) {
@@ -53,7 +53,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Run upgrades if version changed.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	public function maybe_upgrade() {
 
@@ -61,13 +61,12 @@ final class UpFront_Shortcodes_Upgrade {
 			return;
 		}
 
-		$this->maybe_upgrade_to( '1.0.0' );
-		$this->maybe_upgrade_to( '5.0.7' );
-		$this->maybe_upgrade_to( '5.1.1' );
-		$this->maybe_upgrade_to( '5.2.0' );
-		$this->maybe_upgrade_to( '1.0.0' );
-		$this->maybe_upgrade_to( '5.6.0' );
-		$this->maybe_upgrade_to( '5.9.1' );
+		$this->setup_defaults();
+
+		$this->maybe_upgrade_to( '1.0.7' );
+		$this->maybe_upgrade_to( '1.0.8' );
+		$this->maybe_upgrade_to( '1.0.9' );
+		$this->maybe_upgrade_to( '1.1.0' );
 
 		$this->update_saved_version();
 
@@ -76,7 +75,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Helper function to register a new upgrade routine.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.8
 	 * @param string $version New version number.
 	 */
 	private function maybe_upgrade_to( $version ) {
@@ -92,7 +91,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Helper function to test a new upgrade routine.
 	 *
-	 * @since 5.6.0
+	 * @since 1.0.9
 	 * @param string $version New version number.
 	 */
 	private function upgrade_to( $version ) {
@@ -110,7 +109,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Conditional check if plugin was updated.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access private
 	 * @return boolean True if plugin was updated, False otherwise.
 	 */
@@ -121,7 +120,7 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Conditional check if previous version of the plugin lower than passed one.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access private
 	 * @return boolean True if previous version of the plugin lower than passed one, False otherwise.
 	 */
@@ -138,11 +137,28 @@ final class UpFront_Shortcodes_Upgrade {
 	/**
 	 * Save current version number.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access private
 	 */
 	private function update_saved_version() {
 		update_option( $this->saved_version_option, $this->current_version, false );
+	}
+
+	/**
+	 * Setup missing default settings
+	 */
+	private function setup_defaults() {
+
+		$defaults = su_get_config( 'default-settings' );
+
+		foreach ( $defaults as $option => $value ) {
+
+			if ( get_option( $option, 0 ) === 0 ) {
+				add_option( $option, $value );
+			}
+
+		}
+
 	}
 
 }

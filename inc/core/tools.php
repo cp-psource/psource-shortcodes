@@ -15,7 +15,7 @@ function su_image_resize( $url, $width = null, $height = null, $crop = true, $re
 	if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 		global $wpdb;
 		if ( empty( $url ) ) {
-			return new WP_Error( 'no_image_url', 'Es wurde keine Bild-URL eingegeben.', $url );
+			return new WP_Error( 'no_image_url', 'No image URL has been entered.', $url );
 		}
 		// Get default size from database
 		$width  = ( $width ) ? $width : get_option( 'thumbnail_size_w' );
@@ -127,7 +127,7 @@ function su_image_resize( $url, $width = null, $height = null, $crop = true, $re
 		global $wpdb;
 
 		if ( empty( $url ) ) {
-			return new WP_Error( 'no_image_url', 'Es wurde keine Bild-URL eingegeben.', $url );
+			return new WP_Error( 'no_image_url', 'No image URL has been entered.', $url );
 		}
 
 		// Bail if GD Library doesn't exist
@@ -198,7 +198,7 @@ function su_image_resize( $url, $width = null, $height = null, $crop = true, $re
 			// Get the current image dimensions and type
 			$size = @getimagesize( $file_path );
 			if ( ! $size ) {
-				return new WP_Error( 'file_path_getimagesize_failed', 'Fehler beim Abrufen von $file_path-Informationen mit getimagesize.' );
+				return new WP_Error( 'file_path_getimagesize_failed', 'Failed to get $file_path information using getimagesize.' );
 			}
 			list( $orig_width, $orig_height, $orig_type ) = $size;
 
@@ -241,11 +241,11 @@ function su_image_resize( $url, $width = null, $height = null, $crop = true, $re
 			// Check the image is the correct file type
 			if ( IMAGETYPE_GIF == $orig_type ) {
 				if ( ! imagegif( $new_image, $dest_file_name ) ) {
-					return new WP_Error( 'resize_path_invalid', 'Größe ändern Pfad ungültig (GIF)' );
+					return new WP_Error( 'resize_path_invalid', 'Resize path invalid (GIF)' );
 				}
 			} elseif ( IMAGETYPE_PNG == $orig_type ) {
 				if ( ! imagepng( $new_image, $dest_file_name ) ) {
-					return new WP_Error( 'resize_path_invalid', 'Größe ändern Pfad ungültig (PNG).' );
+					return new WP_Error( 'resize_path_invalid', 'Resize path invalid (PNG).' );
 				}
 			} else {
 
@@ -254,7 +254,7 @@ function su_image_resize( $url, $width = null, $height = null, $crop = true, $re
 					$dest_file_name = "{$dir}/{$name}-{$suffix}.jpg";
 				}
 				if ( ! imagejpeg( $new_image, $dest_file_name, apply_filters( 'resize_jpeg_quality', 90 ) ) ) {
-					return new WP_Error( 'resize_path_invalid', 'Größe ändern Pfad ungültig (JPG).' );
+					return new WP_Error( 'resize_path_invalid', 'Resize path invalid (JPG).' );
 				}
 			}
 
@@ -269,7 +269,7 @@ function su_image_resize( $url, $width = null, $height = null, $crop = true, $re
 			// Get some information about the resized image
 			$new_size = @getimagesize( $dest_file_name );
 			if ( ! $new_size ) {
-				return new WP_Error( 'resize_path_getimagesize_failed', 'Fehler beim Abrufen der Informationen zu $dest_file_name (Bild mit geänderter Größe) über @getimagesize', $dest_file_name );
+				return new WP_Error( 'resize_path_getimagesize_failed', 'Failed to get $dest_file_name (resized image) info via @getimagesize', $dest_file_name );
 			}
 			list( $resized_width, $resized_height, $resized_type ) = $new_size;
 

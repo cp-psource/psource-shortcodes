@@ -5,49 +5,49 @@ su_add_shortcode(
 		'id'               => 'lightbox_content',
 		'callback'         => 'su_shortcode_lightbox_content',
 		'image'            => su_get_plugin_url() . 'admin/images/shortcodes/lightbox_content.svg',
-		'name'             => __( 'Lightbox content', 'upfront-shortcodes' ),
+		'name'             => __( 'Lightbox Inhalt', 'upfront-shortcodes' ),
 		'type'             => 'wrap',
 		'group'            => 'gallery',
 		'required_sibling' => 'lightbox',
-		'article'          => 'https://nerds.work/docs/lightbox/',
+		'article'          => 'https://n3rds.work/docs/upfront-shortcodes-lightbox/',
 		'atts'             => array(
 			'id'         => array(
 				'default' => '',
 				'name'    => __( 'ID', 'upfront-shortcodes' ),
 				'desc'    => sprintf(
 					'%1$s %2$s: %3$s',
-					__( 'The ID of the element. Use the value from the Content source field of the lightbox shortcode.', 'upfront-shortcodes' ),
-					__( 'Example', 'upfront-shortcodes' ),
+					__( 'Die ID des Elements. Verwende den Wert aus dem Feld Inhaltsquelle des Lightbox-Shortcodes.', 'upfront-shortcodes' ),
+					__( 'Beispiel', 'upfront-shortcodes' ),
 					'<b%value>my-custom-popup</b>'
 				),
 			),
 			'width'      => array(
 				'default' => 'auto',
-				'name'    => __( 'Width', 'upfront-shortcodes' ),
+				'name'    => __( 'Breite', 'upfront-shortcodes' ),
 				'desc'    => sprintf(
 					'%1$s<br>%2$s: %3$s',
-					__( 'The width of the element. CSS units are allowed.', 'upfront-shortcodes' ),
-					__( 'Examples', 'upfront-shortcodes' ),
+					__( 'Die Breite des Elements. CSS-Einheiten sind erlaubt.', 'upfront-shortcodes' ),
+					__( 'Beispiele', 'upfront-shortcodes' ),
 					'<b%value>auto</b>, <b%value>300px</b>, <b%value>40em</b>, <b%value>90%</b>, <b%value>90vw</b>'
 				),
 			),
 			'min_width'  => array(
 				'default' => 'none',
-				'name'    => __( 'Min. Width', 'upfront-shortcodes' ),
+				'name'    => __( 'Mindest. Breite', 'upfront-shortcodes' ),
 				'desc'    => sprintf(
 					'%1$s<br>%2$s: %3$s',
-					__( 'The minimum width of the element. CSS units are allowed.', 'upfront-shortcodes' ),
-					__( 'Examples', 'upfront-shortcodes' ),
+					__( 'Die minimale Breite des Elements. CSS-Einheiten sind erlaubt.', 'upfront-shortcodes' ),
+					__( 'Beispiele', 'upfront-shortcodes' ),
 					'<b%value>none</b>, <b%value>300px</b>, <b%value>40em</b>, <b%value>90%</b>, <b%value>90vw</b>'
 				),
 			),
 			'max_width'  => array(
 				'default' => '600px',
-				'name'    => __( 'Max. Width', 'upfront-shortcodes' ),
+				'name'    => __( 'Max. Breite', 'upfront-shortcodes' ),
 				'desc'    => sprintf(
 					'%1$s<br>%2$s: %3$s',
-					__( 'The maximum width of the element. CSS units are allowed.', 'upfront-shortcodes' ),
-					__( 'Examples', 'upfront-shortcodes' ),
+					__( 'Die maximale Breite des Elements. CSS-Einheiten sind erlaubt.', 'upfront-shortcodes' ),
+					__( 'Beispiele', 'upfront-shortcodes' ),
 					'<b%value>none</b>, <b%value>300px</b>, <b%value>40em</b>, <b%value>90%</b>, <b%value>90vw</b>'
 				),
 			),
@@ -58,7 +58,7 @@ su_add_shortcode(
 				'step'    => 5,
 				'default' => 40,
 				'name'    => __( 'Margin', 'upfront-shortcodes' ),
-				'desc'    => __( 'The outer spacing of the element (in pixels)', 'upfront-shortcodes' ),
+				'desc'    => __( 'Der äußere Abstand des Elements (in Pixel)', 'upfront-shortcodes' ),
 			),
 			'padding'    => array(
 				'type'    => 'slider',
@@ -67,52 +67,52 @@ su_add_shortcode(
 				'step'    => 5,
 				'default' => 40,
 				'name'    => __( 'Padding', 'upfront-shortcodes' ),
-				'desc'    => __( 'The inner spacing of the element (in pixels)', 'upfront-shortcodes' ),
+				'desc'    => __( 'Der innere Abstand des Elements (in Pixel)', 'upfront-shortcodes' ),
 			),
 			'text_align' => array(
 				'type'    => 'select',
 				'values'  => array(
-					'left'   => __( 'Left', 'upfront-shortcodes' ),
-					'center' => __( 'Center', 'upfront-shortcodes' ),
-					'right'  => __( 'Right', 'upfront-shortcodes' ),
+					'left'   => __( 'Links', 'upfront-shortcodes' ),
+					'center' => __( 'Zentriert', 'upfront-shortcodes' ),
+					'right'  => __( 'Rechts', 'upfront-shortcodes' ),
 				),
 				'default' => 'center',
-				'name'    => __( 'Text alignment', 'upfront-shortcodes' ),
-				'desc'    => __( 'Select the text alignment', 'upfront-shortcodes' ),
+				'name'    => __( 'Textausrichtung', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle die Textausrichtung aus', 'upfront-shortcodes' ),
 			),
 			'background' => array(
 				'type'    => 'color',
 				'default' => '#FFFFFF',
-				'name'    => __( 'Background color', 'upfront-shortcodes' ),
-				'desc'    => __( 'Pick a background color', 'upfront-shortcodes' ),
+				'name'    => __( 'Hintergrundfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle eine Hintergrundfarbe', 'upfront-shortcodes' ),
 			),
 			'color'      => array(
 				'type'    => 'color',
 				'default' => '#333333',
-				'name'    => __( 'Text color', 'upfront-shortcodes' ),
-				'desc'    => __( 'Pick a text color', 'upfront-shortcodes' ),
+				'name'    => __( 'Textfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle eine Textfarbe aus', 'upfront-shortcodes' ),
 			),
 			'color'      => array(
 				'type'    => 'color',
 				'default' => '#333333',
-				'name'    => __( 'Text color', 'upfront-shortcodes' ),
-				'desc'    => __( 'Pick a text color', 'upfront-shortcodes' ),
+				'name'    => __( 'Textfarbe', 'upfront-shortcodes' ),
+				'desc'    => __( 'Wähle eine Textfarbe aus', 'upfront-shortcodes' ),
 			),
 			'shadow'     => array(
 				'type'    => 'shadow',
 				'default' => '0px 0px 15px #333333',
-				'name'    => __( 'Shadow', 'upfront-shortcodes' ),
-				'desc'    => __( 'Adjust the shadow for content box', 'upfront-shortcodes' ),
+				'name'    => __( 'Schatten', 'upfront-shortcodes' ),
+				'desc'    => __( 'Passe den Schatten für das Inhaltsfeld an', 'upfront-shortcodes' ),
 			),
 			'class'      => array(
 				'type'    => 'extra_css_class',
-				'name'    => __( 'Extra CSS class', 'upfront-shortcodes' ),
-				'desc'    => __( 'Additional CSS class name(s) separated by space(s)', 'upfront-shortcodes' ),
+				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
+				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
-		'content'          => __( 'Inline content', 'upfront-shortcodes' ),
-		'desc'             => __( 'Inline content for lightbox', 'upfront-shortcodes' ),
+		'content'          => __( 'Inline-Inhalte', 'upfront-shortcodes' ),
+		'desc'             => __( 'Inline-Inhalt für Lightbox', 'upfront-shortcodes' ),
 		'icon'             => 'external-link',
 	)
 );
@@ -124,8 +124,8 @@ function su_shortcode_lightbox_content( $atts = null, $content = null ) {
 	if ( ! $atts['id'] ) {
 
 		return su_error_message(
-			'Lightbox content',
-			__( 'invalid ID. Use the value from the Content source field of the lightbox shortcode.', 'upfront-shortcodes' )
+			'Lightbox-Inhalt',
+			__( 'Ungültige ID. Verwende den Wert aus dem Feld Inhaltsquelle des Lightbox-Shortcodes.', 'upfront-shortcodes' )
 		);
 
 	}

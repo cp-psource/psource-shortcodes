@@ -3,7 +3,7 @@
 /**
  * The class responsible for adding, storing and accessing shortcodes data.
  *
- * @since  1.0.0
+ * @since  5.0.5
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/includes
  */
@@ -12,7 +12,7 @@ class UpFront_Shortcodes_Shortcodes {
 	/**
 	 * The collection of available shortcodes.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @var array
 	 */
 	private static $shortcodes = array();
@@ -20,7 +20,7 @@ class UpFront_Shortcodes_Shortcodes {
 	/**
 	 * Get all shortcodes.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @return array The collection of available shortcodes.
 	 */
 	public static function get_all() {
@@ -35,7 +35,7 @@ class UpFront_Shortcodes_Shortcodes {
 	/**
 	 * Get specific shortcode by ID.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @param string  $id The ID (without prefix) of shortcode.
 	 * @return array|boolean   Shortcode data if found, False otherwise.
 	 */
@@ -52,7 +52,7 @@ class UpFront_Shortcodes_Shortcodes {
 	/**
 	 * Add a shortcode.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @param array   $data    New shortcode data.
 	 * @param boolean $replace Replace existing shortcode or not.
 	 */
@@ -77,7 +77,7 @@ class UpFront_Shortcodes_Shortcodes {
 	/**
 	 * Remove a shortcode.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 * @param string  $id Shortcode ID to remove.
 	 */
 	public static function remove( $id ) {
@@ -91,7 +91,7 @@ class UpFront_Shortcodes_Shortcodes {
 	/**
 	 * Register all available shortcodes.
 	 *
-	 * @since  1.0.0
+	 * @since  5.0.5
 	 */
 	public static function register() {
 

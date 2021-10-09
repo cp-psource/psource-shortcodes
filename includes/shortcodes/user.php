@@ -54,7 +54,7 @@ su_add_shortcode(
 			'filter'  => array(
 				'default' => '',
 				'name'    => __( 'Filter', 'upfront-shortcodes' ),
-				'desc'    => __( 'Du kannst einen benutzerdefinierten Filter auf den abgerufenen Wert anwenden. Gib hier den Funktionsnamen ein. Deine Funktion muss ein Argument akzeptieren und einen geänderten Wert zurückgeben. Der Name Deiner Funktion muss das Wort <b>filter</b> enthalten. Beispielfunktion: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Value is: ' . \$value;\n}</code></pre>",
+				'desc'    => __( 'Du kannst einen benutzerdefinierten Filter auf den abgerufenen Wert anwenden. Gib hier den Funktionsnamen ein. Deine Funktion muss ein Argument akzeptieren und einen geänderten Wert zurückgeben. Der Name Deiner Funktion muss das Wort <b>filter</b> enthalten. Beispielfunktion: ', 'upfront-shortcodes' ) . "<br /><pre><code style='display:block;padding:5px'>function my_custom_filter( \$value ) {\n\treturn 'Wert ist: ' . \$value;\n}</code></pre>",
 			),
 		),
 		'desc'     => __( 'Dieser Shortcode kann Benutzerdaten wie Login oder E-Mail anzeigen, einschließlich Metafelder', 'upfront-shortcodes' ),
@@ -65,6 +65,7 @@ su_add_shortcode(
 function su_shortcode_user( $atts = null, $content = null ) {
 
 	$atts = su_parse_shortcode_atts( 'user', $atts );
+	$data = '';
 
 	if ( 'user_pass' === $atts['field'] ) {
 
@@ -81,39 +82,28 @@ function su_shortcode_user( $atts = null, $content = null ) {
 		$atts['user_id'] = get_current_user_id();
 	}
 
-	if ( ! is_numeric( $atts['user_id'] ) || $atts['user_id'] < 0 ) {
+	if ( su_is_positive_number( $atts['user_id'] ) ) {
 
-		return su_error_message(
-			'User',
-			__( 'Ungültige Benutzer-Id', 'upfront-shortcodes' )
-		);
+		$user = get_user_by( 'id', $atts['user_id'] );
 
-	}
+		if ( ! $user ) {
 
-	$user = get_user_by( 'id', $atts['user_id'] );
+			return su_error_message(
+				'User',
+				__( 'Benutzer nicht gefunden', 'upfront-shortcodes' )
+			);
 
-	if ( ! $user ) {
+		}
 
-		return su_error_message(
-			'User',
-			__( 'Benutzer nicht gefunden', 'upfront-shortcodes' )
-		);
+		$data = $user->get( $atts['field'] );
 
 	}
 
-	$data = $user->get( $atts['field'] );
-
-	if ( ! is_string( $data ) || '' === $data ) {
+	if ( ! is_string( $data ) || empty( $data ) ) {
 		$data = su_do_attribute( $atts['default'] );
 	}
 
-	if (
-		$atts['filter'] &&
-		su_is_filter_safe( $atts['filter'] ) &&
-		function_exists( $atts['filter'] )
-	) {
-		$data = call_user_func( $atts['filter'], $data );
-	}
+	$data = su_safely_apply_user_filter( $atts['filter'], $data );
 
 	return $data ? $atts['before'] . $data . $atts['after'] : '';
 

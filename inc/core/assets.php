@@ -51,9 +51,14 @@ class Su_Assets {
 		wp_register_style( 'animate', plugins_url( 'vendor/animatecss/animate.css', SU_PLUGIN_FILE ), false, '3.1.1', 'all' );
 		// InView
 		wp_register_script( 'jquery-inview', plugins_url( 'vendor/jquery-inview/jquery-inview.js', SU_PLUGIN_FILE ), array( 'jquery' ), '1.1.2', true );
-		// qTip
-		wp_register_style( 'qtip', plugins_url( 'vendor/qtip/qtip.css', SU_PLUGIN_FILE ), false, '2.1.1', 'all' );
-		wp_register_script( 'qtip', plugins_url( 'vendor/qtip/qtip.js', SU_PLUGIN_FILE ), array( 'jquery' ), '2.1.1', true );
+		// PopperJS
+		wp_register_script(
+			'popper',
+			plugins_url( 'vendor/popper/popper.min.js', SU_PLUGIN_FILE ),
+			array(),
+			'2.9.2',
+			true
+		);
 		// Magnific Popup
 		wp_register_style( 'magnific-popup', plugins_url( 'vendor/magnific-popup/magnific-popup.css', SU_PLUGIN_FILE ), false, '1.1.0', 'all' );
 		wp_register_script( 'magnific-popup', plugins_url( 'vendor/magnific-popup/magnific-popup.js', SU_PLUGIN_FILE ), array( 'jquery' ), '1.1.0', true );
@@ -80,13 +85,13 @@ class Su_Assets {
 		wp_register_style( 'su-generator', plugins_url( 'admin/css/generator.css', SU_PLUGIN_FILE ), array( 'farbtastic', 'magnific-popup', 'simpleslider' ), SU_PLUGIN_VERSION, 'all' );
 		wp_register_script( 'su-generator', plugins_url( 'includes/js/generator/index.js', SU_PLUGIN_FILE ), array( 'farbtastic', 'magnific-popup', 'simpleslider' ), SU_PLUGIN_VERSION, true );
 		wp_localize_script( 'su-generator', 'SUGL10n', array(
-				'upload_title'         => __( 'Datei wählen', 'upfront-shortcodes' ),
-				'upload_insert'        => __( 'Einfügen', 'upfront-shortcodes' ),
-				'isp_media_title'      => __( 'Wähle Bilder aus', 'upfront-shortcodes' ),
-				'isp_media_insert'     => __( 'Füge ausgewählte Bilder hinzu', 'upfront-shortcodes' ),
-				'presets_prompt_msg'   => __( 'Bitte gib einen Namen für die neue Voreinstellung ein', 'upfront-shortcodes' ),
-				'presets_prompt_value' => __( 'Neue Voreinstellung', 'upfront-shortcodes' ),
-				'last_used'            => __( 'Zuletzt verwendete Einstellungen', 'upfront-shortcodes' ),
+			'upload_title'         => __( 'Datei wählen', 'upfront-shortcodes' ),
+			'upload_insert'        => __( 'Einfügen', 'upfront-shortcodes' ),
+			'isp_media_title'      => __( 'Wähle Bilder aus', 'upfront-shortcodes' ),
+			'isp_media_insert'     => __( 'Füge ausgewählte Bilder hinzu', 'upfront-shortcodes' ),
+			'presets_prompt_msg'   => __( 'Bitte gib einen Namen für die neue Voreinstellung ein', 'upfront-shortcodes' ),
+			'presets_prompt_value' => __( 'Neue Voreinstellung', 'upfront-shortcodes' ),
+			'last_used'            => __( 'Zuletzt verwendete Einstellungen', 'upfront-shortcodes' ),
 			) );
 		// Shortcodes stylesheets
 		wp_register_style( 'su-shortcodes', plugins_url( 'includes/css/shortcodes.css', SU_PLUGIN_FILE ), false, SU_PLUGIN_VERSION, 'all' );
@@ -189,9 +194,9 @@ class Su_Assets {
 			printf(
 				$template,
 				PHP_EOL,
-				'UpFront Shortcodes benutzerdefiniertes CSS',
-				'Start',
-				'Ende',
+				'UpFront Shortcodes custom CSS',
+				'start',
+				'end',
 				strip_tags( $custom_css )
 			);
 

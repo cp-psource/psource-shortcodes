@@ -3,7 +3,7 @@
 /**
  * The Settings menu component.
  *
- * @since        1.0.0
+ * @since        1.0.7
  *
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/admin
@@ -13,27 +13,27 @@ final class UpFront_Shortcodes_Admin_Settings extends UpFront_Shortcodes_Admin {
 	/**
 	 * The plugin settings data.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
-	 * @var      array     $plugin_settings   Die Plugin-Einstellungsdaten.
+	 * @var      array     $plugin_settings   The plugin settings data.
 	 */
 	private $plugin_settings;
 
 	/**
-	 * Standardwerte für eine einzelne Einstellung.
+	 * Default values for a single setting.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
-	 * @var      array     $setting_defaults   Standardwerte für eine einzelne Einstellung.
+	 * @var      array     $setting_defaults   Default values for a single setting.
 	 */
 	private $setting_defaults;
 
 	/**
-	 * Initialisiere die Klasse und lege Deine Eigenschaften fest.
+	 * Initialize the class and set its properties.
 	 *
-	 * @since  1.0.0
-	 * @param string  $plugin_file    Der Pfad der Haupt-Plugin-Datei
-	 * @param string  $plugin_version Die aktuelle Version des Pluginsn
+	 * @since  1.0.7
+	 * @param string  $plugin_file    The path of the main plugin file
+	 * @param string  $plugin_version The current version of the plugin
 	 */
 	public function __construct( $plugin_file, $plugin_version, $plugin_prefix ) {
 
@@ -55,146 +55,9 @@ final class UpFront_Shortcodes_Admin_Settings extends UpFront_Shortcodes_Admin {
 	}
 
 	/**
-	 * Add menu page.
-	 *
-	 * @since   1.0.0
-	 */
-	public function add_menu_pages() {
-
-		/**
-		 * Submenu: Settings
-		 * admin.php?page=upfront-shortcodes-settings
-		 */
-		$this->add_submenu_page(
-			rtrim( $this->plugin_prefix, '-_' ),
-			__( 'Einstellungen', 'upfront-shortcodes' ),
-			__( 'Einstellungen', 'upfront-shortcodes' ),
-			$this->get_capability(),
-			$this->plugin_prefix . 'settings',
-			array( $this, 'the_menu_page' )
-		);
-
-	}
-
-	/**
-	 * Register plugin settings.
-	 *
-	 * @since  1.0.0
-	 */
-	public function add_settings() {
-
-		add_settings_section(
-			$this->plugin_prefix . 'general',
-			__( 'Allgemeine Einstellungen', 'upfront-shortcodes' ),
-			array( $this, 'the_settings_section' ),
-			$this->plugin_prefix . 'settings'
-		);
-
-		add_settings_section(
-			$this->plugin_prefix . 'advanced',
-			null,
-			array( $this, 'the_settings_section' ),
-			$this->plugin_prefix . 'advanced-settings'
-		);
-
-		/**
-		 * Register plugin settings.
-		 */
-		foreach ( $this->get_plugin_settings() as $setting ) {
-
-			$setting = wp_parse_args( $setting, $this->setting_defaults );
-
-			add_settings_field(
-				$setting['id'],
-				$setting['title'],
-				$setting['callback'],
-				$setting['page'],
-				$setting['section'],
-				$setting
-			);
-
-			register_setting(
-				$setting['group'],
-				$setting['id'],
-				$setting['sanitize']
-			);
-
-		}
-
-	}
-
-	/**
-	 * Enqueue JavaScript(s) and Stylesheet(s) for the component.
-	 *
-	 * @since   1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		if ( ! $this->is_component_page() ) {
-			return;
-		}
-
-		if ( function_exists( 'wp_enqueue_code_editor' ) ) {
-			wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
-		}
-
-		wp_enqueue_style(
-			'upfront-shortcodes-admin-settings',
-			plugins_url( 'css/settings.css', __FILE__ ),
-			array( 'su-icons' ),
-			filemtime( plugin_dir_path( __FILE__ ) . 'css/settings.css' )
-		);
-
-	}
-
-	/**
-	 * Add help tabs and set help sidebar at Add-ons page.
-	 *
-	 * @since  1.0.0
-	 * @param WP_Screen $screen WP_Screen instance.
-	 */
-	public function add_help_tabs( $screen ) {
-
-		if ( ! $this->is_component_page() ) {
-			return;
-		}
-
-		$screen->add_help_tab(
-			array(
-				'id'      => 'upfront-shortcodes-general',
-				'title'   => __( 'Allgemeine Einstellungen', 'upfront-shortcodes' ),
-				'content' => $this->get_template( 'admin/partials/help/settings' ),
-			)
-		);
-
-		$screen->set_help_sidebar( $this->get_template( 'admin/partials/help/sidebar' ) );
-
-	}
-
-	/**
-	 * Filter to add action links at plugins screen.
-	 *
-	 * @since 5.0.8
-	 * @param array $links Default links.
-	 */
-	public function add_action_links( $links ) {
-
-		$plugin_links = array(
-			sprintf(
-				'<a href="%s">%s</a>',
-				esc_attr( $this->get_component_url() ),
-				esc_html( __( 'Einstellungen', 'upfront-shortcodes' ) )
-			),
-		);
-
-		return array_merge( $plugin_links, $links );
-
-	}
-
-	/**
 	 * Retrieve the plugin settings data.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @return  array The plugin settings data.
 	 */
@@ -281,6 +144,21 @@ final class UpFront_Shortcodes_Admin_Settings extends UpFront_Shortcodes_Admin {
 			);
 
 			$this->plugin_settings[] = array(
+				'id'          => 'su_option_unsafe_features',
+				'type'        => 'checkbox',
+				'sanitize'    => array( $this, 'sanitize_checkbox' ),
+				'page'        => $this->plugin_prefix . 'advanced-settings',
+				'group'       => $this->plugin_prefix . 'advanced-settings',
+				'section'     => $this->plugin_prefix . 'advanced',
+				'title'       => __( 'Unsichere Funktionen', 'upfront-shortcodes' ),
+				'description' => sprintf(
+					'%s <a href="https://n3rds.work/docs/upfront-shortcodes-unsichere-funktionen/" target="_blank">%s</a>.',
+					__( 'Diese Option aktiviert potenziell unsichere Funktionen des Plugins wie das onlick-Attribut des Button-Shortcodes. Die Option ist standardmäßig aktiviert und wird automatisch deaktiviert, sobald Du mehr als einen Nicht-Administrator-Benutzer auf der Webseite hast.', 'upfront-shortcodes' ),
+					__( 'Mehr erfahren', 'upfront-shortcodes' )
+				),
+			);
+
+			$this->plugin_settings[] = array(
 				'id'          => 'su_option_hide_deprecated',
 				'type'        => 'checkbox',
 				'sanitize'    => array( $this, 'sanitize_checkbox' ),
@@ -305,6 +183,168 @@ final class UpFront_Shortcodes_Admin_Settings extends UpFront_Shortcodes_Admin {
 		}
 
 		return apply_filters( 'su/admin/settings', $this->plugin_settings );
+
+	}
+
+	/**
+	 * Add menu page.
+	 *
+	 * @since   1.0.7
+	 */
+	public function add_menu_pages() {
+
+		/**
+		 * Submenu: Settings
+		 * admin.php?page=upfront-shortcodes-settings
+		 */
+		$this->add_submenu_page(
+			rtrim( $this->plugin_prefix, '-_' ),
+			__( 'Einstellungen', 'upfront-shortcodes' ),
+			__( 'Einstellungen', 'upfront-shortcodes' ),
+			$this->get_capability(),
+			$this->plugin_prefix . 'settings',
+			array( $this, 'the_menu_page' )
+		);
+
+	}
+
+	/**
+	 * Register plugin settings.
+	 *
+	 * @since  1.0.7
+	 */
+	public function add_settings() {
+
+		add_settings_section(
+			$this->plugin_prefix . 'general',
+			__( 'Allgemeine Einstellungen', 'upfront-shortcodes' ),
+			array( $this, 'the_settings_section' ),
+			$this->plugin_prefix . 'settings'
+		);
+
+		add_settings_section(
+			$this->plugin_prefix . 'advanced',
+			null,
+			array( $this, 'the_settings_section' ),
+			$this->plugin_prefix . 'advanced-settings'
+		);
+
+		/**
+		 * Register plugin settings.
+		 */
+		foreach ( $this->get_plugin_settings() as $setting ) {
+
+			$setting = wp_parse_args( $setting, $this->setting_defaults );
+
+			$setting['label_for'] = $setting['id'];
+
+			add_settings_field(
+				$setting['id'],
+				$setting['title'],
+				$setting['callback'],
+				$setting['page'],
+				$setting['section'],
+				$setting
+			);
+
+			register_setting(
+				$setting['group'],
+				$setting['id'],
+				$setting['sanitize']
+			);
+
+		}
+
+	}
+
+	/**
+	 * Enqueue JavaScript(s) and Stylesheet(s) for the component.
+	 *
+	 * @since   1.0.8
+	 */
+	public function enqueue_scripts() {
+
+		if ( ! $this->is_component_page() ) {
+			return;
+		}
+
+		if ( function_exists( 'wp_enqueue_code_editor' ) ) {
+			wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
+		}
+
+		wp_enqueue_style(
+			'upfront-shortcodes-admin',
+			plugins_url( 'css/admin.css', __FILE__ ),
+			false,
+			filemtime( plugin_dir_path( __FILE__ ) . 'css/admin.css' )
+		);
+
+	}
+
+	/**
+	 * Add help tabs and set help sidebar at Mehr UpFront page.
+	 *
+	 * @since  1.0.7
+	 * @param WP_Screen $screen WP_Screen instance.
+	 */
+	public function add_help_tabs( $screen ) {
+
+		if ( ! $this->is_component_page() ) {
+			return;
+		}
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'upfront-shortcodes-general',
+				'title'   => __( 'Allgemeine Einstellungen', 'upfront-shortcodes' ),
+				'content' => $this->get_template( 'admin/partials/help/settings' ),
+			)
+		);
+
+		$screen->set_help_sidebar( $this->get_template( 'admin/partials/help/sidebar' ) );
+
+	}
+
+	/**
+	 * Filter to add action links at plugins screen.
+	 *
+	 * @since 5.0.8
+	 * @param array $links Default links.
+	 */
+	public function add_action_links( $links ) {
+
+		$plugin_links = array(
+			sprintf(
+				'<a href="%s">%s</a>',
+				esc_attr( $this->get_component_url() ),
+				esc_html( __( 'Einstellungen', 'upfront-shortcodes' ) )
+			),
+		);
+
+		return array_merge( $plugin_links, $links );
+
+	}
+
+	protected function is_advanced_settings() {
+		return isset( $_GET['advanced'] );
+	}
+
+	public function maybe_disable_unsafe_features() {
+
+		if ( '' === get_option( 'su_option_unsafe_features' ) ) {
+			return;
+		}
+
+		if ( su_current_user_can_insert() ) {
+			return;
+		}
+
+		if ( 0 !== get_option( 'su_option_unsafe_features_auto_off', 0 ) ) {
+			return;
+		}
+
+		update_option( 'su_option_unsafe_features', '' );
+		add_option( 'su_option_unsafe_features_auto_off', true );
 
 	}
 

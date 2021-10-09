@@ -21,7 +21,7 @@ su_add_shortcode(
 				'type'    => 'text',
 				'default' => ',',
 				'name'    => __( 'Trennzeichen', 'upfront-shortcodes' ),
-				'desc'    => __( 'Lege das Feldtrennzeichen fest (nur ein Zeichen).', 'upfront-shortcodes' ),
+				'desc'    => __( 'Lege das Feldtrennzeichen fest (nur ein Zeichen)', 'upfront-shortcodes' ),
 			),
 			'header'     => array(
 				'type'    => 'bool',
@@ -72,6 +72,19 @@ function su_shortcode_csv_table( $atts = null, $content = null ) {
 		$atts,
 		'table'
 	);
+
+	if ( ! su_is_unsafe_features_enabled() ) {
+
+		return su_error_message(
+			'CSV Table',
+			sprintf(
+				'%s.<br><a href="https://n3rds.work/docs/upfront-shortcodes-unsichere-funktionen/" target="_blank">%s</a>',
+				__( 'This shortcode cannot be used while <b>Unsafe features</b> option is turned off', 'upfront-shortcodes' ),
+				__( 'Learn more', 'upfront-shortcodes' )
+			)
+		);
+
+	}
 
 	if ( filter_var( $atts['url'], FILTER_VALIDATE_URL ) === false ) {
 		return su_error_message( 'CSV Table', __( 'ungültige URL', 'upfront-shortcodes' ) );

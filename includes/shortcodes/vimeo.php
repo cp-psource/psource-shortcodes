@@ -63,7 +63,7 @@ su_add_shortcode(
 			),
 			'texttrack'  => array(
 				'name'    => __( 'Untertitel', 'upfront-shortcodes' ),
-				'desc'    => __( 'Verwende den Sprachcode als Wert, um Untertitel zu aktivieren. Beispielwerte: en, de', 'upfront-shortcodes' ),
+				'desc'    => __( 'Verwende den Sprachcode als Wert, um Untertitel zu aktivieren. Beispielwerte: en, es', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 			'class'      => array(
@@ -99,7 +99,7 @@ function su_shortcode_vimeo( $atts = null, $content = null ) {
 	);
 
 	if ( ! $atts['url'] ) {
-		return su_error_message( 'Vimeo', __( 'bitte gib die richtige URL an', 'upfront-shortcodes' ) );
+		return su_error_message( 'Vimeo', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$atts['url'] = su_do_attribute( $atts['url'] );
@@ -109,7 +109,7 @@ function su_shortcode_vimeo( $atts = null, $content = null ) {
 		: false;
 
 	if ( ! $video_id ) {
-		return su_error_message( 'Vimeo', __( 'bitte gib die richtige URL an', 'upfront-shortcodes' ) );
+		return su_error_message( 'Vimeo', __( 'Bitte gib die richtige URL an', 'upfront-shortcodes' ) );
 	}
 
 	$url_params = array(
@@ -120,11 +120,11 @@ function su_shortcode_vimeo( $atts = null, $content = null ) {
 		'autoplay'  => 'yes' === $atts['autoplay'] ? 1 : 0,
 		'dnt'       => 'yes' === $atts['dnt'] ? 1 : 0,
 		'muted'     => 'yes' === $atts['mute'] ? 1 : 0,
-		'texttrack' => $atts['texttrack'],
+		'texttrack' => esc_attr( $atts['texttrack'] ),
 	);
 
 	su_query_asset( 'css', 'su-shortcodes' );
 
-	return '<div class="su-vimeo su-u-responsive-media-' . $atts['responsive'] . su_get_css_class( $atts ) . '"><iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="//player.vimeo.com/video/' . $video_id . '?' . esc_attr( http_build_query( $url_params ) ) . '" frameborder="0" allow="autoplay; fullscreen" allowfullscreen title="' . esc_attr( $atts['title'] ) . '"></iframe></div>';
+	return '<div class="su-vimeo su-u-responsive-media-' . esc_attr( $atts['responsive'] ) . su_get_css_class( $atts ) . '"><iframe width="' . esc_attr( $atts['width'] ) . '" height="' . esc_attr( $atts['height'] ) . '" src="//player.vimeo.com/video/' . $video_id . '?' . esc_attr( http_build_query( $url_params ) ) . '" frameborder="0" allow="autoplay; fullscreen" allowfullscreen title="' . esc_attr( $atts['title'] ) . '"></iframe></div>';
 
 }

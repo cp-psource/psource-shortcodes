@@ -3,7 +3,7 @@
 /**
  * The "Rate plugin" notice.
  *
- * @since        1.0.0
+ * @since        1.0.7
  *
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/admin
@@ -13,7 +13,7 @@ final class UpFront_Shortcodes_Notice_Rate extends UpFront_Shortcodes_Notice {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	public function __construct( $notice_id, $template_file ) {
 
@@ -27,7 +27,7 @@ final class UpFront_Shortcodes_Notice_Rate extends UpFront_Shortcodes_Notice {
 	/**
 	 * Display the notice.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	public function display_notice() {
 

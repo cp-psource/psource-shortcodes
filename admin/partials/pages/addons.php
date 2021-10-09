@@ -11,7 +11,7 @@
 		<?php if ( empty( $addons ) ) : ?>
 
 			<p>
-				<a href="https://n3rds.work/shop/" target="_blank" class="button button-primary"><?php esc_html_e( 'Piestingtal.Source', 'upfront-shortcodes' ); ?> →</a>
+				<a href="https://n3rds.work/shop/artikel/category/upfront-themes/" target="_blank" class="button button-primary"><?php esc_html_e( 'Premium Add-ons', 'upfront-shortcodes' ); ?> →</a>
 			</p>
 
 		<?php else : ?>
@@ -24,10 +24,10 @@
 						<h2 class="su-admin-addons-item-title"><?php echo esc_html( $addon['title'] ); ?></h2>
 						<p class="su-admin-addons-item-description"><?php echo esc_html( $addon['description'] ); ?></p>
 						<div class="su-admin-addons-item-action" aria-hidden="true">
-							<span class="button"><?php esc_html_e( 'Mehr erfahren', 'upfront-shortcodes' ); ?></span>
+							<span class="button"><?php esc_html_e( 'Learn more', 'upfront-shortcodes' ); ?></span>
 						</div>
 					</div>
-					<a href="<?php echo esc_attr( $this->get_addon_permalink( $addon ) ); ?>" target="_blank" rel="noopener" class="su-admin-addons-item-overlay"><?php esc_html_e( 'Lerne mehr über', 'upfront-shortcodes' ); ?> <?php echo esc_html( $addon['title'] ); ?></a>
+					<a href="<?php echo esc_attr( $this->get_addon_permalink( $addon ) ); ?>" target="_blank" rel="noopener" class="su-admin-addons-item-overlay"><?php esc_html_e( 'Learn more about', 'upfront-shortcodes' ); ?> <?php echo esc_html( $addon['title'] ); ?></a>
 				</div>
 
 			<?php endforeach; ?>

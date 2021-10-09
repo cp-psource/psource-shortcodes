@@ -14,7 +14,7 @@
 	<h3 class="su-generator-extra-banner-title"><?php esc_html_e( 'Extra Shortcodes', 'upfront-shortcodes' ); ?></h3>
 	<p class="su-generator-extra-banner-description"><?php esc_html_e( 'This add-on extends UpFront Shortcodes with 15 new shortcodes. Parallax sections, responsive content slider, pricing tables and more', 'upfront-shortcodes' ); ?></p>
 	<p class="su-generator-extra-banner-action">
-		<a href="<?php echo esc_attr( su_get_utm_link( 'https://nerds.work/add-ons/extra-shortcodes/', array( 'generator', 'extra-shortcode', 'wp-dashboard' ) ) ); ?>" target="_blank" class="button button-primary"><?php esc_html_e( 'Details & Pricing', 'upfront-shortcodes' ); ?> &rarr;</a>
+		<a href="<?php echo esc_attr( su_get_utm_link( 'https://n3rds.work/shop/artikel/category/upfront-themes/extra-shortcodes/', array( 'generator', 'extra-shortcode', 'wp-dashboard' ) ) ); ?>" target="_blank" class="button button-primary"><?php esc_html_e( 'Details & Pricing', 'upfront-shortcodes' ); ?> &rarr;</a>
 	</p>
 	<div class="su-generator-extra-banner-screenshot">
 		<img src="<?php echo esc_attr( $this->get_image_url( 'screenshots/' . $data['id'] . '.png' ) ); ?>">

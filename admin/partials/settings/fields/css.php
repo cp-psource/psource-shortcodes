@@ -25,41 +25,41 @@ jQuery(function() {
 
 <p class="description"><?php echo esc_html( $data['description'] ); ?></p>
 
-<details class="su-admin-settings-details">
-	<summary class="title"><?php esc_html_e( 'Verfügbare Variablen', 'upfront-shortcodes' ); ?></summary>
+<details>
+	<summary class="title"><?php esc_html_e( 'Available variables', 'upfront-shortcodes' ); ?></summary>
 	<article>
 		<table class="widefat striped" style="width:auto">
 			<thead>
 				<tr>
 					<td><?php esc_html_e( 'Variable', 'upfront-shortcodes' ); ?></td>
-					<td><?php esc_html_e( 'Wird ersetzt durch', 'upfront-shortcodes' ); ?>&hellip;</td>
+					<td><?php esc_html_e( 'Will be replaced with', 'upfront-shortcodes' ); ?>&hellip;</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td><code contenteditable>%home_url%</code></td>
-					<td><?php printf( '%s (%s)', esc_html__( 'die URL der Homepage der Webseite', 'upfront-shortcodes' ), esc_html__( 'mit nachlaufendem Schrägstrich', 'upfront-shortcodes' ) ); ?></td>
+					<td><?php printf( '%s (%s)', esc_html__( 'the URL of the site home page', 'upfront-shortcodes' ), esc_html__( 'with trailing slash', 'upfront-shortcodes' ) ); ?></td>
 				</tr>
 				<tr>
 					<td><code contenteditable>%theme_url%</code></td>
-					<td><?php printf( '%s (%s)', esc_html__( 'die URL des Verzeichnisses des aktuellen Themes', 'upfront-shortcodes' ), esc_html__( 'mit nachlaufendem Schrägstrich', 'upfront-shortcodes' ) ); ?></td>
+					<td><?php printf( '%s (%s)', esc_html__( 'the URL of the directory of the current theme', 'upfront-shortcodes' ), esc_html__( 'with trailing slash', 'upfront-shortcodes' ) ); ?></td>
 				</tr>
 				<tr>
 					<td><code contenteditable>%plugin_url%</code></td>
-					<td><?php printf( '%s (%s)', esc_html__( 'die URL des Verzeichnisses des Plugins', 'upfront-shortcodes' ), esc_html__( 'mit nachlaufendem Schrägstrich', 'upfront-shortcodes' ) ); ?></td>
+					<td><?php printf( '%s (%s)', esc_html__( 'the URL of the directory of the plugin', 'upfront-shortcodes' ), esc_html__( 'with trailing slash', 'upfront-shortcodes' ) ); ?></td>
 				</tr>
 			</tbody>
 		</table>
 	</article>
 </details>
 
-<details class="su-admin-settings-details">
-	<summary><?php esc_html_e( 'Mehr Informationen', 'upfront-shortcodes' ); ?></summary>
+<details>
+	<summary><?php esc_html_e( 'More information', 'upfront-shortcodes' ); ?></summary>
 	<article>
 		<ul class="ul-disc">
-			<?php // Translators: %s - link to the shortcodes.css file ?>
-			<li><?php printf( esc_html__( 'Öffne die %s-Datei, um die Standardstile anzuzeigen', 'upfront-shortcodes' ), '<a href="https://plugins.trac.wordpress.org/browser/upfront-shortcodes/trunk/includes/css/shortcodes.full.css" target="_blank">shortcodes.full.css</a>' ); ?></li>
-			<li><?php esc_html_e( 'Hilfeartikel', 'upfront-shortcodes' ); ?>: <a href="https://nerds.work/docs/how-to-use-custom-css-editor/" target="_blank"><?php esc_html_e( 'Verwendung des benutzerdefinierten CSS-Editors', 'upfront-shortcodes' ); ?></a></li>
+			<?php // Translators: %s - link to the shortcodes.full.css file ?>
+			<li><?php printf( esc_html__( 'Open %s file to see default styles', 'upfront-shortcodes' ), '<a href="https://plugins.trac.wordpress.org/browser/upfront-shortcodes/trunk/includes/css/shortcodes.full.css" target="_blank">shortcodes.full.css</a>' ); ?></li>
+			<li><?php esc_html_e( 'Help article', 'upfront-shortcodes' ); ?>: <a href="https://getshortcodes.com/docs/how-to-use-custom-css-editor/" target="_blank"><?php esc_html_e( 'How to use Custom CSS editor', 'upfront-shortcodes' ); ?></a></li>
 		</ul>
 	</article>
 </details>

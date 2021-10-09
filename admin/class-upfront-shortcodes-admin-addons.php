@@ -1,9 +1,9 @@
 <?php
 
 /**
- * The Add-ons menu component.
+ * The Mehr UpFront menu component.
  *
- * @since        1.0.0
+ * @since        1.0.7
  *
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/admin
@@ -13,20 +13,20 @@ final class UpFront_Shortcodes_Admin_Addons extends UpFront_Shortcodes_Admin {
 	/**
 	 * Add menu page.
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	public function add_menu_pages() {
 
 		/**
-		 * Submenu: Add-ons
+		 * Submenu: Mehr UpFront
 		 * admin.php?page=upfront-shortcodes-addons
 		 */
 		$this->add_submenu_page(
 			rtrim( $this->plugin_prefix, '-_' ),
-			__( 'PSOURCE', 'upfront-shortcodes' ),
+			__( 'Mehr UpFront', 'upfront-shortcodes' ),
 			sprintf(
 				'<span style="color:#2afd39">&#9733; %s</span>',
-				__( 'PSOURCE', 'upfront-shortcodes' )
+				__( 'Mehr UpFront', 'upfront-shortcodes' )
 			),
 			$this->get_capability(),
 			$this->plugin_prefix . 'addons',
@@ -37,9 +37,9 @@ final class UpFront_Shortcodes_Admin_Addons extends UpFront_Shortcodes_Admin {
 
 
 	/**
-	 * Add help tabs and set help sidebar at Add-ons page.
+	 * Add help tabs and set help sidebar at Mehr UpFront page.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @param WP_Screen $screen WP_Screen instance.
 	 */
 	public function add_help_tabs( $screen ) {
@@ -51,7 +51,7 @@ final class UpFront_Shortcodes_Admin_Addons extends UpFront_Shortcodes_Admin {
 		$screen->add_help_tab(
 			array(
 				'id'      => 'upfront-shortcodes-addons',
-				'title'   => __( 'PSOURCE', 'upfront-shortcodes' ),
+				'title'   => __( 'Mehr UpFront', 'upfront-shortcodes' ),
 				'content' => $this->get_template( 'admin/partials/help/addons' ),
 			)
 		);
@@ -64,7 +64,7 @@ final class UpFront_Shortcodes_Admin_Addons extends UpFront_Shortcodes_Admin {
 	/**
 	 * Enqueue JavaScript(s) and Stylesheet(s) for the component.
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	public function enqueue_scripts() {
 
@@ -73,10 +73,10 @@ final class UpFront_Shortcodes_Admin_Addons extends UpFront_Shortcodes_Admin {
 		}
 
 		wp_enqueue_style(
-			'upfront-shortcodes-admin-addons',
-			plugins_url( 'css/addons.css', __FILE__ ),
-			array(),
-			filemtime( plugin_dir_path( __FILE__ ) . 'css/addons.css' )
+			'upfront-shortcodes-admin',
+			plugins_url( 'css/admin.css', __FILE__ ),
+			false,
+			filemtime( plugin_dir_path( __FILE__ ) . 'css/admin.css' )
 		);
 
 	}
@@ -84,7 +84,7 @@ final class UpFront_Shortcodes_Admin_Addons extends UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the collection of plugin add-ons.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   private
 	 * @return  array The plugin add-ons collection.
 	 */

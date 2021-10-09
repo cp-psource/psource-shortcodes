@@ -3,7 +3,7 @@
 /**
  * The abstract class for creating admin components.
  *
- * @since        1.0.0
+ * @since        1.0.7
  *
  * @package      UpFront_Shortcodes
  * @subpackage   UpFront_Shortcodes/admin
@@ -13,7 +13,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * The path of the main plugin file.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $plugin_file    The path of the main plugin file.
 	 */
@@ -22,7 +22,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $plugin_version    The current version of the plugin.
 	 */
@@ -40,7 +40,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * The URL of the plugin folder.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $plugin_url    The URL of the plugin folder.
 	 */
@@ -58,7 +58,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * User capability required to access admin pages.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $capability    User capability required to access admin pages.
 	 */
@@ -67,7 +67,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * The plugin's pages collection.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      array     $plugin_menu_pages   The plugin's pages collection.
 	 */
@@ -76,7 +76,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * The hook_suffix of the component menu page.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      array     $component_hook_suffix   The hook_suffix of the component menu page.
 	 */
@@ -85,7 +85,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * The URL of the component menu page.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      array     $component_url   The URL of the component menu page.
 	 */
@@ -94,7 +94,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Component tabs collection.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      array     $component_tabs   Component tabs collection.
 	 */
@@ -103,7 +103,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @access protected
 	 * @param string  $plugin_file    The path of the main plugin file.
 	 * @param string  $plugin_version The current version of the plugin.
@@ -127,7 +127,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Register menu pages.
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	public function add_menu_pages() {}
 
@@ -141,14 +141,14 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Enqueue JavaScript(s) and Stylesheet(s) for the component.
 	 *
-	 * @since   1.0.0
+	 * @since   1.0.7
 	 */
 	public function enqueue_scripts() {}
 
 	/**
 	 * Add a top-level menu page.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @uses  add_menu_page
 	 * @access protected
 	 * @param string  $page_title The text to be displayed in the title tags of the page when the menu is selected.
@@ -173,7 +173,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Add a submenu page.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @uses add_submenu_page
 	 * @access protected
 	 * @param string  $parent_slug The slug name for the parent menu (or the file name of a standard WordPress admin page).
@@ -200,7 +200,7 @@ abstract class UpFront_Shortcodes_Admin {
 	 * This method retrieves current page slug from $_GET and loads appropriate
 	 * template.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @return   string   Settings pages markup.
 	 */
 	public function the_menu_page() {
@@ -242,7 +242,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Helper function to check component's menu page hook_suffix
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @return boolean Returns true if current screen is the component's menu page
 	 */
 	protected function is_component_page() {
@@ -256,7 +256,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the title of the current admin screen.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @return   string   The title of the current admin screen.
 	 */
@@ -273,7 +273,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Display the title of the current admin screen.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 */
 	public function the_page_title() {
@@ -283,7 +283,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve tabs collection.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @return array Component tabs collection.
 	 */
 	protected function get_tabs() {
@@ -293,7 +293,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the current tab ID
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @return string Current tab ID
 	 */
 	protected function get_current_tab() {
@@ -313,7 +313,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the ID of the first tab.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @return string The ID of the first tab.
 	 */
 	protected function get_first_tab() {
@@ -341,7 +341,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve user capability required to access admin pages.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @return   string   User capability required to access admin pages.
 	 */
@@ -352,7 +352,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the plugin menu pages.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @return   array   The plugin menu pages.
 	 */
@@ -363,7 +363,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the hook_suffix of the component menu page.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @return   array   The hook_suffix of the component menu page.
 	 */
 	public function get_component_hook_suffix() {
@@ -373,7 +373,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Retrieve the URL of the component menu page.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.7
 	 * @access   protected
 	 * @return   array   The URL of the component menu page.
 	 */
@@ -384,7 +384,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Callback function to sanitize checkbox value.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 * @param mixed   $value String 'on' or null.
 	 * @return string        Sanitized checkbox value ('on' or empty string '').
 	 */
@@ -418,7 +418,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Utility function to get specified template by it's name.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.7
 	 * @param string  $name Template name without extension.
 	 * @param mixed   $data Data to be available from within template.
 	 * @return string       Template content. Returns empty string if template name is invalid or template file wasn't found.
@@ -451,7 +451,7 @@ abstract class UpFront_Shortcodes_Admin {
 	/**
 	 * Utility function to display specified template by it's name.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.7
 	 * @param string  $name Template name (without extension).
 	 * @param mixed   $data Template data to be passed to the template.
 	 */

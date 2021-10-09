@@ -9,7 +9,7 @@ su_add_shortcode(
 		'type'             => 'wrap',
 		'group'            => 'gallery',
 		'possible_sibling' => 'lightbox_content',
-		'article'          => 'https://nerds.work/docs/lightbox/',
+		'article'          => 'https://n3rds.work/docs/upfront-shortcodes-lightbox/',
 		'atts'             => array(
 			'type'   => array(
 				'type'    => 'select',
@@ -25,7 +25,7 @@ su_add_shortcode(
 			'src'    => array(
 				'default' => '',
 				'name'    => __( 'Inhaltsquelle', 'upfront-shortcodes' ),
-				'desc'    => __( 'Füge hier den URL- oder CSS-Selektor ein. Verwende die URL für die Inhaltstypen Iframe und Bild. CSS-Selektor für Inline-Inhaltstyp verwenden.<br />Example values:<br /><b%value>http://www.youtube.com/watch?v=XXXXXXXXX</b> - YouTube video (iframe)<br /><b%value>http://example.com/wp-content/uploads/image.jpg</b> - uploaded image (image)<br /><b%value>http://example.com/</b> - any web page (iframe)<br /><b%value>#my-custom-popup</b> - any HTML content (inline)', 'upfront-shortcodes' ),
+				'desc'    => __( 'Füge hier den URL- oder CSS-Selektor ein. Verwende die URL für die Inhaltstypen Iframe und Bild. CSS-Selektor für Inline-Inhaltstyp verwenden.<br />Beispielwerte:<br /><b%value>http://www.youtube.com/watch?v=XXXXXXXXX</b> - YouTube video (iframe)<br /><b%value>http://example.com/wp-content/uploads/image.jpg</b> - hochgeladenes Bild (Bild)<br /><b%value>http://example.com/</b> - irgendeine Webseite (iframe)<br /><b%value>#my-custom-popup</b> - beliebige HTML-Inhalte (inline)', 'upfront-shortcodes' ),
 			),
 			'mobile' => array(
 				'type'    => 'bool',
@@ -36,7 +36,7 @@ su_add_shortcode(
 			'class'  => array(
 				'type'    => 'extra_css_class',
 				'name'    => __( 'Zusätzliche CSS-Klasse', 'upfront-shortcodes' ),
-				'desc'    => __( 'Zusätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
+				'desc'    => __( 'usätzliche CSS-Klassennamen, durch Leerzeichen getrennt', 'upfront-shortcodes' ),
 				'default' => '',
 			),
 		),
@@ -60,7 +60,7 @@ function su_shortcode_lightbox( $atts = null, $content = null ) {
 	);
 
 	if ( ! $atts['src'] ) {
-		return su_error_message( 'Lightbox', __( 'bitte korrekte Quelle angeben', 'upfront-shortcodes' ) );
+		return su_error_message( 'Lightbox', __( 'Bitte korrekte Quelle angeben', 'upfront-shortcodes' ) );
 	}
 
 	su_query_asset( 'css', 'magnific-popup' );

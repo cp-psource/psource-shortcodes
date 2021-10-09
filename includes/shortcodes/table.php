@@ -54,6 +54,20 @@ function su_shortcode_table( $atts = null, $content = null ) {
 		'table'
 	);
 
+	if ( $atts['url'] && ! su_is_unsafe_features_enabled() ) {
+
+		return su_error_message(
+			'Table',
+			sprintf(
+				'%s.<br><a href="https://n3rds.work/docs/upfront-shortcodes-unsichere-funktionen/" target="_blank">%s</a>',
+				// translators: do not translate the <b>url</b> part, the <b>Unsafe features</b> must be translated
+				__( 'Das Attribut <b>url</b> kann nicht verwendet werden, wenn die Option <b>Unsichere Funktionen</b> deaktiviert ist', 'upfront-shortcodes' ),
+				__( 'Mehr erfahren', 'upfront-shortcodes' )
+			)
+		);
+
+	}
+
 	foreach ( array( 'responsive', 'alternate', 'fixed' ) as $feature ) {
 
 		if ( 'yes' === $atts[ $feature ] ) {

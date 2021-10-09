@@ -18,12 +18,12 @@ su_add_shortcode(
 			'target'      => array(
 				'type'    => 'select',
 				'values'  => array(
-					'self'  => __( 'In derselben Registerkarte', 'upfront-shortcodes' ),
+					'self'  => __( 'In selben Tab öffnen', 'upfront-shortcodes' ),
 					'blank' => __( 'In neuem Tab öffnen', 'upfront-shortcodes' ),
 				),
 				'default' => 'self',
 				'name'    => __( 'Ziel', 'upfront-shortcodes' ),
-				'desc'    => __( 'Button Link Ziel', 'upfront-shortcodes' ),
+				'desc'    => __( 'Button Linkziel', 'upfront-shortcodes' ),
 			),
 			'style'       => array(
 				'type'    => 'select',
@@ -111,8 +111,8 @@ su_add_shortcode(
 			),
 			'desc'        => array(
 				'default' => '',
-				'name'    => __( 'Beschreibung', 'upfront-shortcodes' ),
-				'desc'    => __( 'Kleine Beschreibung unter Schaltflächentext. Diese Option ist nicht mit dem Symbol kompatibel.', 'upfront-shortcodes' ),
+				'name'    => __( 'Description', 'upfront-shortcodes' ),
+				'desc'    => __( 'Small description under button text. This option is incompatible with icon.', 'upfront-shortcodes' ),
 			),
 			'download'    => array(
 				'default' => '',
@@ -335,7 +335,7 @@ function su_shortcode_button( $atts = null, $content = null ) {
 
 	// Prepare <small> with description
 	$desc = $atts['desc']
-		? '<small style="' . implode( ';', $small_css ) . '">' . su_do_attribute( $atts['desc'] ) . '</small>'
+		? '<small style="' . esc_attr( implode( ';', $small_css ) ) . '">' . su_do_attribute( $atts['desc'] ) . '</small>'
 		: '';
 
 	// Wrap with div if button centered
@@ -357,9 +357,23 @@ function su_shortcode_button( $atts = null, $content = null ) {
 	}
 
 	// Prepare onclick action
-	$atts['onclick'] = $atts['onclick']
-		? ' onClick="' . $atts['onclick'] . '"'
-		: '';
+	if ( $atts['onclick'] && ! su_is_unsafe_features_enabled() ) {
+
+		return su_error_message(
+			'Button',
+			sprintf(
+				'%s.<br><a href="https://n3rds.work/docs/upfront-shortcodes-unsichere-funktionen/" target="_blank">%s</a>',
+				// translators: do not translate the <b>onclick</b> part, the <b>Unsafe features</b> must be translated
+				__( 'Das Attribut <b>onclick</b> kann nicht verwendet werden, wenn die Option <b>Unsichere Funktionen</b> deaktiviert ist', 'upfront-shortcodes' ),
+				__( 'Mehr erfahren', 'upfront-shortcodes' )
+			)
+		);
+
+	}
+
+	if ( $atts['onclick'] ) {
+		$atts['onclick'] = ' onClick="' . $atts['onclick'] . '"';
+	}
 
 	// Set rel attribute to `noopener noreferrer` if it's empty and target=blank
 	if ( 'blank' === $atts['target'] && '' === $atts['rel'] ) {
@@ -388,6 +402,6 @@ function su_shortcode_button( $atts = null, $content = null ) {
 
 	su_query_asset( 'css', 'su-shortcodes' );
 
-	return $before . '<a href="' . su_do_attribute( $atts['url'] ) . '" class="' . implode( ' ', $classes ) . '" style="' . implode( ';', $a_css ) . '" target="_' . $atts['target'] . '"' . $atts['onclick'] . $atts['rel'] . $atts['title'] . $atts['id'] . $atts['download'] . '><span style="' . implode( ';', $span_css ) . '">' . do_shortcode( stripcslashes( $content ) ) . $desc . '</span></a>' . $after;
+	return $before . '<a href="' . esc_attr( su_do_attribute( $atts['url'] ) ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '" style="' . esc_attr( implode( ';', $a_css ) ) . '" target="_' . esc_attr( $atts['target'] ) . '"' . $atts['onclick'] . $atts['rel'] . $atts['title'] . $atts['id'] . $atts['download'] . '><span style="' . esc_attr( implode( ';', $span_css ) ) . '">' . do_shortcode( stripcslashes( $content ) ) . $desc . '</span></a>' . $after;
 
 }
