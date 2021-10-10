@@ -4,7 +4,7 @@
 
 	<h1 class="su-admin-settings-page-title">
 		<img src="<?php echo esc_attr( su_get_plugin_url() . 'admin/images/plugin-icon.svg' ); ?>" alt="" width="36" height="36">
-		<?php esc_html_e( 'UpFront Shortcodes Settings', 'upfront-shortcodes' ); ?>
+		<?php esc_html_e( 'UpFront Shortcodes Einstellungen', 'upfront-shortcodes' ); ?>
 	</h1>
 
 	<?php settings_errors(); ?>
@@ -15,11 +15,11 @@
 
 				<div class="notice notice-warning">
 					<p>
-						<strong><?php esc_html_e( 'Warning!', 'upfront-shortcodes' ); ?></strong><br>
-						<?php esc_html_e( 'You are editing advanced settings. Do NOT modify anything in here unless you know what you are doing.', 'upfront-shortcodes' ); ?>
+						<strong><?php esc_html_e( 'Warnung!', 'upfront-shortcodes' ); ?></strong><br>
+						<?php esc_html_e( 'Du bearbeitest erweiterte Einstellungen. Ändere hier NICHTS, es sei denn, Du weisst, was Du tust.', 'upfront-shortcodes' ); ?>
 					</p>
 					<p>
-						<a href="<?php echo esc_attr( $this->get_component_url() ); ?>">&larr; <?php esc_html_e( 'Go back to main settings', 'upfront-shortcodes' ); ?></a>
+						<a href="<?php echo esc_attr( $this->get_component_url() ); ?>">&larr; <?php esc_html_e( 'Gehe zurück zu den Haupteinstellungen', 'upfront-shortcodes' ); ?></a>
 					</p>
 				</div>
 
@@ -39,9 +39,9 @@
 
 	<ul class="su-admin-settings-bottom-menu">
 		<?php if ( ! $this->is_advanced_settings() ) : ?>
-			<li><a href="<?php echo esc_attr( add_query_arg( 'advanced', '', $this->get_component_url() ) ); ?>"><?php esc_html_e( 'Advanced settings', 'upfront-shortcodes' ); ?></a></li>
+			<li><a href="<?php echo esc_attr( add_query_arg( 'advanced', '', $this->get_component_url() ) ); ?>"><?php esc_html_e( 'Erweiterte Einstellungen', 'upfront-shortcodes' ); ?></a></li>
 		<?php else : ?>
-			<li><a href="<?php echo esc_attr( $this->get_component_url() ); ?>"><?php esc_html_e( 'Main settings', 'upfront-shortcodes' ); ?></a></li>
+			<li><a href="<?php echo esc_attr( $this->get_component_url() ); ?>"><?php esc_html_e( 'Haupteinstellungen', 'upfront-shortcodes' ); ?></a></li>
 		<?php endif; ?>
 		<li><a href="<?php echo esc_attr( add_query_arg( 'page', 'upfront-shortcodes', admin_url( 'admin.php' ) ) ); ?>"><?php esc_html_e( 'PSOURCE', 'upfront-shortcodes' ); ?></a></li>
 	</ul>

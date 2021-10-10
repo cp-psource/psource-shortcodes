@@ -45,12 +45,12 @@
 			</ul>
 		</div>
 		<div class="su-admin-about-upgrade-widget">
-			<a href="<?php echo esc_attr( admin_url( 'admin.php?page=upfront-shortcodes-addons' ) ); ?>" class="su-admin-about-upgrade-widget-button su-admin-c-button"><?php esc_html_e( 'Durchsuche Mehr UpFront', 'upfront-shortcodes' ); ?></a>
+			<a href="<?php echo esc_attr( admin_url( 'admin.php?page=upfront-shortcodes-addons' ) ); ?>" class="su-admin-about-upgrade-widget-button su-admin-c-button"><?php esc_html_e( 'Durchsuche Mehr Piestingtal.Source', 'upfront-shortcodes' ); ?></a>
 		</div>
 	</div>
 
 	<div class="su-admin-about-help">
-		<h2><?php esc_html_e( 'Get help', 'upfront-shortcodes' ); ?></h2>
+		<h2><?php esc_html_e( 'Erhalte Hilfe', 'upfront-shortcodes' ); ?></h2>
 		<div class="su-admin-about-help-menu">
 			<ul>
 				<li>
