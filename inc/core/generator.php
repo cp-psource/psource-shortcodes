@@ -53,7 +53,7 @@ class Su_Generator {
 			array(
 				'target'    => '',
 				'tag'       => 'button',
-				'text'      => __( 'Insert shortcode', 'upfront-shortcodes' ),
+				'text'      => __( 'Shortcode einfügen', 'upfront-shortcodes' ),
 				'class'     => 'button',
 				'icon'      => true,
 				'echo'      => true,
@@ -121,7 +121,7 @@ class Su_Generator {
 			>
 				%3$s %1$s
 			</button>',
-			__( 'Insert shortcode', 'upfront-shortcodes' ),
+			__( 'Shortcode einfügen', 'upfront-shortcodes' ),
 			$onclick,
 			$icon
 		);
@@ -149,7 +149,7 @@ class Su_Generator {
 		wp_localize_script(
 			'upfront-shortcodes-block-editor',
 			'SUBlockEditorL10n',
-			array( 'insertShortcode' => __( 'Insert shortcode', 'upfront-shortcodes' ) )
+			array( 'insertShortcode' => __( 'Shortcode einfügen', 'upfront-shortcodes' ) )
 		);
 
 		wp_localize_script(
