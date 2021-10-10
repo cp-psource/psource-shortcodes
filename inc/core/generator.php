@@ -211,9 +211,9 @@ class Su_Generator {
 			) );
 
 		// Add add-ons links
-		if ( ! self::is_addons_active() ) {
+		/*if ( ! self::is_addons_active() ) {
 			$tools[] = '<a href="' . admin_url( 'admin.php?page=upfront-shortcodes-addons&from-generator' ) . '" target="_blank" title="' . __( 'Mehr UpFront', 'upfront-shortcodes' ) . '" class="su-add-ons">&#9733; ' . __( 'UpFront Erweiterungen', 'upfront-shortcodes' ) . '</a>';
-		}
+		}*/
 ?>
 	<div id="su-generator-wrap" style="display:none">
 		<div id="su-generator">
