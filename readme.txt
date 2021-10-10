@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: upfront, shortcodes
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 1.0.7
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,7 +38,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
-= 1.0.8 = DerN3rd =
+= 1.1.1 = DerN3rd =
 
 * PhP8 Updates
 * PSource Updater v1.1 integriert
