@@ -22,7 +22,7 @@ su_add_shortcode(
 			'style'  => array(
 				'type'    => 'select',
 				'values'  => array(
-					'default' => __( 'Standarf', 'upfront-shortcodes' ),
+					'default' => __( 'Standard', 'upfront-shortcodes' ),
 					'fancy'   => __( 'Fancy', 'upfront-shortcodes' ),
 					'simple'  => __( 'Simpel', 'upfront-shortcodes' ),
 				),
