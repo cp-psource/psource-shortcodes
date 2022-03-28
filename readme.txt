@@ -38,6 +38,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.1.2 = DerN3rd =
+
+* FAQ Shortcode hinzugefügt
+
 = 1.1.1 = DerN3rd =
 
 * PhP8 Updates

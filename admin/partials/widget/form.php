@@ -1,6 +1,6 @@
 <p>
 	<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-		<?php esc_html_e( 'Title:', 'upfront-shortcodes' ); ?>
+		<?php esc_html_e( 'Titel:', 'upfront-shortcodes' ); ?>
 	</label>
 	<input
 		type="text"

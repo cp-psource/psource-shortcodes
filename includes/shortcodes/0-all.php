@@ -4,6 +4,8 @@ require_once $this->plugin_path . 'includes/shortcodes/heading.php';
 require_once $this->plugin_path . 'includes/shortcodes/tabs.php';
 require_once $this->plugin_path . 'includes/shortcodes/spoiler.php';
 require_once $this->plugin_path . 'includes/shortcodes/accordion.php';
+require_once $this->plugin_path . 'includes/shortcodes/faq.php';
+require_once $this->plugin_path . 'includes/shortcodes/spoilerfaq.php';
 require_once $this->plugin_path . 'includes/shortcodes/divider.php';
 require_once $this->plugin_path . 'includes/shortcodes/spacer.php';
 require_once $this->plugin_path . 'includes/shortcodes/highlight.php';
