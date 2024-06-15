@@ -1,65 +1,19 @@
-<?php defined( 'ABSPATH' ) || exit; ?>
+<?php defined( 'ABSPATH' ) or exit; ?>
 
 <textarea name="<?php echo esc_attr( $data['id'] ); ?>" id="<?php echo esc_attr( $data['id'] ); ?>" cols="50" rows="15" class="large-text"><?php echo esc_textarea( get_option( $data['id'] ) ); ?></textarea>
 
-<script type="text/javascript">
-jQuery(function() {
-	if (typeof wp === 'undefined' || typeof wp.codeEditor === 'undefined') {
-		return;
-	}
+<p class="description"><?php echo $data['description']; ?></p>
 
-	var editorSettings = wp.codeEditor.defaultSettings
-		? _.clone(wp.codeEditor.defaultSettings)
-		: {};
+<h4 class="title"><?php _e( 'Available variables', 'psource-shortcodes' ); ?></h4>
+<ul>
+	<li><code>%home_url%</code> - <?php printf( '%s (%s)', __( 'the URL of the site home page', 'psource-shortcodes' ), __( 'with trailing slash', 'psource-shortcodes' ) ); ?></li>
+	<li><code>%theme_url%</code> - <?php printf( '%s (%s)', __( 'the URL of the directory of the current theme', 'psource-shortcodes' ), __( 'with trailing slash', 'psource-shortcodes' ) ); ?></li>
+	<li><code>%plugin_url%</code> - <?php printf( '%s (%s)', __( 'the URL of the directory of the plugin', 'psource-shortcodes' ), __( 'with trailing slash', 'psource-shortcodes' ) ); ?></li>
+</ul>
 
-	editorSettings.codemirror = _.extend({}, editorSettings.codemirror, {
-		viewportMargin: Infinity
-	});
+<h4 class="title"><?php _e( 'More information', 'psource-shortcodes' ); ?></h4>
 
-	wp.codeEditor.initialize(
-		"<?php echo esc_attr( $data['id'] ); ?>",
-		editorSettings
-	);
-});
-</script>
-
-<p class="description"><?php echo esc_html( $data['description'] ); ?></p>
-
-<details>
-	<summary class="title"><?php esc_html_e( 'Verfügbare Variablen', 'upfront-shortcodes' ); ?></summary>
-	<article>
-		<table class="widefat striped" style="width:auto">
-			<thead>
-				<tr>
-					<td><?php esc_html_e( 'Variable', 'upfront-shortcodes' ); ?></td>
-					<td><?php esc_html_e( 'Wird ersetzt durch', 'upfront-shortcodes' ); ?>&hellip;</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><code contenteditable>%home_url%</code></td>
-					<td><?php printf( '%s (%s)', esc_html__( 'die URL der Webseiten-Homepage', 'upfront-shortcodes' ), esc_html__( 'mit nachgestelltem Schrägstrich', 'upfront-shortcodes' ) ); ?></td>
-				</tr>
-				<tr>
-					<td><code contenteditable>%theme_url%</code></td>
-					<td><?php printf( '%s (%s)', esc_html__( 'die URL des Verzeichnisses des aktuellen Themas', 'upfront-shortcodes' ), esc_html__( 'mit nachgestelltem Schrägstrich', 'upfront-shortcodes' ) ); ?></td>
-				</tr>
-				<tr>
-					<td><code contenteditable>%plugin_url%</code></td>
-					<td><?php printf( '%s (%s)', esc_html__( 'die URL des Verzeichnisses des Plugins', 'upfront-shortcodes' ), esc_html__( 'mit nachgestelltem Schrägstrich', 'upfront-shortcodes' ) ); ?></td>
-				</tr>
-			</tbody>
-		</table>
-	</article>
-</details>
-
-<details>
-	<summary><?php esc_html_e( 'Mehr Informationen', 'upfront-shortcodes' ); ?></summary>
-	<article>
-		<ul class="ul-disc">
-			<?php // Translators: %s - link to the shortcodes.full.css file ?>
-			<li><?php printf( esc_html__( 'Öffne %s Datei, um Standardstile anzuzeigen', 'upfront-shortcodes' ), '<a href="https://github.com/piestingtal-source/upfront-shortcodes/blob/master/includes/css/shortcodes.full.css" target="_blank">shortcodes.full.css</a>' ); ?></li>
-			<li><?php esc_html_e( 'Hilfeartikel', 'upfront-shortcodes' ); ?>: <a href="https://n3rds.work/docs/upfront-shortcodes-benutzerdefiniertes-css/" target="_blank"><?php esc_html_e( 'So verwendest Du den benutzerdefinierten CSS-Editor', 'upfront-shortcodes' ); ?></a></li>
-		</ul>
-	</article>
-</details>
+<ul class="ul-disc">
+	<li><?php _e( 'See help tab at the top right corner of this page for more information.', 'psource-shortcodes' ); ?></li>
+	<li><?php printf( __( 'Open %s file to see default styles.', 'psource-shortcodes' ), '<a href="' . $this->get_plugin_url() . 'public/css/shortcodes.css" target="_blank">shortcodes.css</a>' ); ?></li>
+</ul>

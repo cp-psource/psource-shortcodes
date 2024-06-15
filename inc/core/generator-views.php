@@ -29,7 +29,7 @@ class Su_Generator_Views {
 	public static function select( $id, $field ) {
 
 		// Multiple selects
-		$multiple = isset( $field['multiple'] ) && $field['multiple'] ? ' multiple' : '';
+		$multiple = ( isset( $field['multiple'] ) ) ? ' multiple' : '';
 		$return = '<select name="' . $id . '" id="su-generator-attr-' . $id . '" class="su-generator-attr"' . $multiple . '>';
 		// Create options
 		foreach ( $field['values'] as $option_value => $option_title ) {
@@ -49,9 +49,7 @@ class Su_Generator_Views {
 		$types = get_post_types( array(), 'objects', 'or' );
 
 		// Prepare empty array for values
-		$field['values'] = array(
-			'any' => _x( 'Beliebiger Beitragstyp', 'upfront-shortcodes' ),
-		);
+		$field['values'] = array();
 
 		// Fill the array
 		foreach( $types as $type ) {
@@ -84,7 +82,7 @@ class Su_Generator_Views {
 	public static function term( $id, $field ) {
 
 		// Get categories
-		$field['values'] = Su_Generator::get_terms( 'category' );
+		$field['values'] = Su_Tools::get_terms( 'category' );
 
 		// Create select
 		return self::select( $id, $field );
@@ -92,22 +90,45 @@ class Su_Generator_Views {
 	}
 
 	public static function bool( $id, $field ) {
-		$return = '<span class="su-generator-switch su-generator-switch-' . $field['default'] . '"><span class="su-generator-yes">' . __( 'Ja', 'upfront-shortcodes' ) . '</span><span class="su-generator-no">' . __( 'Nein', 'upfront-shortcodes' ) . '</span></span><input type="hidden" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-switch-value" />';
+		$return = '<span class="su-generator-switch su-generator-switch-' . $field['default'] . '"><span class="su-generator-yes">' . __( 'Yes', 'psource-shortcodes' ) . '</span><span class="su-generator-no">' . __( 'No', 'psource-shortcodes' ) . '</span></span><input type="hidden" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-switch-value" />';
 		return $return;
 	}
 
 	public static function upload( $id, $field ) {
-		$return = '<input type="text" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-upload-value" /><div class="su-generator-field-actions"><a href="javascript:;" class="button su-generator-upload-button"><img src="' . admin_url( '/images/media-button.png' ) . '" alt="' . __( 'Media manager', 'upfront-shortcodes' ) . '" />' . __( 'Medienmanager', 'upfront-shortcodes' ) . '</a></div>';
+		$return = '<input type="text" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-upload-value" /><div class="su-generator-field-actions"><a href="javascript:;" class="button su-generator-upload-button"><img src="' . admin_url( '/images/media-button.png' ) . '" alt="' . __( 'Media manager', 'psource-shortcodes' ) . '" />' . __( 'Media manager', 'psource-shortcodes' ) . '</a></div>';
 		return $return;
 	}
 
 	public static function icon( $id, $field ) {
-		$return = '<input type="text" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-icon-picker-value" /><div class="su-generator-field-actions"><a href="javascript:;" class="button su-generator-upload-button su-generator-field-action"><img src="' . admin_url( '/images/media-button.png' ) . '" alt="' . __( 'Medienmanager', 'upfront-shortcodes' ) . '" />' . __( 'Medienmanager', 'upfront-shortcodes' ) . '</a> <a href="javascript:;" class="button su-generator-icon-picker-button su-generator-field-action"><img src="' . admin_url( '/images/media-button-other.gif' ) . '" alt="' . __( 'Symbolauswahl', 'upfront-shortcodes' ) . '" />' . __( 'Symbolauswahl', 'upfront-shortcodes' ) . '</a></div><div class="su-generator-icon-picker su-generator-clearfix"><input type="text" class="widefat" placeholder="' . __( 'Filter Symbole', 'upfront-shortcodes' ) . '" /></div>';
+		$return = '<input type="text" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-icon-picker-value" /><div class="su-generator-field-actions"><a href="javascript:;" class="button su-generator-upload-button su-generator-field-action"><img src="' . admin_url( '/images/media-button.png' ) . '" alt="' . __( 'Media manager', 'psource-shortcodes' ) . '" />' . __( 'Media manager', 'psource-shortcodes' ) . '</a> <a href="javascript:;" class="button su-generator-icon-picker-button su-generator-field-action"><img src="' . admin_url( '/images/media-button-other.gif' ) . '" alt="' . __( 'Icon picker', 'psource-shortcodes' ) . '" />' . __( 'Icon picker', 'psource-shortcodes' ) . '</a></div><div class="su-generator-icon-picker su-generator-clearfix"><input type="text" class="widefat" placeholder="' . __( 'Filter icons', 'psource-shortcodes' ) . '" /></div>';
 		return $return;
 	}
 
 	public static function color( $id, $field ) {
 		$return = '<span class="su-generator-select-color"><span class="su-generator-select-color-wheel"></span><input type="text" name="' . $id . '" value="' . $field['default'] . '" id="su-generator-attr-' . $id . '" class="su-generator-attr su-generator-select-color-value" /></span>';
+		return $return;
+	}
+
+	public static function gallery( $id, $field ) {
+		$shult = shortcodes_ultimate();
+		// Prepare galleries list
+		$galleries = $shult->get_option( 'galleries' );
+		$created = ( is_array( $galleries ) && count( $galleries ) ) ? true : false;
+		$return = '<select name="' . $id . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" data-loading="' . __( 'Please wait', 'psource-shortcodes' ) . '">';
+		// Check that galleries is set
+		if ( $created ) // Create options
+			foreach ( $galleries as $g_id => $gallery ) {
+				// Is this option selected
+				$selected = ( $g_id == 0 ) ? ' selected="selected"' : '';
+				// Prepare title
+				$gallery['name'] = ( $gallery['name'] == '' ) ? __( 'Untitled gallery', 'psource-shortcodes' ) : stripslashes( $gallery['name'] );
+				// Create option
+				$return .= '<option value="' . ( $g_id + 1 ) . '"' . $selected . '>' . $gallery['name'] . '</option>';
+			}
+		// Galleries not created
+		else
+			$return .= '<option value="0" selected>' . __( 'Galleries not found', 'psource-shortcodes' ) . '</option>';
+		$return .= '</select><small class="description"><a href="' . $shult->admin_url . '#tab-3" target="_blank">' . __( 'Manage galleries', 'psource-shortcodes' ) . '</a>&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="su-generator-reload-galleries">' . __( 'Reload galleries', 'psource-shortcodes' ) . '</a></small>';
 		return $return;
 	}
 
@@ -123,18 +144,18 @@ class Su_Generator_Views {
 
 	public static function shadow( $id, $field ) {
 		$defaults = ( $field['default'] === 'none' ) ? array ( '0', '0', '0', '#000000' ) : explode( ' ', str_replace( 'px', '', $field['default'] ) );
-		$return = '<div class="su-generator-shadow-picker"><span class="su-generator-shadow-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[0] . '" class="su-generator-sp-hoff" /><small>' . __( 'Horizontaler Versatz', 'upfront-shortcodes' ) . ' (px)</small></span><span class="su-generator-shadow-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[1] . '" class="su-generator-sp-voff" /><small>' . __( 'Vertikaler Versatz', 'upfront-shortcodes' ) . ' (px)</small></span><span class="su-generator-shadow-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[2] . '" class="su-generator-sp-blur" /><small>' . __( 'Blur', 'upfront-shortcodes' ) . ' (px)</small></span><span class="su-generator-shadow-picker-field su-generator-shadow-picker-color"><span class="su-generator-shadow-picker-color-wheel"></span><input type="text" value="' . $defaults[3] . '" class="su-generator-shadow-picker-color-value" /><small>' . __( 'Farbe', 'upfront-shortcodes' ) . '</small></span><input type="hidden" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" /></div>';
+		$return = '<div class="su-generator-shadow-picker"><span class="su-generator-shadow-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[0] . '" class="su-generator-sp-hoff" /><small>' . __( 'Horizontal offset', 'psource-shortcodes' ) . ' (px)</small></span><span class="su-generator-shadow-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[1] . '" class="su-generator-sp-voff" /><small>' . __( 'Vertical offset', 'psource-shortcodes' ) . ' (px)</small></span><span class="su-generator-shadow-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[2] . '" class="su-generator-sp-blur" /><small>' . __( 'Blur', 'psource-shortcodes' ) . ' (px)</small></span><span class="su-generator-shadow-picker-field su-generator-shadow-picker-color"><span class="su-generator-shadow-picker-color-wheel"></span><input type="text" value="' . $defaults[3] . '" class="su-generator-shadow-picker-color-value" /><small>' . __( 'Color', 'psource-shortcodes' ) . '</small></span><input type="hidden" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" /></div>';
 		return $return;
 	}
 
 	public static function border( $id, $field ) {
 		$defaults = ( $field['default'] === 'none' ) ? array ( '0', 'solid', '#000000' ) : explode( ' ', str_replace( 'px', '', $field['default'] ) );
-		$borders = su_html_dropdown( array(
-				'options' => su_get_config( 'borders' ),
+		$borders = Su_Tools::select( array(
+				'options' => Su_Data::borders(),
 				'class' => 'su-generator-bp-style',
 				'selected' => $defaults[1]
 			) );
-		$return = '<div class="su-generator-border-picker"><span class="su-generator-border-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[0] . '" class="su-generator-bp-width" /><small>' . __( 'Border width', 'upfront-shortcodes' ) . ' (px)</small></span><span class="su-generator-border-picker-field">' . $borders . '<small>' . __( 'Border style', 'upfront-shortcodes' ) . '</small></span><span class="su-generator-border-picker-field su-generator-border-picker-color"><span class="su-generator-border-picker-color-wheel"></span><input type="text" value="' . $defaults[2] . '" class="su-generator-border-picker-color-value" /><small>' . __( 'Border color', 'upfront-shortcodes' ) . '</small></span><input type="hidden" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" /></div>';
+		$return = '<div class="su-generator-border-picker"><span class="su-generator-border-picker-field"><input type="number" min="-1000" max="1000" step="1" value="' . $defaults[0] . '" class="su-generator-bp-width" /><small>' . __( 'Border width', 'psource-shortcodes' ) . ' (px)</small></span><span class="su-generator-border-picker-field">' . $borders . '<small>' . __( 'Border style', 'psource-shortcodes' ) . '</small></span><span class="su-generator-border-picker-field su-generator-border-picker-color"><span class="su-generator-border-picker-color-wheel"></span><input type="text" value="' . $defaults[2] . '" class="su-generator-border-picker-color-value" /><small>' . __( 'Border color', 'psource-shortcodes' ) . '</small></span><input type="hidden" name="' . $id . '" value="' . esc_attr( $field['default'] ) . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" /></div>';
 		return $return;
 	}
 
@@ -142,41 +163,37 @@ class Su_Generator_Views {
 		$field = wp_parse_args( $field, array(
 				'default' => 'none'
 			) );
-
-		if ( ! isset( $field['media_sources'] ) ) {
-			$field['media_sources'] = array(
-				'media'         => __( 'Medienbibliothek', 'upfront-shortcodes' ),
-				'posts: recent' => __( 'Kürzliche Beiträge', 'upfront-shortcodes' ),
-				'taxonomy'      => __( 'Taxonomie', 'upfront-shortcodes' ),
-			);
-		}
-
-		$sources = su_html_dropdown( array(
-				'options'  => $field['media_sources'],
+		$sources = Su_Tools::select( array(
+				'options'  => array(
+					'media'         => __( 'Media library', 'psource-shortcodes' ),
+					'posts: recent' => __( 'Recent posts', 'psource-shortcodes' ),
+					'category'      => __( 'Category', 'psource-shortcodes' ),
+					'taxonomy'      => __( 'Taxonomy', 'psource-shortcodes' )
+				),
 				'selected' => '0',
-				'none'     => __( 'Wähle die Bildquelle aus', 'upfront-shortcodes' ) . '&hellip;',
+				'none'     => __( 'Select images source', 'psource-shortcodes' ) . '&hellip;',
 				'class'    => 'su-generator-isp-sources'
 			) );
-		$categories = su_html_dropdown( array(
-				'options'  => Su_Generator::get_terms( 'category' ),
+		$categories = Su_Tools::select( array(
+				'options'  => Su_Tools::get_terms( 'category' ),
 				'multiple' => true,
 				'size'     => 10,
 				'class'    => 'su-generator-isp-categories'
 			) );
-		$taxonomies = su_html_dropdown( array(
-				'options'  => Su_Generator::get_taxonomies(),
-				'none'     => __( 'Wähle Taxonomie', 'upfront-shortcodes' ) . '&hellip;',
+		$taxonomies = Su_Tools::select( array(
+				'options'  => Su_Tools::get_taxonomies(),
+				'none'     => __( 'Select taxonomy', 'psource-shortcodes' ) . '&hellip;',
 				'selected' => '0',
 				'class'    => 'su-generator-isp-taxonomies'
 			) );
-		$terms = su_html_dropdown( array(
+		$terms = Su_Tools::select( array(
 				'class'    => 'su-generator-isp-terms',
 				'multiple' => true,
 				'size'     => 10,
 				'disabled' => true,
 				'style'    => 'display:none'
 			) );
-		$return = '<div class="su-generator-isp">' . $sources . '<div class="su-generator-isp-source su-generator-isp-source-media"><div class="su-generator-clearfix"><a href="javascript:;" class="button button-primary su-generator-isp-add-media"><i class="sui sui-plus"></i>&nbsp;&nbsp;' . __( 'Füge Bilder hinzu', 'upfront-shortcodes' ) . '</a></div><div class="su-generator-isp-images su-generator-clearfix"><em class="description">' . __( 'Klicke auf die Schaltfläche oben und wähle Bilder aus.<br>Du kannst mehrere Bilder mit der Strg-Taste (Cmd) auswählen', 'upfront-shortcodes' ) . '</em></div></div><div class="su-generator-isp-source su-generator-isp-source-category"><em class="description">' . __( 'Wähle Kategorien aus, aus denen Beiträge abgerufen werden sollen. <br>Mit der Strg-Taste (Cmd) kannst Du mehrere Kategorien auswählen', 'upfront-shortcodes' ) . '</em>' . $categories . '</div><div class="su-generator-isp-source su-generator-isp-source-taxonomy"><em class="description">' . __( 'Wähle die Taxonomie und ihre Begriffe aus.<br>Du kannst mehrere Begriffe mit der Strg-Taste (Cmd) auswählen', 'upfront-shortcodes' ) . '</em>' . $taxonomies . $terms . '</div><input type="hidden" name="' . $id . '" value="' . $field['default'] . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" /></div>';
+		$return = '<div class="su-generator-isp">' . $sources . '<div class="su-generator-isp-source su-generator-isp-source-media"><div class="su-generator-clearfix"><a href="javascript:;" class="button button-primary su-generator-isp-add-media"><i class="fa fa-plus"></i>&nbsp;&nbsp;' . __( 'Add images', 'psource-shortcodes' ) . '</a></div><div class="su-generator-isp-images su-generator-clearfix"><em class="description">' . __( 'Click the button above and select images.<br>You can select multimple images with Ctrl (Cmd) key', 'psource-shortcodes' ) . '</em></div></div><div class="su-generator-isp-source su-generator-isp-source-category"><em class="description">' . __( 'Select categories to retrieve posts from.<br>You can select multiple categories with Ctrl (Cmd) key', 'psource-shortcodes' ) . '</em>' . $categories . '</div><div class="su-generator-isp-source su-generator-isp-source-taxonomy"><em class="description">' . __( 'Select taxonomy and it\'s terms.<br>You can select multiple terms with Ctrl (Cmd) key', 'psource-shortcodes' ) . '</em>' . $taxonomies . $terms . '</div><input type="hidden" name="' . $id . '" value="' . $field['default'] . '" id="su-generator-attr-' . $id . '" class="su-generator-attr" /></div>';
 		return $return;
 	}
 

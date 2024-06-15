@@ -1,5 +1,4 @@
-<?php defined( 'ABSPATH' ) || exit; ?>
-
+<?php defined( 'ABSPATH' ) or exit; ?>
 <?php $addons = $this->get_addons(); ?>
 
 <div id="su_admin_addons" class="wrap su-admin-addons wp-clearfix">
@@ -10,26 +9,19 @@
 
 		<?php if ( empty( $addons ) ) : ?>
 
-			<p>
-				<a href="https://n3rds.work/psource_kategorien/psource-plugins/" target="_blank" class="button button-primary"><?php esc_html_e( 'Mehr PSource', 'upfront-shortcodes' ); ?> →</a>
-			</p>
+			<p><a href="https://getshortcodes.com/add-ons/" target="_blank" class="button button-primary"><?php _e( 'Premium add-ons', 'psource-shortcodes' ); ?></a></p>
 
 		<?php else : ?>
 
-			<?php foreach ( $addons as $addon ) : ?>
-
-				<div class="su-admin-addons-item">
-					<div class="su-admin-addons-item-content">
-						<img src="<?php echo esc_attr( $addon['image'] ); ?>" alt="" class="su-admin-addons-item-image">
-						<h2 class="su-admin-addons-item-title"><?php echo esc_html( $addon['title'] ); ?></h2>
-						<p class="su-admin-addons-item-description"><?php echo esc_html( $addon['description'] ); ?></p>
-						<div class="su-admin-addons-item-action" aria-hidden="true">
-							<span class="button"><?php esc_html_e( 'Mehr erfahren', 'upfront-shortcodes' ); ?></span>
-						</div>
-					</div>
-					<a href="<?php echo esc_attr( $this->get_addon_permalink( $addon ) ); ?>" target="_blank" rel="noopener" class="su-admin-addons-item-overlay"><?php esc_html_e( 'Lerne mehr über', 'upfront-shortcodes' ); ?> <?php echo esc_html( $addon['title'] ); ?></a>
-				</div>
-
+			<?php foreach( $addons as $addon ) : ?>
+				<a href="<?php echo esc_attr( $addon['permalink'] ); ?>" class="su-admin-addons-item" target="_blank">
+					<img src="<?php echo esc_attr( $addon['images']['medium'] ); ?>" srcset="<?php echo esc_attr( $addon['images']['medium'] ); ?> 1x, <?php echo esc_attr( $addon['images']['full'] ); ?> 2x" class="su-admin-addons-item-image">
+					<span class="su-admin-addons-item-info">
+						<span class="su-admin-addons-item-title"><?php echo esc_html( $addon['name'] ); ?></span>
+						<span class="su-admin-addons-item-description"><?php echo esc_html( $addon['description'] ); ?></span>
+						<span class="su-admin-addons-item-button button"><?php _e( 'Learn more', 'psource-shortcodes' ); ?></span>
+					</span>
+				</a>
 			<?php endforeach; ?>
 
 		<?php endif; ?>
