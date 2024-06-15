@@ -43,20 +43,6 @@ jQuery(document).ready(function($) {
 		editor.renderer.setShowPrintMargin(null);
 		editor.session.setUseSoftTabs(null);
 	}
-	// ########## Add-ons screen ##########
-	var addons_timer = 0;
-	$('.su-addons-item').each(function() {
-		var $item = $(this),
-			delay = 300;
-		$item.click(function(e) {
-			window.open($(this).data('url'));
-			e.preventDefault();
-		});
-		addons_timer = addons_timer + delay;
-		window.setTimeout(function() {
-			$item.addClass('animated bounceIn').css('visibility', 'visible');
-		}, addons_timer);
-	});
 	// ########## Examples screen ##########
 	// Disable all buttons
 	$('#su-examples-preview').on('click', '.su-button', function(e) {

@@ -86,12 +86,10 @@ class Su_Generator {
 			ob_start();
 			$tools = apply_filters( 'su/generator/tools', array(
 					'<a href="' . admin_url( 'admin.php?page=psource-shortcodes' ) . '#tab-1" target="_blank" title="' . __( 'Settings', 'psource-shortcodes' ) . '">' . __( 'Plugin settings', 'psource-shortcodes' ) . '</a>',
-					'<a href="http://gndev.info/psource-shortcodes/" target="_blank" title="' . __( 'Plugin homepage', 'psource-shortcodes' ) . '">' . __( 'Plugin homepage', 'psource-shortcodes' ) . '</a>',
+					'<a href="hhttps://cp-psource.github.io/upfront-shortcodes/" target="_blank" title="' . __( 'Plugin homepage', 'psource-shortcodes' ) . '">' . __( 'Plugin homepage', 'psource-shortcodes' ) . '</a>',
 					'<a href="http://wordpress.org/support/plugin/psource-shortcodes/" target="_blank" title="' . __( 'Support forums', 'psource-shortcodes' ) . '">' . __( 'Support forums', 'psource-shortcodes' ) . '</a>'
 				) );
 
-			// Add add-ons links
-			if ( !su_addon_active( 'maker' ) || !su_addon_active( 'skins' ) || !su_addon_active( 'extra' ) ) $tools[] = '<a href="' . admin_url( 'admin.php?page=psource-shortcodes-addons' ) . '" target="_blank" title="' . __( 'Add-ons', 'psource-shortcodes' ) . '" class="su-add-ons">' . __( 'Add-ons', 'psource-shortcodes' ) . '</a>';
 ?>
 		<div id="su-generator-wrap" style="display:none">
 			<div id="su-generator">

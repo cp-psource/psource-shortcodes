@@ -88,7 +88,6 @@ class Shortcodes_Ultimate {
 		require_once $this->plugin_path . 'admin/class-psource-shortcodes-admin-top-level.php';
 		require_once $this->plugin_path . 'admin/class-psource-shortcodes-admin-shortcodes.php';
 		require_once $this->plugin_path . 'admin/class-psource-shortcodes-admin-settings.php';
-		require_once $this->plugin_path . 'admin/class-psource-shortcodes-admin-addons.php';
 
 	}
 
@@ -139,16 +138,6 @@ class Shortcodes_Ultimate {
 		add_action( 'admin_init',     array( $settings, 'register_settings' ) );
 		add_action( 'current_screen', array( $settings, 'add_help_tab' )      );
 
-
-		/**
-		 * Submenu: Add-ons
-		 * admin.php?page=psource-shortcodes-addons
-		 */
-		$addons = new Shortcodes_Ultimate_Admin_Addons( $this->plugin_file, $this->plugin_version );
-
-		add_action( 'admin_menu',            array( $addons, 'admin_menu' ), 30  );
-		add_action( 'admin_enqueue_scripts', array( $addons, 'enqueue_scripts' ) );
-		add_action( 'current_screen',        array( $addons, 'add_help_tab' )    );
 
 	}
 

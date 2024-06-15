@@ -246,7 +246,7 @@ For help with premium add-ons, please [open new support ticket](https://getshort
 
 = 4.6 =
 * Auto-save for shortcodes settings. Now you don't need to adjust it again and again
-* New premium add-on - [Extra Shortcodes](http://gndev.info/psource-shortcodes/extra/)
+* New premium add-on - [Extra Shortcodes](hhttps://cp-psource.github.io/upfront-shortcodes/extra/)
 * Minor UX improvements
 * New locale - VI
 * Fixed bug with tax_term IDs in [posts] shortcode, [forum topic](http://wordpress.org/support/topic/posts-tax_term-category-number)
@@ -358,7 +358,7 @@ For help with premium add-ons, please [open new support ticket](https://getshort
 * Additional access check option for Shortcode Generator
 
 = 4.1 =
-* [5 metro skins](http://gndev.info/psource-shortcodes/metro-skins/)
+* [5 metro skins](hhttps://cp-psource.github.io/upfront-shortcodes/metro-skins/)
 * New screencast - [How to create image gallery](http://www.youtube.com/watch?v=kCWyO2F7jTw)
 * New attribute "center" for [button]. Buttons can now be centered on the page
 * Updated [frame]. Now it can contain other shortcodes
@@ -385,8 +385,8 @@ For help with premium add-ons, please [open new support ticket](https://getshort
 * Added backward compatibility for [document]. Now it accepts file and url attributes
 
 = 4.0 =
-* [Official plugin page](http://gndev.info/psource-shortcodes/)
-* [Premium add-on for creating custom shortcodes](http://gndev.info/psource-shortcodes/maker/)
+* [Official plugin page](hhttps://cp-psource.github.io/upfront-shortcodes/)
+* [Premium add-on for creating custom shortcodes](hhttps://cp-psource.github.io/upfront-shortcodes/maker/)
 * Plugin based on [Sunrise Plugin Framework](https://github.com/gndev/sunrise)
 * [GitHub repo](https://github.com/gndev/psource-shortcodes). Now you can easily fork and modify best plugin in the world (:
 * Brand new Shortcode Generator, [demo video](http://www.youtube.com/watch?v=DR2c266yWEA)
