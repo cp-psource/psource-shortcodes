@@ -11,10 +11,10 @@ A comprehensive collection of visual components for your site
 
 == Description ==
 
-[Shortcodes Ultimate](https://getshortcodes.com/) is a comprehensive collection of various visual and functional elements, which you can use in the post editor, text widgets or even in template files. Using Shortcodes Ultimate you can easily create tabs, buttons, boxes, sliders and carousels, responsive videos and much, much more.
+[Shortcodes Ultimate](https://cp-psource.github.io/upfront-shortcodes/) is a comprehensive collection of various visual and functional elements, which you can use in the post editor, text widgets or even in template files. Using Shortcodes Ultimate you can easily create tabs, buttons, boxes, sliders and carousels, responsive videos and much, much more.
 
 = Feature highlights =
-* [50+ beautiful shortcodes](https://getshortcodes.com/shortcodes/)
+* [50+ beautiful shortcodes](https://cp-psource.github.io/upfront-shortcodes/shortcodes/)
 * 1-click shortcode insertion with live preview
 * Works with any theme
 * Modern responsive design
@@ -63,7 +63,7 @@ Yes, you can remove default shortcodes using 'su/data/shortcodes' filter. Tutori
 
 = Can I create custom shortcodes? =
 Yes, you can create custom shortcodes using 'su/data/shortcodes' filter. Tutorial: [How to add custom shortcodes](http://docs.getshortcodes.com/article/45-how-to-add-custom-shortcodes).
-Alternatively, you can use [Shortcode Creator add-on](https://getshortcodes.com/add-ons/shortcode-creator/).
+Alternatively, you can use [Shortcode Creator add-on](https://cp-psource.github.io/upfront-shortcodes/add-ons/shortcode-creator/).
 
 = Can I use shortcodes in template files? =
 Yes! [How to use shortcodes in template files](http://docs.getshortcodes.com/article/52-using-of-shortcodes-in-template-files).
@@ -72,15 +72,15 @@ Yes! [How to use shortcodes in template files](http://docs.getshortcodes.com/art
 Yes! Shortcodes Ultimate is designed to work with any theme, but your theme must include very basic things: 'wp_head' and 'wp_footer' template tags. Sometimes, the plugin may not work properly because of javascript errors caused by third-party plugins/themes.
 
 = Where can I report a bug? =
-You should [create an issue at GitHub](https://github.com/gndev/psource-shortcodes/) or [open new support ticket](https://getshortcodes.com/account/open-support-ticket/) (for premium add-ons only).
+You should [create an issue at GitHub](https://github.com/gndev/psource-shortcodes/) or [open new support ticket](https://cp-psource.github.io/upfront-shortcodes/account/open-support-ticket/) (for premium add-ons only).
 
 = Where to find additional information? =
 Plugin has comprehensive [documentation](http://docs.getshortcodes.com/).
-Also, you can find more answers at [support page](https://getshortcodes.com/support/).
+Also, you can find more answers at [support page](https://cp-psource.github.io/upfront-shortcodes/support/).
 
 = Where can I get support or talk to other users? =
 If you get stuck, you can ask for help in [official plugin forum](https://wordpress.org/support/plugin/psource-shortcodes).
-For help with premium add-ons, please [open new support ticket](https://getshortcodes.com/account/open-support-ticket/).
+For help with premium add-ons, please [open new support ticket](https://cp-psource.github.io/upfront-shortcodes/account/open-support-ticket/).
 
 
 == Changelog ==
@@ -115,7 +115,7 @@ For help with premium add-ons, please [open new support ticket](https://getshort
 
 = 1.0.0 =
 * Read [this blog post](https://vanokhin.com/whats-new-in-psource-shortcodes-5/) to learn more about update
-* New project website [getshortcodes.com](https://getshortcodes.com/)
+* New project website [getshortcodes.com](https://cp-psource.github.io/upfront-shortcodes/)
 * New documentation [docs.getshortcodes.com](http://docs.getshortcodes.com/)
 * Added: 'Available shortcodes' admin menu
 * Removed: 'Examples' admin menu

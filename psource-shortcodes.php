@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: PSOURCE Shortcodes
- * Plugin URI: https://getshortcodes.com/
+ * Plugin URI: https://cp-psource.github.io/upfront-shortcodes/
  * Version: 1.0.0
  * Author: PSOURCE
  * Author URI: https://github.com/cp-psource

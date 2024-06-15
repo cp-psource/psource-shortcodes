@@ -9,7 +9,7 @@
 
 		<?php if ( empty( $addons ) ) : ?>
 
-			<p><a href="https://getshortcodes.com/add-ons/" target="_blank" class="button button-primary"><?php _e( 'Premium add-ons', 'psource-shortcodes' ); ?></a></p>
+			<p><a href="https://cp-psource.github.io/upfront-shortcodes/add-ons/" target="_blank" class="button button-primary"><?php _e( 'Premium add-ons', 'psource-shortcodes' ); ?></a></p>
 
 		<?php else : ?>
 
