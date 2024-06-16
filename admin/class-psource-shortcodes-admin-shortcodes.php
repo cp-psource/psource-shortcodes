@@ -57,7 +57,7 @@ final class Shortcodes_Ultimate_Admin_Shortcodes extends Shortcodes_Ultimate_Adm
 
 		$screen->add_help_tab( array(
 				'id'      => 'psource-shortcodes-shortcodes',
-				'title'   => __( 'Shortcodes Ultimate', 'psource-shortcodes' ),
+				'title'   => __( 'PSOURCE Shortcodes', 'psource-shortcodes' ),
 				'content' => $this->get_template( 'help/shortcodes' ),
 			) );
 

@@ -1,4 +1,4 @@
-=== Shortcodes Ultimate ===
+=== PSOURCE Shortcodes ===
 Contributors: gn_themes
 License: GPLv3
 Tags: shortcode, toggle, columns, button, slider, video, map, visual, responsive, shortcodes, youtube, vimeo, audio, mp3, tabs, jquery, box, accordion, toggle, pullquote, list, image, gallery, navigation, permalink, feed, rss, members, membership, guests, carousel, icons, rtl, multilingual
@@ -11,7 +11,7 @@ A comprehensive collection of visual components for your site
 
 == Description ==
 
-[Shortcodes Ultimate](https://cp-psource.github.io/upfront-shortcodes/) is a comprehensive collection of various visual and functional elements, which you can use in the post editor, text widgets or even in template files. Using Shortcodes Ultimate you can easily create tabs, buttons, boxes, sliders and carousels, responsive videos and much, much more.
+[PSOURCE Shortcodes](https://cp-psource.github.io/upfront-shortcodes/) is a comprehensive collection of various visual and functional elements, which you can use in the post editor, text widgets or even in template files. Using PSOURCE Shortcodes you can easily create tabs, buttons, boxes, sliders and carousels, responsive videos and much, much more.
 
 = Feature highlights =
 * [50+ beautiful shortcodes](https://cp-psource.github.io/upfront-shortcodes/shortcodes/)
@@ -50,7 +50,7 @@ Activate the plugin at "Dashboard – Plugins" administration page.
 == Frequently Asked Questions ==
 
 = How this plugin works =
-[How Shortcodes Ultimate plugin works](http://docs.getshortcodes.com/article/36-psource-shortcodes).
+[How PSOURCE Shortcodes plugin works](http://docs.getshortcodes.com/article/36-psource-shortcodes).
 
 = Shortcodes do not work. Why? =
 The most common reasons of this issue are listed [here](http://docs.getshortcodes.com/article/41-shortcodes-do-not-work).
@@ -69,7 +69,7 @@ Alternatively, you can use [Shortcode Creator add-on](https://cp-psource.github.
 Yes! [How to use shortcodes in template files](http://docs.getshortcodes.com/article/52-using-of-shortcodes-in-template-files).
 
 = Will this plugin work with my theme? =
-Yes! Shortcodes Ultimate is designed to work with any theme, but your theme must include very basic things: 'wp_head' and 'wp_footer' template tags. Sometimes, the plugin may not work properly because of javascript errors caused by third-party plugins/themes.
+Yes! PSOURCE Shortcodes is designed to work with any theme, but your theme must include very basic things: 'wp_head' and 'wp_footer' template tags. Sometimes, the plugin may not work properly because of javascript errors caused by third-party plugins/themes.
 
 = Where can I report a bug? =
 You should [create an issue at GitHub](https://github.com/gndev/psource-shortcodes/) or [open new support ticket](https://cp-psource.github.io/upfront-shortcodes/account/open-support-ticket/) (for premium add-ons only).
@@ -256,8 +256,8 @@ For help with premium add-ons, please [open new support ticket](https://cp-psour
 * Added some hooks
 * Updated .pot file
 * Font-Awesome is now loaded from bootstrap CDN. [Technical details](http://stackoverflow.com/questions/20032426/fontawesome-doesnt-display-in-firefox).
-* New review - [Shortcodes Ultimate: Ultimatize your written content](http://wisdmlabs.com/blog/how-to-style-wordpress-themes-with-psource-shortcodes/)
-* New review - [Add 40+ New Layout Features To WordPress with Shortcodes Ultimate](http://www.makeuseof.com/tag/add-40-new-layout-features-wordpress-psource-shortcodes/)
+* New review - [PSOURCE Shortcodes: Ultimatize your written content](http://wisdmlabs.com/blog/how-to-style-wordpress-themes-with-psource-shortcodes/)
+* New review - [Add 40+ New Layout Features To WordPress with PSOURCE Shortcodes](http://www.makeuseof.com/tag/add-40-new-layout-features-wordpress-psource-shortcodes/)
 * New review - [Show Me the Shortcode](http://thewpchick.com/show-shortcode/) + Video
 * Updated readme.txt
 * Compatibility with recent version of [SiteOrigin page builder](siteorigin.com/page-builder/) - it's free!

@@ -18,7 +18,7 @@ class Shortcodes_Ultimate_Load {
 		// Make plugin available for translation
 		// load_plugin_textdomain( 'psource-shortcodes', false, dirname( plugin_basename( SU_PLUGIN_FILE ) ) . '/languages/' );
 
-		// Shortcodes Ultimate is ready
+		// PSOURCE Shortcodes is ready
 		// do_action( 'su/init' );
 
 	}

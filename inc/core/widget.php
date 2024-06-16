@@ -4,14 +4,14 @@ class Su_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => 'psource-shortcodes',
-			'description' => __( 'Shortcodes Ultimate widget', 'psource-shortcodes' )
+			'description' => __( 'PSOURCE Shortcodes widget', 'psource-shortcodes' )
 		);
 		$control_ops = array(
 			'width'   => 300,
 			'height'  => 350,
 			'id_base' => 'psource-shortcodes'
 		);
-		parent::__construct( 'psource-shortcodes', __( 'Shortcodes Ultimate', 'psource-shortcodes' ), $widget_ops, $control_ops );
+		parent::__construct( 'psource-shortcodes', __( 'PSOURCE Shortcodes', 'psource-shortcodes' ), $widget_ops, $control_ops );
 	}
 
 	public static function register() {
@@ -37,7 +37,7 @@ class Su_Widget extends WP_Widget {
 
 	function form( $instance ) {
 		$defaults = array(
-			'title'   => __( 'Shortcodes Ultimate', 'psource-shortcodes' ),
+			'title'   => __( 'PSOURCE Shortcodes', 'psource-shortcodes' ),
 			'content' => ''
 		);
 		$instance = wp_parse_args( ( array ) $instance, $defaults );

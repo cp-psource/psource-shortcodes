@@ -871,7 +871,7 @@ class Su_Tools {
 			'label' => __( 'Slide link', 'psource-shortcodes' ),
 			'input' => 'text',
 			'value' => get_post_meta( $post->ID, 'su_slide_link', true ),
-			'helps' => sprintf( '<strong>%s</strong><br>%s', __( 'Shortcodes Ultimate', 'psource-shortcodes' ), __( 'Use this field to add custom links to slides used with Slider, Carousel and Custom Gallery shortcodes', 'psource-shortcodes' ) )
+			'helps' => sprintf( '<strong>%s</strong><br>%s', __( 'PSOURCE Shortcodes', 'psource-shortcodes' ), __( 'Use this field to add custom links to slides used with Slider, Carousel and Custom Gallery shortcodes', 'psource-shortcodes' ) )
 		);
 		return $form_fields;
 	}

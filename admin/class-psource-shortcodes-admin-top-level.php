@@ -37,7 +37,7 @@ final class Shortcodes_Ultimate_Admin_Top_Level extends Shortcodes_Ultimate_Admi
 		 * admin.php?page=psource-shortcodes
 		 */
 		$this->add_menu_page(
-			__( 'Shortcodes Ultimate', 'psource-shortcodes' ),
+			__( 'PSOURCE Shortcodes', 'psource-shortcodes' ),
 			__( 'Shortcodes', 'psource-shortcodes' ),
 			$this->get_capability(),
 			'psource-shortcodes',

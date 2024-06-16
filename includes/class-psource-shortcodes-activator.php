@@ -39,7 +39,7 @@ class Shortcodes_Ultimate_Activator {
 			return;
 		}
 
-		$message = __( 'Shortcodes Ultimate is not activated, because it requires PHP version %s (or higher). Current version of PHP is %s.', 'psource-shortcodes' );
+		$message = __( 'PSOURCE Shortcodes is not activated, because it requires PHP version %s (or higher). Current version of PHP is %s.', 'psource-shortcodes' );
 
 		die( sprintf( $message, $required, $current ) );
 
@@ -60,7 +60,7 @@ class Shortcodes_Ultimate_Activator {
 			return;
 		}
 
-		$message = __( 'Shortcodes Ultimate is not activated, because it requires WordPress version %s (or higher). Current version of WordPress is %s.', 'psource-shortcodes' );
+		$message = __( 'PSOURCE Shortcodes is not activated, because it requires WordPress version %s (or higher). Current version of WordPress is %s.', 'psource-shortcodes' );
 
 		die( sprintf( $message, $required, $current ) );
 

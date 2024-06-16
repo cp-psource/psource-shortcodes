@@ -174,7 +174,7 @@ class Su_Assets {
 			printf(
 				$template,
 				PHP_EOL,
-				'Shortcodes Ultimate custom CSS',
+				'PSOURCE Shortcodes custom CSS',
 				'start',
 				'end',
 				strip_tags( $custom_css )

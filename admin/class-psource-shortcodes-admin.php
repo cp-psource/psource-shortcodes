@@ -273,7 +273,7 @@ abstract class Shortcodes_Ultimate_Admin {
 
 		return sprintf(
 			'%s &rsaquo; %s',
-			__( 'Shortcodes Ultimate', 'psource-shortcodes' ),
+			__( 'PSOURCE Shortcodes', 'psource-shortcodes' ),
 			get_admin_page_title()
 		);
 
