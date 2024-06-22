@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
 		}).magnificPopup('open');
 	});
 	// Filters
-	$filters.click(function(e) {
+	$filters.on('click', function(e) {
 		// Prepare data
 		var filter = $(this).data('filter');
 		// If filter All, show all choices
