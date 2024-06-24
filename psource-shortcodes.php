@@ -2,10 +2,10 @@
 /**
  * Plugin Name: PSOURCE Shortcodes
  * Plugin URI: https://cp-psource.github.io/upfront-shortcodes/
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: PSOURCE
  * Author URI: https://github.com/cp-psource
- * Description: A comprehensive collection of visual components for WordPress
+ * Description: A comprehensive collection of visual components for Padma and UpFront
  * Text Domain: psource-shortcodes
  * Domain Path: /languages
  * License: GPLv3
@@ -24,7 +24,7 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 );
  
 //Set the branch that contains the stable release.
-$myUpdateChecker->setBranch('main');
+$myUpdateChecker->setBranch('master');
 
 /**
  * @@@@@@@@@@@@@@@@@ ENDE PS UPDATER 1.3 @@@@@@@@@@@
@@ -34,7 +34,7 @@ $myUpdateChecker->setBranch('main');
  * Define plugin constants.
  */
 define( 'SU_PLUGIN_FILE',    __FILE__ );
-define( 'SU_PLUGIN_VERSION', '1.0.0'  );
+define( 'SU_PLUGIN_VERSION', '1.0.1'  );
 define( 'SU_ENABLE_CACHE',   false    );
 
 /**
@@ -73,7 +73,7 @@ function run_shortcodes_ultimate() {
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-psource-shortcodes.php';
 
-	$plugin = new Shortcodes_Ultimate( __FILE__, '1.0.0' );
+	$plugin = new Shortcodes_Ultimate( __FILE__, '1.0.1' );
 
 }
 
