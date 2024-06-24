@@ -1,5 +1,5 @@
 === PSOURCE Shortcodes ===
-Contributors: gn_themes
+Contributors: PSOURCE
 License: GPLv3
 Tags: shortcode, toggle, columns, button, slider, video, map, visual, responsive, shortcodes, youtube, vimeo, audio, mp3, tabs, jquery, box, accordion, toggle, pullquote, list, image, gallery, navigation, permalink, feed, rss, members, membership, guests, carousel, icons, rtl, multilingual
 Requires at least: 4.9
@@ -12,76 +12,6 @@ A comprehensive collection of visual components for your site
 == Description ==
 
 [PSOURCE Shortcodes](https://cp-psource.github.io/upfront-shortcodes/) is a comprehensive collection of various visual and functional elements, which you can use in the post editor, text widgets or even in template files. Using PSOURCE Shortcodes you can easily create tabs, buttons, boxes, sliders and carousels, responsive videos and much, much more.
-
-= Feature highlights =
-* [50+ beautiful shortcodes](https://cp-psource.github.io/upfront-shortcodes/shortcodes/)
-* 1-click shortcode insertion with live preview
-* Works with any theme
-* Modern responsive design
-* [Comprehensive documentation](http://docs.getshortcodes.com/)
-* Custom CSS editor
-* Custom widget
-* Translated into 9 languages
-* RTL support
-* Powerful API
-
-
-== Installation ==
-
-Unzip plugin file and upload "psource-shortcodes" folder under your "/wp-content/plugins/" directory.
-
-Resulted plugin path should be:
-"/wp-content/plugins/psource-shortcodes/**"
-
-Activate the plugin at "Dashboard – Plugins" administration page.
-
-[Complete installation guide](http://docs.getshortcodes.com/article/13-plugin-installation).
-
-
-== Screenshots ==
-
-1. Insert Shortcode button added above the editor
-2. Shortcode insertion window
-3. Shortcode settings
-4. Shortcodes: button, tabs, box, carousel
-5. Shortcodes: spoiler, service, list, columns, note
-
-
-== Frequently Asked Questions ==
-
-= How this plugin works =
-[How PSOURCE Shortcodes plugin works](http://docs.getshortcodes.com/article/36-psource-shortcodes).
-
-= Shortcodes do not work. Why? =
-The most common reasons of this issue are listed [here](http://docs.getshortcodes.com/article/41-shortcodes-do-not-work).
-
-= Insert shortcode button do not work. Why? =
-The most common reasons of this issue are listed [here](http://docs.getshortcodes.com/article/42-insert-shortcode-button-do-not-work).
-
-= Can I remove default shortcodes? =
-Yes, you can remove default shortcodes using 'su/data/shortcodes' filter. Tutorial: [How to remove default shortcodes](http://docs.getshortcodes.com/article/51-how-to-remove-default-shortcodes).
-
-= Can I create custom shortcodes? =
-Yes, you can create custom shortcodes using 'su/data/shortcodes' filter. Tutorial: [How to add custom shortcodes](http://docs.getshortcodes.com/article/45-how-to-add-custom-shortcodes).
-Alternatively, you can use [Shortcode Creator add-on](https://cp-psource.github.io/upfront-shortcodes/add-ons/shortcode-creator/).
-
-= Can I use shortcodes in template files? =
-Yes! [How to use shortcodes in template files](http://docs.getshortcodes.com/article/52-using-of-shortcodes-in-template-files).
-
-= Will this plugin work with my theme? =
-Yes! PSOURCE Shortcodes is designed to work with any theme, but your theme must include very basic things: 'wp_head' and 'wp_footer' template tags. Sometimes, the plugin may not work properly because of javascript errors caused by third-party plugins/themes.
-
-= Where can I report a bug? =
-You should [create an issue at GitHub](https://github.com/gndev/psource-shortcodes/) or [open new support ticket](https://cp-psource.github.io/upfront-shortcodes/account/open-support-ticket/) (for premium add-ons only).
-
-= Where to find additional information? =
-Plugin has comprehensive [documentation](http://docs.getshortcodes.com/).
-Also, you can find more answers at [support page](https://cp-psource.github.io/upfront-shortcodes/support/).
-
-= Where can I get support or talk to other users? =
-If you get stuck, you can ask for help in [official plugin forum](https://wordpress.org/support/plugin/psource-shortcodes).
-For help with premium add-ons, please [open new support ticket](https://cp-psource.github.io/upfront-shortcodes/account/open-support-ticket/).
-
 
 == Changelog ==
 
