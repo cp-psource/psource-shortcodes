@@ -1650,7 +1650,7 @@ class Su_Shortcodes {
 
 new Su_Shortcodes;
 
-class Shortcodes_Ultimate_Shortcodes extends Su_Shortcodes {
+class PSOURCE_Shortcodes_Shortcodes extends Su_Shortcodes {
 	function __construct() {
 		parent::__construct();
 	}

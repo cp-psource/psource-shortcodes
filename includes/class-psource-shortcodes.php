@@ -6,10 +6,10 @@
  * This is used to define internationalization and hooks.
  *
  * @since        1.0.0
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/includes
+ * @package      PSOURCE_Shortcodes
+ * @subpackage   PSOURCE_Shortcodes/includes
  */
-class Shortcodes_Ultimate {
+class PSOURCE_Shortcodes {
 
 	/**
 	 * The path to the main plugin file.
@@ -103,7 +103,7 @@ class Shortcodes_Ultimate {
 		/**
 		 * Run upgrades.
 		 */
-		//$upgrade = new Shortcodes_Ultimate_Upgrade( $this->plugin_file, $this->plugin_version );
+		//$upgrade = new PSOURCE_Shortcodes_Upgrade( $this->plugin_file, $this->plugin_version );
 
 		//add_action( 'admin_init', array( $upgrade, 'maybe_upgrade' ) );
 
@@ -112,7 +112,7 @@ class Shortcodes_Ultimate {
 		 * Top-level menu: Shortcodes
 		 * admin.php?page=psource-shortcodes
 		 */
-		$top_level = new Shortcodes_Ultimate_Admin_Top_Level( $this->plugin_file, $this->plugin_version );
+		$top_level = new PSOURCE_Shortcodes_Admin_Top_Level( $this->plugin_file, $this->plugin_version );
 
 		add_action( 'admin_menu', array( $top_level, 'admin_menu' ), 5 );
 
@@ -121,7 +121,7 @@ class Shortcodes_Ultimate {
 		 * Submenu: Available shortcodes
 		 * admin.php?page=psource-shortcodes
 		 */
-		$shortcodes = new Shortcodes_Ultimate_Admin_Shortcodes( $this->plugin_file, $this->plugin_version );
+		$shortcodes = new PSOURCE_Shortcodes_Admin_Shortcodes( $this->plugin_file, $this->plugin_version );
 
 		add_action( 'admin_menu',            array( $shortcodes, 'admin_menu' ), 5   );
 		add_action( 'current_screen',        array( $shortcodes, 'add_help_tab' )    );
@@ -132,7 +132,7 @@ class Shortcodes_Ultimate {
 		 * Submenu: Settings
 		 * admin.php?page=psource-shortcodes-settings
 		 */
-		$settings = new Shortcodes_Ultimate_Admin_Settings( $this->plugin_file, $this->plugin_version );
+		$settings = new PSOURCE_Shortcodes_Admin_Settings( $this->plugin_file, $this->plugin_version );
 
 		add_action( 'admin_menu',     array( $settings, 'admin_menu' ), 20    );
 		add_action( 'admin_init',     array( $settings, 'register_settings' ) );

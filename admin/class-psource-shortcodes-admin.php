@@ -5,10 +5,10 @@
  *
  * @since        1.0.0
  *
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/admin
+ * @package      PSOURCE_Shortcodes
+ * @subpackage   PSOURCE_Shortcodes/admin
  */
-abstract class Shortcodes_Ultimate_Admin {
+abstract class PSOURCE_Shortcodes_Admin {
 
 	/**
 	 * The path of the main plugin file.

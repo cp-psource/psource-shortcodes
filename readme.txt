@@ -218,7 +218,7 @@ A comprehensive collection of visual components for your site
 * Updated admin page framework Sunrise
 * Minor admin panel fixes
 * Fixed file_get_contents() (disabled http wrappers) issue at the examples page
-* Added classes Shortcodes_Ultimate_Generator, Shortcodes_Ultimate_Shortcodes and Shortcodes_Ultimate_Data
+* Added classes PSOURCE_Shortcodes_Generator, PSOURCE_Shortcodes_Shortcodes and PSOURCE_Shortcodes_Data
 * Removed unused classes MediaUpload and ImageMeta
 * New shortocde [dummy_image]
 * New shortocde [dummy_text]

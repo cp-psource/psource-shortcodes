@@ -54,38 +54,38 @@ require_once 'inc/core/widget.php';
  *
  * @since  1.0.0
  */
-function activate_shortcodes_ultimate() {
+function activate_psource_shortcodes() {
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-psource-shortcodes-activator.php';
 
-	Shortcodes_Ultimate_Activator::activate();
+	PSOURCE_Shortcodes_Activator::activate();
 
 }
 
-register_activation_hook( __FILE__, 'activate_shortcodes_ultimate' );
+register_activation_hook( __FILE__, 'activate_psource_shortcodes' );
 
 /**
  * Begins execution of the plugin.
  *
  * @since 1.0.0
  */
-function run_shortcodes_ultimate() {
+function run_psource_shortcodes() {
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-psource-shortcodes.php';
 
-	$plugin = new Shortcodes_Ultimate( __FILE__, '1.0.1' );
+	$plugin = new PSOURCE_Shortcodes( __FILE__, '1.0.1' );
 
 }
 
-run_shortcodes_ultimate();
+run_psource_shortcodes();
 
 /**
  * Finishes execution of the plugin.
  *
  * @since 5.0.2
  */
-function shutdown_shortcodes_ultimate() {
+function shutdown_psource_shortcodes() {
 	do_action( 'su/ready' );
 }
 
-add_action( 'plugins_loaded', 'shutdown_shortcodes_ultimate' );
+add_action( 'plugins_loaded', 'shutdown_psource_shortcodes' );

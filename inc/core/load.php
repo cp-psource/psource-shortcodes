@@ -1,5 +1,5 @@
 <?php
-class Shortcodes_Ultimate_Load {
+class PSOURCE_Shortcodes_Load {
 
 	/**
 	 * Constructor
@@ -58,8 +58,8 @@ class Shortcodes_Ultimate_Load {
 /**
  * Register plugin function to perform checks that plugin is installed
  */
-function shortcodes_ultimate() {
+function psource_shortcodes() {
 	return true;
 }
 
-new Shortcodes_Ultimate_Load;
+new PSOURCE_Shortcodes_Load;

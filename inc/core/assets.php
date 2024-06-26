@@ -251,7 +251,7 @@ class Su_Assets {
 	 * Helper to get full URL of a skin file
 	 */
 	public static function skin_url( $file = '' ) {
-		$shult = shortcodes_ultimate();
+		$shult = psource_shortcodes();
 		$skin = get_option( 'su_option_skin' );
 		$uploads = wp_upload_dir(); $uploads = $uploads['baseurl'];
 		// Prepare url to skin directory

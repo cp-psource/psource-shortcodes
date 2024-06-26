@@ -5,10 +5,10 @@
  *
  * @since        1.0.0
  *
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/admin
+ * @package      PSOURCE_Shortcodes
+ * @subpackage   PSOURCE_Shortcodes/admin
  */
-final class Shortcodes_Ultimate_Admin_Top_Level extends Shortcodes_Ultimate_Admin {
+final class PSOURCE_Shortcodes_Admin_Top_Level extends PSOURCE_Shortcodes_Admin {
 
 	/**
 	 * Initialize the class and set its properties.

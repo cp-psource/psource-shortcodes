@@ -6,10 +6,10 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since        1.0.0
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/includes
+ * @package      PSOURCE_Shortcodes
+ * @subpackage   PSOURCE_Shortcodes/includes
  */
-class Shortcodes_Ultimate_Activator {
+class PSOURCE_Shortcodes_Activator {
 
 	/**
 	 * Plugin activation.

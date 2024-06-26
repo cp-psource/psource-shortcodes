@@ -4,10 +4,10 @@
  * The class responsible for plugin upgrade procedures.
  *
  * @since        1.0.0
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/includes
+ * @package      PSOURCE_Shortcodes
+ * @subpackage   PSOURCE_Shortcodes/includes
  */
-final class Shortcodes_Ultimate_Upgrade {
+final class PSOURCE_Shortcodes_Upgrade {
 
 	/**
 	 * The path to the main plugin file.

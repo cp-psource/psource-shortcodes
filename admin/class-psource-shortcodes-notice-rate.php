@@ -5,10 +5,10 @@
  *
  * @since        1.0.0
  *
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/admin
+ * @package      PSOURCE_Shortcodes
+ * @subpackage   PSOURCE_Shortcodes/admin
  */
-final class Shortcodes_Ultimate_Notice_Rate extends Shortcodes_Ultimate_Notice {
+final class PSOURCE_Shortcodes_Notice_Rate extends PSOURCE_Shortcodes_Notice {
 
 	/**
 	 * Initialize the class and set its properties.

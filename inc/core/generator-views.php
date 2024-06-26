@@ -110,7 +110,7 @@ class Su_Generator_Views {
 	}
 
 	public static function gallery( $id, $field ) {
-		$shult = shortcodes_ultimate();
+		$shult = psource_shortcodes();
 		// Prepare galleries list
 		$galleries = $shult->get_option( 'galleries' );
 		$created = ( is_array( $galleries ) && count( $galleries ) ) ? true : false;

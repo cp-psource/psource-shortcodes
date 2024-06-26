@@ -3114,7 +3114,7 @@ class Su_Data {
 	}
 }
 
-class Shortcodes_Ultimate_Data extends Su_Data {
+class PSOURCE_Shortcodes_Data extends Su_Data {
 	function __construct() {
 		parent::__construct();
 	}
